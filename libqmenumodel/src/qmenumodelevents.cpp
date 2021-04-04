@@ -17,10 +17,8 @@
  *      Nicholas Dedekind <nick.dedekind@canonical.com
  */
 
-extern "C" {
 #include <glib-object.h>
 #include <gio/gio.h>
-}
 
 #include "qmenumodelevents.h"
 

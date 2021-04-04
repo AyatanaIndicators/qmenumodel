@@ -17,9 +17,7 @@
  *      Renato Araujo Oliveira Filho <renato@canonical.com>
  */
 
-extern "C" {
 #include <glib-object.h>
-}
 
 #include "qdbusmenumodel.h"
 #include "dbusmenuscript.h"

@@ -18,9 +18,7 @@
  *      Marco Trevisan <marco.trevisan@canonical.com>
  */
 
-extern "C" {
 #include <glib.h>
-}
 
 #include "converter.h"
 

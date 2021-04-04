@@ -26,10 +26,8 @@
 // Qt
 #include <QCoreApplication>
 
-extern "C" {
 #include <glib.h>
 #include <gio/gio.h>
-}
 
 /*!
     \qmltype QDBusActionGroup
