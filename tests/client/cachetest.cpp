@@ -20,9 +20,7 @@
 
 #include "qmenumodel.h"
 
-extern "C" {
 #include <gio/gio.h>
-}
 
 #include <QtTest>
 

@@ -17,9 +17,7 @@
  *      Renato Araujo Oliveira Filho <renato@canonical.com>
  */
 
-extern "C" {
 #include <gio/gio.h>
-}
 
 #include "qdbusmenumodel.h"
 #include "qmenumodelevents.h"

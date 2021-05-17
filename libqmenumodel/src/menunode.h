@@ -25,9 +25,7 @@
 #include <QMap>
 #include <QVariant>
 
-extern "C" {
 #include <gio/gio.h>
-}
 
 class MenuNode
 {

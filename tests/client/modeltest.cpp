@@ -25,9 +25,7 @@
 #include <QtTest>
 #include <QDebug>
 
-extern "C" {
 #include <gio/gio.h>
-}
 
 class ModelTest : public QObject
 {

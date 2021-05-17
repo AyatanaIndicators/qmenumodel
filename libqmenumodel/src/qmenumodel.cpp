@@ -18,9 +18,7 @@
  *      Olivier Tilloy <olivier.tilloy@canonical.com>
  */
 
-extern "C" {
 #include <gio/gio.h>
-}
 
 #include "qmenumodel.h"
 #include "menunode.h"

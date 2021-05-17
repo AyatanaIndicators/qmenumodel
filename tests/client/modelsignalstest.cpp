@@ -23,9 +23,7 @@
 #include <QtTest>
 #include <QDebug>
 
-extern "C" {
 #include <gio/gio.h>
-}
 
 
 class MenuModelTestClass : public QMenuModel
