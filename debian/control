@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Marius Gripsgard <marius@ubports.com>
 Uploaders:
  Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
-Build-Depends: debhelper (>= 9.0.0),
+Build-Depends: debhelper (>= 10),
                cmake (>= 2.8.9),
                cmake-extras,
                libglib2.0-dev,
