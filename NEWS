@@ -1,3 +1,8 @@
+Overview of changes in ayatana-indicator-session 0.8.1
+
+  * Move glib includes outside of extern "C".
+  * Add Travis CI builds configuration.
+
 Overview of changes in ayatana-indicator-session 0.8.0
 
   * Move qmenumodel from UBports' project context over to

@@ -1,2208 +1,1441 @@
-2020-08-18 14:07:08 +0200 Mike Gabriel
+2021-10-24 Mike Gabriel
 
-	* release 0.8.0 (HEAD -> master, tag: 0.8.0)
+        * release 0.8.1 (HEAD -> main, tag: 0.8.1)
 
-2020-08-15 13:22:20 +0200 Marius Gripsgard (566e0e1)
+2021-09-09 Robert Tari
 
-	* Merge branch 'sunweaver-pr/move-over-to-ayatana-indicators'
+        * Merge branch 'sunweaver-pr/use-ayatana-indicators-dev-scripts'
+          (8df381c)
 
-2020-08-15 12:13:48 +0200 Mike Gabriel (2361b98)
+2021-08-29 Mike Gabriel
 
-	* CMakeLists.txt: Introduce shipping PROJECT_VERSION in upstream code
+        * debian/{control,compat}: Bump to level 10. (dec144a)
+        * debian/rules: Enable unit tests. (55d51db)
+        * debian/{control,compat}: Bump to level 10. (2aec4a4)
+        * debian/rules: Enable unit tests. (47cac22)
+
+2021-08-28 Mike Gabriel
+
+        * .travis.yml: Use Ayatana Indicators project's dev-scripts repo.
+          (5e12d85)
+
+2021-06-11 Mike Gabriel
+
+        * debian/control: Ignore missing B-D bin:pkg 'qt5-default'. It has
+          been dropped during the Debian bullseye release cycle.
+          (fb58fcc)
+
+2021-05-17 Mike Gabriel
+
+        * Merge branch 'z3ntu-glib' (ddcccb4)
+
+2021-04-04 Luca Weiss
+
+        * Move glib includes outside of extern "C" (a6d79e8)
+
+2021-05-17 Robert Tari
+
+        * Merge branch 'sunweaver-pr/travis-ci' (792a56d)
+
+2021-05-12 Mike Gabriel
+
+        * Travis CI: Initial draft for CI builds. (184eb5c)
+
+2020-08-18 Mike Gabriel
+
+        * release 0.8.0 (095e205) (tag: 0.8.0)
+
+2020-08-15 Marius Gripsgard
+
+        * Merge branch 'sunweaver-pr/move-over-to-ayatana-indicators'
+          (566e0e1)
+
+2020-08-15 Mike Gabriel
+
+        * CMakeLists.txt: Introduce shipping PROJECT_VERSION in upstream code
           (not just in debian/changelog, which gets removed during
-          tarball creation).
+          tarball creation). (2361b98)
+        * Move over qmenumodel into the Ayatana Indicators project, upstream
+          version bump preparation. (8954090)
+        * debian/control: Add myself to Uploaders: field. (617c181)
+        * Merge branch 'ayatana-type' (a05e8b1)
 
-2020-08-15 12:09:08 +0200 Mike Gabriel (8954090)
+2020-08-15 Marius Gripsgard
 
-	* Move over qmenumodel into the Ayatana Indicators project, upstream
-          version bump preparation.
+        * Support ayatana type (fa430b5)
+        * Use CoverageReport from cmake-extras (a17ce34)
+        * Correct debian control file (3c9b1ce)
+        * Cleanup bzr (0e71197)
+        * Merge branch 'xenial_-_patches' of
+          https://github.com/z3ntu/qmenumodel (e21000a)
 
-2020-08-15 12:05:36 +0200 Mike Gabriel (617c181)
+2020-05-18 Luca Weiss
 
-	* debian/control: Add myself to Uploaders: field.
+        * Remove use of the deprecated QModelIndex::child function (b420ba1)
+        * Add missing header (bca9dd3)
 
-2020-08-15 11:45:39 +0200 Mike Gabriel (a05e8b1)
+2018-07-27 Florian Leeber
 
-	* Merge branch 'ayatana-type'
+        * Merge pull request #2 from vanyasem/master (30e3dc5)
 
-2020-08-15 01:16:52 +0200 Marius Gripsgard (fa430b5)
+2018-06-20 Ivan Semkin
 
-	* Support ayatana type
+        * Fix build with Qt 5.11_beta3 (dropping qt5_use_modules) (276a033)
 
-2020-08-15 01:04:38 +0200 Marius Gripsgard (a17ce34)
+2017-12-27 Marius Gripsgard
 
-	* Use CoverageReport from cmake-extras
+        * Build for xenial and bump version (f236743)
+        * Add Jenkinsfile (3463ebe)
 
-2020-08-15 01:03:06 +0200 Marius Gripsgard (3c9b1ce)
+2017-04-04 Bileto Bot
 
-	* Correct debian control file
+        * Releasing 0.2.12+17.04.20170404-0ubuntu1 (760d505)
 
-2020-08-15 01:02:42 +0200 Marius Gripsgard (0e71197)
+2017-04-04 Albert Astals Cid
 
-	* Cleanup bzr
+        * Add a return true (05133b2)
 
-2020-08-15 00:16:05 +0200 Marius Gripsgard (e21000a)
+2017-04-03 Albert Astals Cid
 
-	* Merge branch 'xenial_-_patches' of
-          https://github.com/z3ntu/qmenumodel
+        * Add a return true (0fd82be)
 
-2020-05-18 19:48:58 +0200 Luca Weiss (b420ba1)
+2017-03-16 Bileto Bot
 
-	* Remove use of the deprecated QModelIndex::child function
+        * Releasing 0.2.12+17.04.20170316.1-0ubuntu1 (42ba9cd)
 
-2020-05-18 19:47:51 +0200 Luca Weiss (bca9dd3)
+2017-03-16 Albert Astals Cid
 
-	* Add missing header
+        * Use submenu-enabled for those items that don't have an action (if
+          it exists) (LP: #1670694) (1e6ebcc)
 
-2018-07-27 21:18:57 +0200 Florian Leeber (30e3dc5)
+2017-03-16 Bileto Bot
 
-	* Merge pull request #2 from vanyasem/master
+        * Add UnityMenuModel::aboutToShow ((LP: 1664578) (f0aa8c3)
 
-2018-06-20 02:46:53 +0300 Ivan Semkin (276a033)
+2017-03-16 Albert Astals Cid
 
-	* Fix build with Qt 5.11_beta3 (dropping qt5_use_modules)
+        * Batch add and removes into the model (e2b335b)
+        * 0 -> G_MAXINT as found by Charles (5c4aae1)
+        * Fix c&p, this ref should be unref (4216eb7)
+        * Review improvements (8c08013)
 
-2017-12-27 07:12:36 +0100 Marius Gripsgard (f236743)
+2017-03-08 Albert Astals Cid
 
-	* Build for xenial and bump version
+        * Use submenu-enabled for those items that don't have an action (if
+          it exists) (c4855ff)
 
-2017-12-27 07:11:56 +0100 Marius Gripsgard (3463ebe)
+2017-03-07 Albert Astals Cid
 
-	* Add Jenkinsfile
+        * Increase version because of new api (4e10e84)
 
-2017-04-04 11:27:38 +0000 Bileto Bot (760d505)
+2017-03-06 Albert Astals Cid
 
-	* Releasing 0.2.12+17.04.20170404-0ubuntu1
+        * Call about to show for those items that have a qtubuntu-tag
+          property (7579572)
 
-2017-04-04 11:27:05 +0000 Albert Astals Cid (05133b2)
+2017-02-28 Albert Astals Cid
 
-	* Add a return true
+        * valign (9058e74)
+        * Batch add and removes into the model (87ea781)
 
-2017-04-03 10:16:58 +0200 Albert Astals Cid (0fd82be)
+2017-01-10 Bileto Bot
 
-	* Add a return true
+        * Releasing 0.2.11+17.04.20170110.1-0ubuntu1 (2eaa36e)
+        * Added shortcut hasSubmenu and roles to UnityMenuModel;  Added
+          actions property to Group (ab9f997)
 
-2017-03-16 16:56:06 +0000 Bileto Bot (42ba9cd)
+2016-12-09 Nick Dedekind
 
-	* Releasing 0.2.12+17.04.20170316.1-0ubuntu1
+        * added to changelog (a9c7379)
+        * fixed version file (6be5a58)
+        * merged with trunk (69093dc)
 
-2017-03-16 16:55:36 +0000 Albert Astals Cid (1e6ebcc)
+2016-11-16 Bileto Bot
 
-	* Use submenu-enabled for those items that don't have an action (if
-          it exists) (LP: #1670694)
+        * Releasing 0.2.10+17.04.20161116-0ubuntu1 (89f2b36)
 
-2017-03-16 16:55:30 +0000 Bileto Bot (f0aa8c3)
+2016-11-16 Marco Trevisan (Treviño)
 
-	* Add UnityMenuModel::aboutToShow ((LP: 1664578)
+        * converter: cleanup and add support for more variant types (9884a79)
 
-2017-03-16 16:55:18 +0000 Albert Astals Cid (e2b335b)
+2016-11-16 Florian Boucault
 
-	* Batch add and removes into the model
+        * Crossbuilding fixes. (9d914ff)
 
-2017-03-16 16:50:24 +0100 Albert Astals Cid (5c4aae1)
+2016-10-26 Bileto Bot
 
-	* 0 -> G_MAXINT as found by Charles
+        * Releasing 0.2.10+17.04.20161026.2-0ubuntu1 (24f649f)
+        * Add ability to activate or change state of an action by variant
+          string (662f263)
 
-2017-03-16 16:27:47 +0100 Albert Astals Cid (4216eb7)
+2016-10-26 Marco Trevisan (Treviño)
 
-	* Fix c&p, this ref should be unref
+        * converterTest: add content conversions back and further from
+          gvariant (352a770)
+        * converter: properly set the QByteArray using ctor, or it will be
+          created twice (210cae9)
+        * converterTest: add conversion to GVariant and back to verify
+          content is correct (e1ee47e)
 
-2017-03-16 10:24:11 +0100 Albert Astals Cid (8c08013)
+2016-10-25 Marco Trevisan (Treviño)
 
-	* Review improvements
+        * converter: return a variant when the schema is a variant (d56d0ba)
+        * converter: verify integer type conversions (eb6e5b5)
+        * converter: free schema type on destruction (fc52f84)
+        * converter: free the strv container (edfe13a)
+        * Merged variant-string-parser into converter-improvements. (64a2113)
 
-2017-03-08 10:12:31 +0100 Albert Astals Cid (c4855ff)
+2016-10-25 Lukáš Tinkl
 
-	* Use submenu-enabled for those items that don't have an action (if
-          it exists)
+        * converter: use qUtf8Printable function (64ac22d)
 
-2017-03-07 13:08:32 +0100 Albert Astals Cid (4e10e84)
+2016-10-25 Marco Trevisan (Treviño)
 
-	* Increase version because of new api
+        * UnityMenuModel: avoid copy on assignment (0d1bfd6)
+        * UnityMenuModel: use conversion with gschema in unity actions
+          (307efb4)
+        * converterTest: simplify metatype definitions (a4c1bb6)
+        * Converter: add support to String Arrays (6d2076c)
+        * Merging with lp:~3v1n0/qmenumodel/variant-string-parser (d25887f)
+        * ConverterTest: add checks for tuples and lists (c314929)
 
-2017-03-06 15:55:12 +0100 Albert Astals Cid (7579572)
+2016-10-24 Marco Trevisan (Treviño)
 
-	* Call about to show for those items that have a qtubuntu-tag
-          property
+        * Add conversion tests for maps and lists to QVariant (3509321)
+        * converterTest: add tests for toQVariantFromVariantString (3bcc60f)
+        * convertertest: add tests for converting to QVariant (abc65a4)
+        * converterTest: QVERIFY comparison return value (7f78a2c)
 
-2017-02-28 17:48:40 +0100 Albert Astals Cid (9058e74)
+2016-10-22 Marco Trevisan (Treviño)
 
-	* valign
+        * remove deprecated g_type_init() calls (3d2c260)
+        * ConverterTest: remove C++11 features for now (3897067)
+        * convertertest: create QGVariantType wrapper to avoid
+          reinterperating a QString (4b495fc)
+        * convertertest: repeat tests using test data (00ddb5f)
+        * ConverterTest: use data in the testSchemaConvert (81e73a2)
 
-2017-02-28 17:43:28 +0100 Albert Astals Cid (87ea781)
+2016-10-20 Marco Trevisan (Treviño)
 
-	* Batch add and removes into the model
+        * ActionGroupTest: add test for activateByVariantString (6d2a0aa)
+        * ActionGroupTest: split tests depending on they need the helper
+          script or not (bba640d)
 
-2017-01-10 06:41:53 +0000 Bileto Bot (2eaa36e)
+2016-10-18 Marco Trevisan (Treviño)
 
-	* Releasing 0.2.11+17.04.20170110.1-0ubuntu1
+        * converter: stop looking if w'eve no entryType (901e9dc)
+        * Converter: use builders and c++ facilities for schema conversions
+          (3def677)
+        * Converter: use some c++11 facilities for lists (3bd198e)
+        * ConverterTest: add QVariantList conversion test (d8aa881)
+        * convertertest: add conversion from map to qvariant check (d3899e6)
+        * Converter: use QMetaType to check integer subtypes (36681ba)
+        * Converter: add support for ByteArrayList (c42bc21)
+        * Converter: add bytestring support (e87701e)
+        * ConverterTest: add tests for toQVariant (3edd18d)
+        * convertertest: use better variant map test (894fbb9)
+        * CMakeLists.txt: we can safely use c++11 here (c3b6823)
+        * QStateAction: add ability to activate or change state by variant
+          string (06687a7)
+        * Converter: move parseVariantString here from UnityMenuModel
+          (1adf4a6)
 
-2017-01-10 06:41:09 +0000 Bileto Bot (ab9f997)
+2016-10-17 Marco Trevisan (Treviño)
 
-	* * Added shortcut hasSubmenu and roles to UnityMenuModel * Added
-          actions property to Group
+        * convertertest: add tests for [U]LongLong converters (c998da0)
+        * converterTest: split tests by type (f52b497)
 
-2016-12-09 17:11:42 +0000 Nick Dedekind (a9c7379)
+2016-10-15 Marco Trevisan (Treviño)
 
-	* added to changelog
+        * UnityMenuModel: avoid initializing an empty QVariant if not needed
+          (33b7533)
 
-2016-12-09 17:10:27 +0000 Nick Dedekind (6be5a58)
+2016-10-14 Marco Trevisan (Treviño)
 
-	* fixed version file
+        * UnityMenuModel: avoid copying the string to a new std one (462b842)
+        * debian/changelog: bump version number (edc354a)
+        * UnityMenuModel add support for activating and changing state with a
+          variant string parameter (1e9cf63)
+        * Converter: add support to LongLong and ULongLong (449ac3d)
 
-2016-12-09 17:06:25 +0000 Nick Dedekind (69093dc)
+2016-10-04 Nick Dedekind
 
-	* merged with trunk
+        * version bump (a618ff5)
+        * better boolean check (388be5b)
 
-2016-11-16 10:42:18 +0000 Bileto Bot (89f2b36)
+2016-07-19 Florian Boucault
 
-	* Releasing 0.2.10+17.04.20161116-0ubuntu1
+        * Crossbuilding fixes. (c6bba62)
 
-2016-11-16 10:41:44 +0000 Marco Trevisan (Treviño) (9884a79)
+2016-03-29 CI Train Bot
 
-	* converter: cleanup and add support for more variant types
+        * Releasing 0.2.9+16.04.20160329-0ubuntu1 (9efd410)
 
-2016-11-16 10:41:28 +0000 Florian Boucault (9d914ff)
+2016-03-29 Nick Dedekind
 
-	* Crossbuilding fixes.
+        * Use Qt logging categories
+          Fixes: #1562992 Approved by: Daniel
+          d'Andrada, PS Jenkins bot (f2b1959)
 
-2016-10-26 17:28:36 +0000 Bileto Bot (24f649f)
+2016-03-29 Michał Sawicz
 
-	* Releasing 0.2.10+17.04.20161026.2-0ubuntu1
+        * Sync gcc 5.1 rebuild version Approved by: PS Jenkins bot (2e795a2)
 
-2016-10-26 17:28:07 +0000 Bileto Bot (662f263)
+2016-02-23 Nick Dedekind
 
-	* Add ability to activate or change state of an action by variant
-          string
+        * only log critical (4ad6055)
+        * added missing file (2bf6347)
 
-2016-10-26 14:58:18 +0200 Marco Trevisan (Treviño) (352a770)
+2016-02-19 Nick Dedekind
 
-	* converterTest: add content conversions back and further from
-          gvariant
+        * use logging categories (2291dec)
 
-2016-10-26 14:29:33 +0200 Marco Trevisan (Treviño) (210cae9)
+2016-01-15 Nick Dedekind
 
-	* converter: properly set the QByteArray using ctor, or it will be
-          created twice
+        * Added roles for submenu & shortcut. Added actions (97b75c9)
 
-2016-10-26 14:28:59 +0200 Marco Trevisan (Treviño) (e1ee47e)
+2015-12-14 Michał Sawicz
 
-	* converterTest: add conversion to GVariant and back to verify
-          content is correct
+        * Sync gcc 5.1 rebuild (df7955d)
 
-2016-10-25 20:56:40 +0200 Marco Trevisan (Treviño) (d56d0ba)
+2015-09-08 Nick Dedekind
 
-	* converter: return a variant when the schema is a variant
+        * accelerators (523db87)
 
-2016-10-25 20:55:34 +0200 Marco Trevisan (Treviño) (eb6e5b5)
+2015-04-30 CI Train Bot
 
-	* converter: verify integer type conversions
+        * Releasing 0.2.9+15.04.20150430-0ubuntu1 (e6e4bab)
 
-2016-10-25 20:38:43 +0200 Marco Trevisan (Treviño) (fc52f84)
+2015-04-30 Michael Terry
 
-	* converter: free schema type on destruction
+        * Don't leave a dangling GVariant pointer in GtkMenuTrackerItem,
+          which can cause a crash. (3e5d807)
+        * Fix crash from not NULLing a variant that we later might try to
+          unref (1933513)
 
-2016-10-25 20:29:53 +0200 Marco Trevisan (Treviño) (edfe13a)
+2015-01-08 CI Train Bot
 
-	* converter: free the strv container
+        * Releasing 0.2.9+15.04.20150108-0ubuntu1 (19e4949)
 
-2016-10-25 20:27:12 +0200 Marco Trevisan (Treviño) (64a2113)
+2015-01-08 Nick Dedekind
 
-	* Merged variant-string-parser into converter-improvements.
-
-2016-10-25 20:23:06 +0200 Lukáš Tinkl (64ac22d)
-
-	* converter: use qUtf8Printable function
-
-2016-10-25 20:01:23 +0200 Marco Trevisan (Treviño) (0d1bfd6)
-
-	* UnityMenuModel: avoid copy on assignment
-
-2016-10-25 19:57:38 +0200 Marco Trevisan (Treviño) (307efb4)
-
-	* UnityMenuModel: use conversion with gschema in unity actions
-
-2016-10-25 16:58:28 +0200 Marco Trevisan (Treviño) (a4c1bb6)
-
-	* converterTest: simplify metatype definitions
-
-2016-10-25 16:50:59 +0200 Marco Trevisan (Treviño) (6d2076c)
-
-	* Converter: add support to String Arrays
-
-2016-10-25 14:06:28 +0200 Marco Trevisan (Treviño) (d25887f)
-
-	* Merging with lp:~3v1n0/qmenumodel/variant-string-parser
-
-2016-10-25 13:37:07 +0200 Marco Trevisan (Treviño) (c314929)
-
-	* ConverterTest: add checks for tuples and lists
-
-2016-10-24 21:21:48 +0200 Marco Trevisan (Treviño) (3509321)
-
-	* Add conversion tests for maps and lists to QVariant
-
-2016-10-24 21:13:30 +0200 Marco Trevisan (Treviño) (3bcc60f)
-
-	* converterTest: add tests for toQVariantFromVariantString
-
-2016-10-24 21:02:38 +0200 Marco Trevisan (Treviño) (abc65a4)
-
-	* convertertest: add tests for converting to QVariant
-
-2016-10-24 20:46:51 +0200 Marco Trevisan (Treviño) (7f78a2c)
-
-	* converterTest: QVERIFY comparison return value
-
-2016-10-22 19:00:49 +0200 Marco Trevisan (Treviño) (3d2c260)
-
-	* remove deprecated g_type_init() calls
-
-2016-10-22 19:00:12 +0200 Marco Trevisan (Treviño) (3897067)
-
-	* ConverterTest: remove C++11 features for now
-
-2016-10-22 18:54:58 +0200 Marco Trevisan (Treviño) (4b495fc)
-
-	* convertertest: create QGVariantType wrapper to avoid
-          reinterperating a QString
-
-2016-10-22 18:40:29 +0200 Marco Trevisan (Treviño) (00ddb5f)
-
-	* convertertest: repeat tests using test data
-
-2016-10-22 18:21:35 +0200 Marco Trevisan (Treviño) (81e73a2)
-
-	* ConverterTest: use data in the testSchemaConvert
-
-2016-10-20 16:06:30 +0200 Marco Trevisan (Treviño) (6d2a0aa)
-
-	* ActionGroupTest: add test for activateByVariantString
-
-2016-10-20 12:22:05 +0200 Marco Trevisan (Treviño) (bba640d)
-
-	* ActionGroupTest: split tests depending on they need the helper
-          script or not
-
-2016-10-18 17:34:52 +0200 Marco Trevisan (Treviño) (901e9dc)
-
-	* converter: stop looking if w'eve no entryType
-
-2016-10-18 17:27:13 +0200 Marco Trevisan (Treviño) (3def677)
-
-	* Converter: use builders and c++ facilities for schema conversions
-
-2016-10-18 16:48:00 +0200 Marco Trevisan (Treviño) (3bd198e)
-
-	* Converter: use some c++11 facilities for lists
-
-2016-10-18 16:15:55 +0200 Marco Trevisan (Treviño) (d8aa881)
-
-	* ConverterTest: add QVariantList conversion test
-
-2016-10-18 16:09:51 +0200 Marco Trevisan (Treviño) (d3899e6)
-
-	* convertertest: add conversion from map to qvariant check
-
-2016-10-18 15:50:17 +0200 Marco Trevisan (Treviño) (36681ba)
-
-	* Converter: use QMetaType to check integer subtypes
-
-2016-10-18 15:39:20 +0200 Marco Trevisan (Treviño) (c42bc21)
-
-	* Converter: add support for ByteArrayList
-
-2016-10-18 12:53:27 +0200 Marco Trevisan (Treviño) (e87701e)
-
-	* Converter: add bytestring support
-
-2016-10-18 12:40:19 +0200 Marco Trevisan (Treviño) (3edd18d)
-
-	* ConverterTest: add tests for toQVariant
-
-2016-10-18 12:06:35 +0200 Marco Trevisan (Treviño) (894fbb9)
-
-	* convertertest: use better variant map test
-
-2016-10-18 12:06:02 +0200 Marco Trevisan (Treviño) (c3b6823)
-
-	* CMakeLists.txt: we can safely use c++11 here
-
-2016-10-18 11:55:14 +0200 Marco Trevisan (Treviño) (06687a7)
-
-	* QStateAction: add ability to activate or change state by variant
-          string
-
-2016-10-18 11:44:04 +0200 Marco Trevisan (Treviño) (1adf4a6)
-
-	* Converter: move parseVariantString here from UnityMenuModel
-
-2016-10-17 10:04:20 +0200 Marco Trevisan (Treviño) (c998da0)
-
-	* convertertest: add tests for [U]LongLong converters
-
-2016-10-17 10:01:14 +0200 Marco Trevisan (Treviño) (f52b497)
-
-	* converterTest: split tests by type
-
-2016-10-15 02:04:05 +0200 Marco Trevisan (Treviño) (33b7533)
-
-	* UnityMenuModel: avoid initializing an empty QVariant if not needed
-
-2016-10-14 17:40:18 +0200 Marco Trevisan (Treviño) (462b842)
-
-	* UnityMenuModel: avoid copying the string to a new std one
-
-2016-10-14 17:30:46 +0200 Marco Trevisan (Treviño) (edc354a)
-
-	* debian/changelog: bump version number
-
-2016-10-14 17:29:10 +0200 Marco Trevisan (Treviño) (1e9cf63)
-
-	* UnityMenuModel add support for activating and changing state with a
-          variant string parameter
-
-2016-10-14 17:26:49 +0200 Marco Trevisan (Treviño) (449ac3d)
-
-	* Converter: add support to LongLong and ULongLong
-
-2016-10-04 14:13:36 +0100 Nick Dedekind (a618ff5)
-
-	* version bump
-
-2016-10-04 13:17:20 +0100 Nick Dedekind (388be5b)
-
-	* better boolean check
-
-2016-07-19 22:41:52 +0200 Florian Boucault (c6bba62)
-
-	* Crossbuilding fixes.
-
-2016-03-29 12:57:01 +0000 CI Train Bot (9efd410)
-
-	* Releasing 0.2.9+16.04.20160329-0ubuntu1
-
-2016-03-29 12:56:59 +0000 Nick Dedekind (f2b1959)
-
-	* Use Qt logging categories Fixes: #1562992 Approved by: Daniel
-          d'Andrada, PS Jenkins bot
-
-2016-03-29 12:56:53 +0000 Michał Sawicz (2e795a2)
-
-	* Sync gcc 5.1 rebuild version Approved by: PS Jenkins bot
-
-2016-02-23 14:35:57 +0000 Nick Dedekind (4ad6055)
-
-	* only log critical
-
-2016-02-23 14:29:04 +0000 Nick Dedekind (2bf6347)
-
-	* added missing file
-
-2016-02-19 11:06:04 +0000 Nick Dedekind (2291dec)
-
-	* use logging categories
-
-2016-01-15 12:08:41 +0000 Nick Dedekind (97b75c9)
-
-	* Added roles for submenu & shortcut. Added actions
-
-2015-12-14 17:36:13 +0100 Michał Sawicz (df7955d)
-
-	* Sync gcc 5.1 rebuild
-
-2015-09-08 12:38:18 +0100 Nick Dedekind (523db87)
-
-	* accelerators
-
-2015-04-30 19:07:48 +0000 CI Train Bot (e6e4bab)
-
-	* Releasing 0.2.9+15.04.20150430-0ubuntu1
-
-2015-04-30 19:07:45 +0000 Michael Terry (3e5d807)
-
-	* Don't leave a dangling GVariant pointer in GtkMenuTrackerItem,
-          which can cause a crash.
-
-2015-04-30 10:35:09 -0400 Michael Terry (1933513)
-
-	* Fix crash from not NULLing a variant that we later might try to
-          unref
-
-2015-01-08 13:55:53 +0000 CI Train Bot (19e4949)
-
-	* Releasing 0.2.9+15.04.20150108-0ubuntu1
-
-2015-01-08 13:55:44 +0000 Nick Dedekind (79ef5bc)
-
-	* Add support for overriding QDBusActionGroup state parser Fixes:
+        * Add support for overriding QDBusActionGroup state parser
+          Fixes:
           #1385331 Approved by: PS Jenkins bot, Albert Astals Cid
+          (79ef5bc)
 
-2014-12-10 16:23:27 +0000 Nick Dedekind (7dc65fd)
+2014-12-10 Nick Dedekind
 
-	* added comment
+        * added comment (7dc65fd)
 
-2014-11-11 15:27:02 +0000 Nick Dedekind (f1b1f9a)
+2014-11-11 Nick Dedekind
 
-	* bump version
+        * bump version (f1b1f9a)
+        * Allow override of action state parser (0ca199d)
 
-2014-11-11 14:49:40 +0000 Nick Dedekind (0ca199d)
+2014-10-13 CI bot
 
-	* Allow override of action state parser
+        * Releasing 0.2.8+14.10.20141013-0ubuntu1 (f3a203b)
 
-2014-10-13 09:36:50 +0000 CI bot (f3a203b)
+2014-10-13 Nick Dedekind
 
-	* Releasing 0.2.8+14.10.20141013-0ubuntu1
-
-2014-10-13 09:36:38 +0000 Nick Dedekind (e0ee0a8)
-
-	* Disconnect QDBusActionGroup add/remove/stateChange signals when
-          deleting object. Fixes: 1378941 Approved by: Charles Kerr,
+        * Disconnect QDBusActionGroup add/remove/stateChange signals when
+          deleting object.
+          Fixes: 1378941 Approved by: Charles Kerr,
           Michael Sheldon, PS Jenkins bot, Lars Uebernickel
+          (e0ee0a8)
 
-2014-10-10 18:28:11 +0100 Nick Dedekind (ec1e10b)
+2014-10-10 Nick Dedekind
 
-	* disconnect on clear
+        * disconnect on clear (ec1e10b)
 
-2014-08-15 16:02:02 +0000 CI bot (49d7bf9)
+2014-08-15 CI bot
 
-	* Releasing 0.2.8+14.10.20140815-0ubuntu1
+        * Releasing 0.2.8+14.10.20140815-0ubuntu1 (49d7bf9)
 
-2014-08-15 16:01:50 +0000 Nick Dedekind (8f2a49c)
+2014-08-15 Nick Dedekind
 
-	* Allow remote URIs to be used from file serialized icons Approved
-          by: Sergio Schvezov, PS Jenkins bot
+        * Allow remote URIs to be used from file serialized icons Approved
+          by: Sergio Schvezov, PS Jenkins bot (8f2a49c)
 
-2014-07-29 14:39:50 +0100 Nick Dedekind (eac47df)
+2014-07-29 Nick Dedekind
 
-	* remove check for native file
+        * remove check for native file (eac47df)
 
-2014-07-17 02:04:13 +0000 CI bot (d9a59c0)
+2014-07-17 CI bot
 
-	* Releasing 0.2.8+14.10.20140717-0ubuntu1
+        * Releasing 0.2.8+14.10.20140717-0ubuntu1 (d9a59c0)
 
-2014-07-17 02:04:02 +0000 Lars Uebernickel (f7719ce)
+2014-07-17 Lars Uebernickel
 
-	* unitymenumodel: add nameOwner property Fixes: 1308011 Approved by:
-          Mirco Müller, PS Jenkins bot
+        * unitymenumodel: add nameOwner property
+          Fixes: 1308011 Approved by:
+          Mirco Müller, PS Jenkins bot (f7719ce)
 
-2014-07-15 18:11:16 +0200 Lars Uebernickel (166406a)
+2014-07-15 Lars Uebernickel
 
-	* Update changelog
+        * Update changelog (166406a)
 
-2014-07-11 12:02:01 +0200 Lars Uebernickel (35c2996)
+2014-07-11 Lars Uebernickel
 
-	* unitymenumodel: add nameOwner property
+        * unitymenumodel: add nameOwner property (35c2996)
+        * unitymenumodel: notify when the bus name changes (7be80e6)
 
-2014-07-11 12:01:41 +0200 Lars Uebernickel (7be80e6)
+2014-07-04 CI bot
 
-	* unitymenumodel: notify when the bus name changes
+        * Releasing 0.2.7+14.10.20140704-0ubuntu1 (018eaeb)
 
-2014-07-04 07:38:12 +0000 CI bot (018eaeb)
+2014-07-04 Nick Dedekind
 
-	* Releasing 0.2.7+14.10.20140704-0ubuntu1
+        * Unset the UnityMenuActions::model when destroying UnityMenuModel
 
-2014-07-04 07:38:02 +0000 Nick Dedekind (2ec6160)
+          Fixes: 1334203 (2ec6160)
 
-	* Unset the UnityMenuActions::model when destroying UnityMenuModel
-          Fixes: 1334203
+2014-07-04 Charles Kerr
 
-2014-07-04 07:37:52 +0000 Charles Kerr (d83588e)
+        * Fix a dangling UnityMenuAction pointer by ensuring it's registered
+          with only one menu at a time.
+          Fixes: 1282282 (d83588e)
 
-	* Fix a dangling UnityMenuAction pointer by ensuring it's registered
-          with only one menu at a time. Fixes: 1282282
+2014-07-01 Nick Dedekind
 
-2014-07-01 11:17:23 +0100 Nick Dedekind (4f4fde0)
+        * fixed copywrite (4f4fde0)
+        * added missing file (99e2882)
 
-	* fixed copywrite
+2014-06-30 Nick Dedekind
 
-2014-07-01 08:05:23 +0100 Nick Dedekind (99e2882)
+        * unset actions model in destructor (6d8d26d)
 
-	* added missing file
+2014-05-14 CI bot
 
-2014-06-30 18:42:42 +0100 Nick Dedekind (6d8d26d)
+        * Releasing 0.2.7+14.10.20140514.1-0ubuntu1 (c7955b4)
 
-	* unset actions model in destructor
+2014-05-14 Antti Kaijanmäki
 
-2014-05-14 11:38:43 +0000 CI bot (c7955b4)
+        * Add standard "has the property actually changed" check to
+          UnityMenuModel::setBusName() (b927a95)
 
-	* Releasing 0.2.7+14.10.20140514.1-0ubuntu1
+2014-05-08 Antti Kaijanmäki
 
-2014-05-14 11:38:35 +0000 Antti Kaijanmäki (b927a95)
+        * wrap the changelog entry. (802224f)
+        * try to fix debian/changelog for the ci train.. (20eb438)
+        * manually merge debian/changelog after a manual upload to the
+          archive. (26a791f)
 
-	* Add standard "has the property actually changed" check to
-          UnityMenuModel::setBusName()
+2014-04-02 Antti Kaijanmäki
 
-2014-05-08 13:24:22 +0300 Antti Kaijanmäki (802224f)
+        * Add standard "has the property actually changed" check to
+          UnityMenuModel::setBusName() (bc008a3)
+        * revert the last commit. (112eb60)
+        * UnityMenuModel::setName: handle empty strings properly. (5809d6f)
 
-	* wrap the changelog entry.
+2014-03-16 Charles Kerr
 
-2014-05-08 13:19:51 +0300 Antti Kaijanmäki (20eb438)
-
-	* try to fix debian/changelog for the ci train..
-
-2014-05-08 12:53:49 +0300 Antti Kaijanmäki (26a791f)
-
-	* manually merge debian/changelog after a manual upload to the
-          archive.
-
-2014-04-02 13:19:02 +0300 Antti Kaijanmäki (bc008a3)
-
-	* Add standard "has the property actually changed" check to
-          UnityMenuModel::setBusName()
-
-2014-04-02 13:15:29 +0300 Antti Kaijanmäki (112eb60)
-
-	* revert the last commit.
-
-2014-04-02 09:28:57 +0300 Antti Kaijanmäki (5809d6f)
-
-	* UnityMenuModel::setName: handle empty strings properly.
-
-2014-03-16 09:36:04 -0500 Charles Kerr (0b31bc9)
-
-	* when an action's model changes in UnityMenuAction::setModel(), make
+        * when an action's model changes in UnityMenuAction::setModel(), make
           sure the action unregisters itself from the previous
-          model.
+          model. (0b31bc9)
 
-2014-03-05 06:54:32 +0000 CI bot (94aac07)
+2014-03-05 CI bot
 
-	* Releasing 0.2.7+14.04.20140305-0ubuntu1
+        * Releasing 0.2.7+14.04.20140305-0ubuntu1 (94aac07)
+        * No change rebuild against Qt 5.2.1. (f8a07da)
 
-2014-03-05 06:54:20 +0000 CI bot (f8a07da)
+2014-02-28 Albert Astals
 
-	* No change rebuild against Qt 5.2.1.
+        * Fix use of un-initialized memory (788ebe3)
+        * Fix use of un-initialized memory (7b70ef5)
 
-2014-02-28 12:39:58 +0000 Albert Astals (788ebe3)
+2013-12-13 Automatic PS uploader
 
-	* Fix use of un-initialized memory
+        * Releasing 0.2.7+14.04.20131213-0ubuntu1 (revision 99 from
+          lp:qmenumodel). (24aa85f)
+        * Releasing 0.2.7+14.04.20131213-0ubuntu1, based on r99 (09b0f46)
 
-2014-02-28 13:10:02 +0100 Albert Astals (7b70ef5)
+2013-12-11 Nick Dedekind
 
-	* Fix use of un-initialized memory
+        * Added dataChange to loadExtendedAttributes function. (9530a3d)
+        * Added data change to loadExtAttributes (81b68c9)
 
-2013-12-13 09:02:47 +0000 Automatic PS uploader (24aa85f)
+2013-11-25 Automatic PS uploader
 
-	* Releasing 0.2.7+14.04.20131213-0ubuntu1 (revision 99 from
-          lp:qmenumodel).
+        * Releasing 0.2.7+14.04.20131125-0ubuntu1 (revision 97 from
+          lp:qmenumodel). (c40c4c2)
+        * Releasing 0.2.7+14.04.20131125-0ubuntu1, based on r97 (27b7d20)
 
-2013-12-13 07:41:33 +0000 Automatic PS uploader (09b0f46)
+2013-11-21 Marcus Tomlinson
 
-	* Releasing 0.2.7+14.04.20131213-0ubuntu1, based on r99
+        * Fixed #define guard. (12111d2)
 
-2013-12-11 12:32:13 +0000 Nick Dedekind (9530a3d)
+2013-11-06 Marcus Tomlinson
 
-	* Added dataChange to loadExtendedAttributes function.
+        * Fixed #define guard (7332db6)
 
-2013-12-11 12:04:18 +0000 Nick Dedekind (81b68c9)
+2013-10-16 Automatic PS uploader
 
-	* Added data change to loadExtAttributes
+        * Releasing 0.2.7+13.10.20131016-0ubuntu1 (revision 95 from
+          lp:qmenumodel). (25e6667)
+        * Releasing 0.2.7+13.10.20131016-0ubuntu1, based on r95 (cf34565)
 
-2013-11-25 15:33:34 +0000 Automatic PS uploader (c40c4c2)
+2013-10-15 Nick Dedekind
 
-	* Releasing 0.2.7+14.04.20131125-0ubuntu1 (revision 97 from
-          lp:qmenumodel).
+        * Added pointer checks for items/iterators. (lp#1239394).
+          Fixes:
+          https://bugs.launchpad.net/bugs/1239394. (52d2141)
 
-2013-11-25 03:55:02 +0000 Automatic PS uploader (27b7d20)
+2013-10-14 Nick Dedekind
 
-	* Releasing 0.2.7+14.04.20131125-0ubuntu1, based on r97
+        * removed unnecessary pointer checks (c50f57f)
+        * Added iterator/item pointer checks (e7bfaf1)
 
-2013-11-21 16:34:30 +0200 Marcus Tomlinson (12111d2)
+2013-10-11 Gustavo Pichorim Boiko
 
-	* Fixed #define guard.
+        * Use g_file_get_uri instead of g_file_get_path to make sure the
+          URI's percent encoding is properly kept. (867693a)
+        * Use g_file_get_uri instead of g_file_get_path to make sure the
+          URI's percent encoding is properly kept. (fa2526b)
 
-2013-11-06 14:23:49 +0200 Marcus Tomlinson (7332db6)
+2013-10-11 Automatic PS uploader
 
-	* Fixed #define guard
+        * Releasing 0.2.7+13.10.20131011-0ubuntu1 (revision 92 from
+          lp:qmenumodel). (5ac03ca)
+        * Releasing 0.2.7+13.10.20131011-0ubuntu1, based on r92 (e47e13a)
 
-2013-10-16 21:32:35 +0000 Automatic PS uploader (25e6667)
+2013-10-01 Lars Uebernickel
 
-	* Releasing 0.2.7+13.10.20131016-0ubuntu1 (revision 95 from
-          lp:qmenumodel).
+        * QStateAction: try to maintain the type of the action's state
+          (5f66f59)
 
-2013-10-16 02:33:28 +0000 Automatic PS uploader (cf34565)
+2013-09-23 Lars Uebernickel
 
-	* Releasing 0.2.7+13.10.20131016-0ubuntu1, based on r95
+        * QStateAction: try to maintain the type of the action's state
+          (74a9ba6)
 
-2013-10-15 13:57:13 +0000 Nick Dedekind (52d2141)
+2013-09-20 Automatic PS uploader
 
-	* Added pointer checks for items/iterators. (lp#1239394). Fixes:
-          https://bugs.launchpad.net/bugs/1239394.
+        * Releasing 0.2.7+13.10.20130920-0ubuntu1 (revision 90 from
+          lp:qmenumodel). (23dee12)
+        * Releasing 0.2.7+13.10.20130920-0ubuntu1, based on r90 (61b9ea6)
 
-2013-10-14 17:31:14 +0100 Nick Dedekind (c50f57f)
+2013-09-18 Pete Woods
 
-	* removed unnecessary pointer checks
+        * Fix memory leak in unitymenumodel (b6f00b9)
 
-2013-10-14 15:00:44 +0100 Nick Dedekind (e7bfaf1)
+2013-09-17 Pete Woods
 
-	* Added iterator/item pointer checks
+        * Fix sequence memory leak in unitymenumodel (9b9504f)
 
-2013-10-11 21:31:21 +0000 Gustavo Pichorim Boiko (867693a)
+2013-09-13 Automatic PS uploader
 
-	* Use g_file_get_uri instead of g_file_get_path to make sure the
-          URI's percent encoding is properly kept.
+        * Releasing 0.2.7+13.10.20130913-0ubuntu1 (revision 88 from
+          lp:qmenumodel). (81648d3)
+        * Releasing 0.2.7+13.10.20130913-0ubuntu1, based on r88 (d0d6d56)
 
-2013-10-11 18:00:09 -0300 Gustavo Pichorim Boiko (fa2526b)
+2013-09-09 Mathieu Trudel-Lapierre
 
-	* Use g_file_get_uri instead of g_file_get_path to make sure the
-          URI's percent encoding is properly kept.
+        * Add changelog for manual upload of 0.2.7+13.10.20130830-0ubuntu2.
+          (958d147)
+        * upload version 0.2.7+13.10.20130830-0ubuntu2 (71b514b)
 
-2013-10-11 10:18:14 +0000 Automatic PS uploader (5ac03ca)
+2013-09-04 Lars Uebernickel
 
-	* Releasing 0.2.7+13.10.20131011-0ubuntu1 (revision 92 from
-          lp:qmenumodel).
+        * Use fully namespaced action name in UnityMenuModel::activate and
+          for the action role. (ce35aa4)
 
-2013-10-11 04:26:55 +0000 Automatic PS uploader (e47e13a)
+2013-09-03 Lars Uebernickel
 
-	* Releasing 0.2.7+13.10.20131011-0ubuntu1, based on r92
+        * fullActioName: make sure 'name' is valid for the duration of the
+          function (e01b6b5)
+        * Add UnityMenuAction::index property (9365885)
 
-2013-10-01 15:46:27 +0000 Lars Uebernickel (5f66f59)
+2013-09-02 Lars Uebernickel
 
-	* QStateAction: try to maintain the type of the action's state
+        * Add UnityMenuModel::getAction (2641328)
+        * UnityMenuModel::activate: use gtk_menu_tracker_item_get_action_name
+          (f58b7c7)
+        * gtk_menu_tracker_item_get_action_name: return full name, including
+          namespace (fa058d5)
 
-2013-09-23 18:41:15 +0200 Lars Uebernickel (74a9ba6)
+2013-08-30 Automatic PS uploader
 
-	* QStateAction: try to maintain the type of the action's state
+        * Releasing 0.2.7+13.10.20130830-0ubuntu1 (revision 85 from
+          lp:qmenumodel). (28a4548)
+        * Releasing 0.2.7+13.10.20130830-0ubuntu1, based on r85 (279b43c)
 
-2013-09-20 12:23:02 +0000 Automatic PS uploader (23dee12)
+2013-08-30 Nick Dedekind
 
-	* Releasing 0.2.7+13.10.20130920-0ubuntu1 (revision 90 from
-          lp:qmenumodel).
+        * Added UnityMenuAction for "out-of-menu" actions. (db40e84)
 
-2013-09-20 10:14:43 +0000 Automatic PS uploader (61b9ea6)
+2013-08-29 Automatic PS uploader
 
-	* Releasing 0.2.7+13.10.20130920-0ubuntu1, based on r90
+        * Releasing 0.2.7+13.10.20130829.1-0ubuntu1 (revision 83 from
+          lp:qmenumodel). (751f4fb)
+        * Releasing 0.2.7+13.10.20130829.1-0ubuntu1, based on r83 (f43d10f)
 
-2013-09-18 08:58:25 +0000 Pete Woods (b6f00b9)
+2013-08-29 Lars Uebernickel
 
-	* Fix memory leak in unitymenumodel
+        * Remove theme image provider (9acfda5)
 
-2013-09-17 13:32:59 +0100 Pete Woods (9b9504f)
+2013-08-29 Nick Dedekind
 
-	* Fix sequence memory leak in unitymenumodel
+        * Let Qt manage the destruction of child ActionStateParsers.
+          (7d013d7)
+        * Let Qt manage deletion of children (2eeecef)
 
-2013-09-13 19:39:00 +0000 Automatic PS uploader (81648d3)
+2013-08-28 Automatic PS uploader
 
-	* Releasing 0.2.7+13.10.20130913-0ubuntu1 (revision 88 from
-          lp:qmenumodel).
+        * Releasing 0.2.7+13.10.20130828.2-0ubuntu1 (revision 80 from
+          lp:qmenumodel). (64ab9df)
+        * Releasing 0.2.7+13.10.20130828.2-0ubuntu1, based on r80 (a601032)
 
-2013-09-13 15:15:28 +0000 Automatic PS uploader (d0d6d56)
+2013-08-27 Lars Uebernickel
 
-	* Releasing 0.2.7+13.10.20130913-0ubuntu1, based on r88
+        * Make sure the right qt modules are loaded to make QMenuModel tests
+          pass.
+          Fixes: https://bugs.launchpad.net/bugs/1217335.
+          (4f91a49)
 
-2013-09-09 12:57:36 +0000 Mathieu Trudel-Lapierre (958d147)
+2013-08-27 Automatic PS uploader
 
-	* Add changelog for manual upload of 0.2.7+13.10.20130830-0ubuntu2.
+        * Releasing 0.2.7+13.10.20130827.3-0ubuntu1 (revision 78 from
+          lp:qmenumodel). (68e010e)
 
-2013-09-09 08:22:11 -0400 Mathieu Trudel-Lapierre (71b514b)
+2013-08-27 Nick Dedekind
 
-	* upload version 0.2.7+13.10.20130830-0ubuntu2
+        * merged with trunk (8cc3f9a)
+        * Review comments (ebace67)
 
-2013-09-04 15:33:11 +0000 Lars Uebernickel (ce35aa4)
+2013-08-27 Lars Uebernickel
 
-	* Use fully namespaced action name in UnityMenuModel::activate and
-          for the action role.
+        * Make sure the right qt modules are loaded to make QMenuModel tests
+          pass (31bdaf0)
 
-2013-09-03 13:17:30 +0200 Lars Uebernickel (e01b6b5)
+2013-08-27 Automatic PS uploader
 
-	* fullActioName: make sure 'name' is valid for the duration of the
-          function
+        * Releasing 0.2.7+13.10.20130827.3-0ubuntu1, based on r78 (298bf61)
 
-2013-09-03 12:02:47 +0200 Lars Uebernickel (9365885)
+2013-08-26 Automatic PS uploader
 
-	* Add UnityMenuAction::index property
+        * Releasing 0.2.7+13.10.20130826-0ubuntu1 (revision 75 from
+          lp:qmenumodel). (8977be5)
 
-2013-09-02 18:35:00 +0200 Lars Uebernickel (2641328)
+2013-08-26 Nick Dedekind
 
-	* Add UnityMenuModel::getAction
-
-2013-09-02 14:55:08 +0200 Lars Uebernickel (f58b7c7)
-
-	* UnityMenuModel::activate: use gtk_menu_tracker_item_get_action_name
-
-2013-09-02 14:51:38 +0200 Lars Uebernickel (fa058d5)
-
-	* gtk_menu_tracker_item_get_action_name: return full name, including
-          namespace
-
-2013-08-30 18:47:56 +0000 Automatic PS uploader (28a4548)
-
-	* Releasing 0.2.7+13.10.20130830-0ubuntu1 (revision 85 from
-          lp:qmenumodel).
-
-2013-08-30 18:06:44 +0000 Automatic PS uploader (279b43c)
-
-	* Releasing 0.2.7+13.10.20130830-0ubuntu1, based on r85
-
-2013-08-30 10:13:58 +0000 Nick Dedekind (db40e84)
-
-	* Added UnityMenuAction for "out-of-menu" actions.
-
-2013-08-29 19:04:39 +0000 Automatic PS uploader (751f4fb)
-
-	* Releasing 0.2.7+13.10.20130829.1-0ubuntu1 (revision 83 from
-          lp:qmenumodel).
-
-2013-08-29 18:06:45 +0000 Automatic PS uploader (f43d10f)
-
-	* Releasing 0.2.7+13.10.20130829.1-0ubuntu1, based on r83
-
-2013-08-29 11:15:10 +0000 Lars Uebernickel (9acfda5)
-
-	* Remove theme image provider
-
-2013-08-29 10:28:23 +0000 Nick Dedekind (7d013d7)
-
-	* Let Qt manage the destruction of child ActionStateParsers.
-
-2013-08-29 10:45:50 +0100 Nick Dedekind (2eeecef)
-
-	* Let Qt manage deletion of children
-
-2013-08-28 11:19:33 +0000 Automatic PS uploader (64ab9df)
-
-	* Releasing 0.2.7+13.10.20130828.2-0ubuntu1 (revision 80 from
-          lp:qmenumodel).
-
-2013-08-28 10:08:37 +0000 Automatic PS uploader (a601032)
-
-	* Releasing 0.2.7+13.10.20130828.2-0ubuntu1, based on r80
-
-2013-08-27 17:12:02 +0000 Lars Uebernickel (4f91a49)
-
-	* Make sure the right qt modules are loaded to make QMenuModel tests
-          pass. Fixes: https://bugs.launchpad.net/bugs/1217335.
-
-2013-08-27 17:04:13 +0000 Automatic PS uploader (68e010e)
-
-	* Releasing 0.2.7+13.10.20130827.3-0ubuntu1 (revision 78 from
-          lp:qmenumodel).
-
-2013-08-27 17:47:45 +0100 Nick Dedekind (8cc3f9a)
-
-	* merged with trunk
-
-2013-08-27 17:24:38 +0100 Nick Dedekind (ebace67)
-
-	* Review comments
-
-2013-08-27 12:20:22 -0400 Lars Uebernickel (31bdaf0)
-
-	* Make sure the right qt modules are loaded to make QMenuModel tests
-          pass
-
-2013-08-27 14:08:52 +0000 Automatic PS uploader (298bf61)
-
-	* Releasing 0.2.7+13.10.20130827.3-0ubuntu1, based on r78
-
-2013-08-26 14:47:42 +0000 Automatic PS uploader (8977be5)
-
-	* Releasing 0.2.7+13.10.20130826-0ubuntu1 (revision 75 from
-          lp:qmenumodel).
-
-2013-08-26 14:19:38 +0000 Nick Dedekind (aaa8252)
-
-	* Adds qt event spawning to direct glib main loop callbacks. Fixes:
+        * Adds qt event spawning to direct glib main loop callbacks.
+          Fixes:
           https://bugs.launchpad.net/bugs/1183065,
-          https://bugs.launchpad.net/bugs/1206991.
+          https://bugs.launchpad.net/bugs/1206991. (aaa8252)
+        * UnityMenuModel::changeState now uses current state parameter type
+          as a base for parameter GVariant conversion. (50563a1)
 
-2013-08-26 14:08:39 +0000 Nick Dedekind (50563a1)
+2013-08-26 Automatic PS uploader
 
-	* UnityMenuModel::changeState now uses current state parameter type
-          as a base for parameter GVariant conversion.
+        * Releasing 0.2.7+13.10.20130826-0ubuntu1, based on r75 (8a3c8c9)
 
-2013-08-26 14:06:47 +0000 Automatic PS uploader (8a3c8c9)
+2013-08-26 Nick Dedekind
 
-	* Releasing 0.2.7+13.10.20130826-0ubuntu1, based on r75
+        * Added int64 & variant types to UnityMenuModel ext attribute
+          parsing. (346f5fc)
 
-2013-08-26 13:57:39 +0000 Nick Dedekind (346f5fc)
+2013-08-22 Nick Dedekind
 
-	* Added int64 & variant types to UnityMenuModel ext attribute
-          parsing.
+        * removed newline (d23d848)
+        * Added copywrite headers (9ed4538)
+        * Using qt event loop to pass UnityMenuAction events (c274656)
 
-2013-08-22 20:43:49 +0100 Nick Dedekind (d23d848)
+2013-08-22 Lars Uebernickel
 
-	* removed newline
+        * Remove theme image provider (1439420)
 
-2013-08-22 20:36:50 +0100 Nick Dedekind (9ed4538)
+2013-08-22 Nick Dedekind
 
-	* Added copywrite headers
+        * Added activate/changeState to UnityMenuModel (d912a0a)
 
-2013-08-22 12:56:43 +0100 Nick Dedekind (c274656)
+2013-08-21 Nick Dedekind
 
-	* Using qt event loop to pass UnityMenuAction events
+        * Added UnityMenuAction for out-of-line actions. Action muxer copied
+          to submenus. (72cd124)
 
-2013-08-22 13:05:44 +0200 Lars Uebernickel (1439420)
+2013-08-20 Nick Dedekind
 
-	* Remove theme image provider
+        * new unitymenumodel attribute types (d83555e)
 
-2013-08-22 12:03:08 +0100 Nick Dedekind (d912a0a)
+2013-08-15 Nick Dedekind
 
-	* Added activate/changeState to UnityMenuModel
+        * Added toGVariantWithSchema for UnityMenuModel::changeState
+          (67394e4)
 
-2013-08-21 21:39:47 +0100 Nick Dedekind (72cd124)
+2013-08-13 Automatic PS uploader
 
-	* Added UnityMenuAction for out-of-line actions. Action muxer copied
-          to submenus.
+        * Releasing 0.2.7+13.10.20130813-0ubuntu1 (revision 73 from
+          lp:qmenumodel). (bac9f37)
+        * Releasing 0.2.7+13.10.20130813-0ubuntu1, based on r73 (f26e80d)
 
-2013-08-20 19:30:09 +0100 Nick Dedekind (d83555e)
+2013-08-13 Nick Dedekind
 
-	* new unitymenumodel attribute types
+        * Release version 0.2.7. (1e14a68)
+        * version bump (5111d99)
+        * Removed UnityMenuAction. (a89cb05)
 
-2013-08-15 12:48:55 +0100 Nick Dedekind (67394e4)
+2013-08-12 Automatic PS uploader
 
-	* Added toGVariantWithSchema for UnityMenuModel::changeState
+        * Releasing 0.2.6+13.10.20130812-0ubuntu1 (revision 70 from
+          lp:qmenumodel). (2713de8)
 
-2013-08-13 10:32:11 +0000 Automatic PS uploader (bac9f37)
+2013-08-12 Nick Dedekind
 
-	* Releasing 0.2.7+13.10.20130813-0ubuntu1 (revision 73 from
-          lp:qmenumodel).
+        * Removed UnityMenuAction. Fixed leaks from unitymenumodel. (3caade3)
 
-2013-08-13 10:06:45 +0000 Automatic PS uploader (f26e80d)
+2013-08-12 Automatic PS uploader
 
-	* Releasing 0.2.7+13.10.20130813-0ubuntu1, based on r73
+        * Releasing 0.2.6+13.10.20130812-0ubuntu1, based on r70 (9d4e931)
 
-2013-08-13 09:47:15 +0000 Nick Dedekind (1e14a68)
+2013-08-12 Nick Dedekind
 
-	* Release version 0.2.7.
+        * Added UnityMenuModel. (d6085f8)
 
-2013-08-13 10:26:14 +0100 Nick Dedekind (5111d99)
+2013-08-12 Lars Uebernickel
 
-	* version bump
+        * Add isToggled role (94a0809)
 
-2013-08-13 09:10:02 +0000 Nick Dedekind (a89cb05)
+2013-08-12 Nick Dedekind
 
-	* Removed UnityMenuAction.
+        * Use qevents to send between direct glib loop events and qt.
+          (6914a54)
+        * use correct qvariant types for sensitive and isSeparator roles
+          (3ded9bb)
 
-2013-08-12 21:02:50 +0000 Automatic PS uploader (2713de8)
+2013-08-12 Lars Uebernickel
 
-	* Releasing 0.2.6+13.10.20130812-0ubuntu1 (revision 70 from
-          lp:qmenumodel).
+        * Expose isCheck and isRadio roles (6bd9b68)
 
-2013-08-12 21:51:20 +0100 Nick Dedekind (3caade3)
+2013-08-09 Nick Dedekind
 
-	* Removed UnityMenuAction. Fixed leaks from unitymenumodel.
+        * use correct qvariant types for sensitive and isSeparator roles
+          (6251412)
 
-2013-08-12 18:38:17 +0000 Automatic PS uploader (9d4e931)
+2013-08-09 Lars Uebernickel
 
-	* Releasing 0.2.6+13.10.20130812-0ubuntu1, based on r70
+        * Add parameter to unitymenumodel.action.activate (4e1a260)
+        * Re-add UnityMenuModel::activate() (08a5bb3)
 
-2013-08-12 15:28:57 +0000 Nick Dedekind (d6085f8)
+2013-08-09 Nick Dedekind
 
-	* Added UnityMenuModel.
+        * glib callbacks pass events through qt. (2bbdf4e)
+        * moved events to separate file. (db47d07)
+        * bit of code cleanup (9be2951)
 
-2013-08-12 12:33:40 +0200 Lars Uebernickel (94a0809)
+2013-08-08 Nick Dedekind
 
-	* Add isToggled role
+        * Glib callbacks send events through qt. (c6cb726)
 
-2013-08-12 12:30:21 +0200 Nick Dedekind (6914a54)
+2013-08-05 Mirco Müller
 
-	* Use qevents to send between direct glib loop events and qt.
+        * Fix exporting of boolean extended-attribute in
+          attributeToQVariant() (73223bd)
 
-2013-08-12 12:13:00 +0200 Nick Dedekind (3ded9bb)
+2013-08-05 Nick Dedekind
 
-	* use correct qvariant types for sensitive and isSeparator roles
+        * Allow changing action state (248ae8d)
 
-2013-08-12 10:55:11 +0200 Lars Uebernickel (6bd9b68)
+2013-08-01 Mirco Müller
 
-	* Expose isCheck and isRadio roles
+        * Fix exporting of boolean extended-attribute in
+          attributeToQVariant() (c458dff)
 
-2013-08-09 18:52:48 +0100 Nick Dedekind (6251412)
+2013-07-31 Nick Dedekind
 
-	* use correct qvariant types for sensitive and isSeparator roles
+        * removed debug code (27e7c3b)
 
-2013-08-09 13:33:39 +0200 Lars Uebernickel (4e1a260)
+2013-07-30 Nick Dedekind
 
-	* Add parameter to unitymenumodel.action.activate
+        * Added menu action updateState (37e6246)
+        * Added action name (56374f1)
+        * merged with parent (559df4b)
+        * Add action role (replacing actionState role) (d1c96de)
+        * merged with trunk (c796dd5)
 
-2013-08-09 13:06:10 +0200 Lars Uebernickel (08a5bb3)
+2013-07-30 Lars Uebernickel
 
-	* Re-add UnityMenuModel::activate()
+        * Set model qdata on items instead of the muxer (d47194b)
 
-2013-08-09 10:50:12 +0100 Nick Dedekind (2bbdf4e)
+2013-07-30 Nick Dedekind
 
-	* glib callbacks pass events through qt.
+        * Add ActionStateParser (01d57d8)
+        * unitymenumodel: lookup themed icon before turning it into a uri
+          (ed4b694)
 
-2013-08-09 09:01:43 +0100 Nick Dedekind (db47d07)
+2013-07-26 Lars Uebernickel
 
-	* moved events to separate file.
+        * unitymenumodel: add get() (16b480d)
+        * Expose the state of a menu item's action in model.actionState
+          (d57caa6)
 
-2013-08-09 08:10:21 +0100 Nick Dedekind (9be2951)
+2013-07-25 Lars Uebernickel
 
-	* bit of code cleanup
+        * Fix crash in UnityMenuModel::menuItemChanged (58afcb8)
+        * examples/unityqmlmenumodel.qml: add license header (57f5b07)
+        * examples/unitymenumodel.qml: update to newest API (192e9c8)
+        * unitymenumodel: expose type and extended attributes to qml
+          (ca81974)
 
-2013-08-08 16:12:57 +0100 Nick Dedekind (c6cb726)
+2013-06-25 Lars Uebernickel
 
-	* Glib callbacks send events through qt.
+        * unitymenumodel: add support for icons (6aaafd5)
 
-2013-08-05 14:33:32 +0200 Mirco Müller (73223bd)
+2013-06-24 Lars Uebernickel
 
-	* Fix exporting of boolean extended-attribute in
-          attributeToQVariant()
+        * Remove unityqmlmenumodel (050958c)
+        * unitymenumodel: allow setting multiple prefixed action groups
+          (3dd6f65)
+        * unitymenumodel: set free func on GSequence (1bc2427)
+        * unitymenumodel: use g_clear_object (7b06205)
+        * unitymenumodel: remove forSubMenu (edad406)
+        * unitymenumodel: move role enum into .cpp (f59e06e)
+        * unitymenumodel: remove redundant priv functions (a74628a)
+        * Move unityqmlmenumodel's properties to unitymenumodel (bf4e73f)
 
-2013-08-05 14:29:26 +0200 Nick Dedekind (248ae8d)
+2013-06-07 Automatic PS uploader
 
-	* Allow changing action state
+        * Releasing 0.2.6daily13.06.07-0ubuntu1 to ubuntu. (52b1700)
+        * Releasing 0.2.6daily13.06.07-0ubuntu1, based on r68 (a251896)
 
-2013-08-01 18:48:19 +0200 Mirco Müller (c458dff)
+2013-06-06 Alberto Mardegan
 
-	* Fix exporting of boolean extended-attribute in
-          attributeToQVariant()
+        * Use invalid index as root index (2c5855c)
 
-2013-07-31 12:14:53 +0100 Nick Dedekind (27e7c3b)
+2013-06-05 Lars Uebernickel
 
-	* removed debug code
+        * unitymenumodel: call init in the the constructor that is meant to
+          be used from c++ (45ffd91)
+        * unitymenumodel: add support for submenus (7892fd9)
+        * unitymenumodel: add activate() (e735d95)
+        * Link against the qml module (692926c)
 
-2013-07-30 20:49:44 +0100 Nick Dedekind (37e6246)
+2013-06-04 Lars Uebernickel
 
-	* Added menu action updateState
+        * unitymenumodel: expose isSeparator (00885c1)
+        * examples/exportmenu.py: use g_bus_own_name to avoid race (2a01b1c)
+        * unitymenumodel: watch the bus name (9f9560d)
+        * Add qml example for UnityMenuModel (b1009a8)
+        * CMakeLists.txt: explicitly specify qml include path (5503064)
+        * Introduce UnityMenuModel and UnityQmlMenuModel (4fc790c)
 
-2013-07-30 18:59:20 +0100 Nick Dedekind (56374f1)
+2013-05-23 Alberto Mardegan
 
-	* Added action name
+        * style (8157af2)
 
-2013-07-30 12:02:01 +0100 Nick Dedekind (559df4b)
+2013-05-20 Alberto Mardegan
 
-	* merged with parent
+        * Use invalid index as root index (c5bcb29)
 
-2013-07-30 12:23:42 +0200 Nick Dedekind (d1c96de)
+2013-05-03 Automatic PS uploader
 
-	* Add action role (replacing actionState role)
+        * Releasing 0.2.6daily13.05.02-0ubuntu1 to ubuntu. (885710f)
 
-2013-07-30 10:45:01 +0100 Nick Dedekind (c796dd5)
+2013-05-02 Automatic PS uploader
 
-	* merged with trunk
+        * Releasing 0.2.6daily13.05.02-0ubuntu1, based on r66 (cfcd397)
 
-2013-07-30 10:33:36 +0200 Lars Uebernickel (d47194b)
+2013-04-23 Mathieu Trudel-Lapierre
 
-	* Set model qdata on items instead of the muxer
-
-2013-07-30 07:01:48 +0200 Nick Dedekind (01d57d8)
-
-	* Add ActionStateParser
-
-2013-07-30 06:25:22 +0200 Nick Dedekind (ed4b694)
-
-	* unitymenumodel: lookup themed icon before turning it into a uri
-
-2013-07-26 16:29:32 +0200 Lars Uebernickel (16b480d)
-
-	* unitymenumodel: add get()
-
-2013-07-26 15:04:50 +0200 Lars Uebernickel (d57caa6)
-
-	* Expose the state of a menu item's action in model.actionState
-
-2013-07-25 12:52:23 +0200 Lars Uebernickel (58afcb8)
-
-	* Fix crash in UnityMenuModel::menuItemChanged
-
-2013-07-25 10:18:31 +0200 Lars Uebernickel (57f5b07)
-
-	* examples/unityqmlmenumodel.qml: add license header
-
-2013-07-25 06:28:54 +0200 Lars Uebernickel (192e9c8)
-
-	* examples/unitymenumodel.qml: update to newest API
-
-2013-07-25 06:09:59 +0200 Lars Uebernickel (ca81974)
-
-	* unitymenumodel: expose type and extended attributes to qml
-
-2013-06-25 15:39:11 -0400 Lars Uebernickel (6aaafd5)
-
-	* unitymenumodel: add support for icons
-
-2013-06-24 17:04:57 -0400 Lars Uebernickel (050958c)
-
-	* Remove unityqmlmenumodel
-
-2013-06-24 17:02:12 -0400 Lars Uebernickel (3dd6f65)
-
-	* unitymenumodel: allow setting multiple prefixed action groups
-
-2013-06-24 13:09:43 -0400 Lars Uebernickel (1bc2427)
-
-	* unitymenumodel: set free func on GSequence
-
-2013-06-24 12:50:25 -0400 Lars Uebernickel (7b06205)
-
-	* unitymenumodel: use g_clear_object
-
-2013-06-24 12:48:06 -0400 Lars Uebernickel (edad406)
-
-	* unitymenumodel: remove forSubMenu
-
-2013-06-24 12:22:28 -0400 Lars Uebernickel (f59e06e)
-
-	* unitymenumodel: move role enum into .cpp
-
-2013-06-24 12:20:42 -0400 Lars Uebernickel (a74628a)
-
-	* unitymenumodel: remove redundant priv functions
-
-2013-06-24 12:10:56 -0400 Lars Uebernickel (bf4e73f)
-
-	* Move unityqmlmenumodel's properties to unitymenumodel
-
-2013-06-07 09:48:48 +0000 Automatic PS uploader (52b1700)
-
-	* Releasing 0.2.6daily13.06.07-0ubuntu1 to ubuntu.
-
-2013-06-07 02:02:06 +0000 Automatic PS uploader (a251896)
-
-	* Releasing 0.2.6daily13.06.07-0ubuntu1, based on r68
-
-2013-06-06 12:27:08 +0000 Alberto Mardegan (2c5855c)
-
-	* Use invalid index as root index
-
-2013-06-05 17:47:08 -0400 Lars Uebernickel (45ffd91)
-
-	* unitymenumodel: call init in the the constructor that is meant to
-          be used from c++
-
-2013-06-05 17:07:05 -0400 Lars Uebernickel (7892fd9)
-
-	* unitymenumodel: add support for submenus
-
-2013-06-05 13:50:12 -0400 Lars Uebernickel (e735d95)
-
-	* unitymenumodel: add activate()
-
-2013-06-05 10:29:43 -0400 Lars Uebernickel (692926c)
-
-	* Link against the qml module
-
-2013-06-04 21:05:40 -0400 Lars Uebernickel (00885c1)
-
-	* unitymenumodel: expose isSeparator
-
-2013-06-04 20:23:22 -0400 Lars Uebernickel (2a01b1c)
-
-	* examples/exportmenu.py: use g_bus_own_name to avoid race
-
-2013-06-04 20:22:08 -0400 Lars Uebernickel (9f9560d)
-
-	* unitymenumodel: watch the bus name
-
-2013-06-04 15:42:16 -0400 Lars Uebernickel (b1009a8)
-
-	* Add qml example for UnityMenuModel
-
-2013-06-04 15:40:43 -0400 Lars Uebernickel (5503064)
-
-	* CMakeLists.txt: explicitly specify qml include path
-
-2013-06-04 15:35:59 -0400 Lars Uebernickel (4fc790c)
-
-	* Introduce UnityMenuModel and UnityQmlMenuModel
-
-2013-05-23 11:44:41 +0300 Alberto Mardegan (8157af2)
-
-	* style
-
-2013-05-20 14:20:58 +0300 Alberto Mardegan (c5bcb29)
-
-	* Use invalid index as root index
-
-2013-05-03 16:17:43 +0000 Automatic PS uploader (885710f)
-
-	* Releasing 0.2.6daily13.05.02-0ubuntu1 to ubuntu.
-
-2013-05-02 22:58:51 +0000 Automatic PS uploader (cfcd397)
-
-	* Releasing 0.2.6daily13.05.02-0ubuntu1, based on r66
-
-2013-04-23 20:55:28 +0000 Mathieu Trudel-Lapierre (2701b12)
-
-	* Don't build on powerpc (qtdeclarative5 isn't available there).
-
-2013-04-23 16:31:19 -0400 Mathieu Trudel-Lapierre (47deee0)
-
-	* Don't build binary packages on powerpc; qtdeclarative5 isn't
+        * Don't build on powerpc (qtdeclarative5 isn't available there).
+          (2701b12)
+        * Don't build binary packages on powerpc; qtdeclarative5 isn't
           available; so explicitly list the architectures we can
-          build on.
+          build on. (47deee0)
 
-2013-04-19 15:01:52 +0000 Mathieu Trudel-Lapierre (4a5edf4)
+2013-04-19 Mathieu Trudel-Lapierre
 
-	* Bootstrap package.
+        * Bootstrap package. (4a5edf4)
+        * fix revision for bootstap (964f03e)
+        * bootstrap (31ddbce)
 
-2013-04-19 10:49:55 -0400 Mathieu Trudel-Lapierre (964f03e)
+2013-03-29 Mathieu Trudel-Lapierre
 
-	* fix revision for bootstap
+        * Packaging review for daily release. (10d7da0)
 
-2013-04-19 10:45:43 -0400 Mathieu Trudel-Lapierre (31ddbce)
+2013-03-26 Mathieu Trudel-Lapierre
 
-	* bootstrap
+        *   - Add Homepage field.   - Extend binary packages descriptions.
+          (43f8630)
+        * Move libgl-dev as an alternate Build-Depends to libgles2-mesa-dev.
+          (3a59b8d)
 
-2013-03-29 13:34:16 +0000 Mathieu Trudel-Lapierre (10d7da0)
+2013-03-25 Mathieu Trudel-Lapierre
 
-	* Packaging review for daily release.
+        * debian/control:   - Add Vcs-Browser, add comment to developers.
+          - Update Vcs-Bzr.;  debian/rules:   - Override dh_install
+          to use --fail-missing.;  debian/copyright: should be
+          LGPL-3, not LGPL-3+. (09c56ca)
 
-2013-03-26 14:52:27 -0400 Mathieu Trudel-Lapierre (43f8630)
+2013-02-11 Renato Araujo Oliveira Filho
 
-	*   - Add Homepage field.   - Extend binary packages descriptions.
+        * Added missing file (COPYING.LGPL); Updated debian maintaine.
+          Update debian scripts to follow Ubuntu standard;.
+          Fixes:
+          https://bugs.launchpad.net/bugs/1121721. (46f476e)
+        * Added missing key ¨Vcs-Bzr" in control file. (f1d16e8)
+        * Fixed COPYING.LGPL file to use LGPL 3 (0e00948)
+        * Added missing file . (f6d4f68)
+        * Added missing file ".bzr-builddeb/default.conf¨ (eb7de53)
+        * Fixed variable export in rules file. (b0127d3)
+        * Fixed source format. (8deae77)
+        * Added missing file (COPYING.LGPL); Updated debian maintaine.
+          Update debian scripts to follow Ubuntu standard; (0a72006)
 
-2013-03-26 14:47:52 -0400 Mathieu Trudel-Lapierre (3a59b8d)
+2013-01-31 Renato Araujo Oliveira Filho
 
-	* Move libgl-dev as an alternate Build-Depends to libgles2-mesa-dev.
+        * releasing version 0.2.6. (54bb804)
+        * Updated to qt5 final. (095aed4)
+        * Added missing dependency. (08e25df)
+        * Used qmake to retrieve the import dir used to install QML modules.
+          (e5b89ef)
+        * Fixed extra '/' in the file path. (101c523)
+        * Fixed missing license header. (b9bbb75)
+        * Fixed files missing license header. (5a4ff7a)
+        * releasing version 0.2.6 (35305e3)
 
-2013-03-25 11:53:28 -0400 Mathieu Trudel-Lapierre (09c56ca)
+2013-01-18 Renato Araujo Oliveira Filho
 
-	* * debian/control:   - Add Vcs-Browser, add comment to developers.  
-          - Update Vcs-Bzr. * debian/rules:   - Override dh_install
-          to use --fail-missing. * debian/copyright: should be
-          LGPL-3, not LGPL-3+.
+        * Updated to qt5 final. (5234489)
 
-2013-02-11 18:34:41 +0000 Renato Araujo Oliveira Filho (46f476e)
+2013-01-15 Renato Araujo Oliveira Filho
 
-	* Added missing file (COPYING.LGPL); Updated debian maintainer;
-          Update debian scripts to follow Ubuntu standard;. Fixes:
-          https://bugs.launchpad.net/bugs/1121721.
+        * releasing version 0.2.5. (954e6e6)
 
-2013-02-11 11:41:35 -0300 Renato Araujo Oliveira Filho (f1d16e8)
+2013-01-14 Renato Araujo Oliveira Filho
 
-	* Added missing key ¨Vcs-Bzr" in control file.
+        * Fixed changelog. (ba32c60)
 
-2013-02-11 11:36:19 -0300 Renato Araujo Oliveira Filho (0e00948)
+2013-01-15 Renato Araujo Oliveira Filho
 
-	* Fixed COPYING.LGPL file to use LGPL 3
+        * Fixed "invokeMethod" call to use only the method name instead of
+          full signature. (f72cdbb)
 
-2013-02-11 11:31:37 -0300 Renato Araujo Oliveira Filho (f6d4f68)
+2013-01-14 Renato Araujo Oliveira Filho
 
-	* Added missing file .
+        * releasing version 0.2.5 (9a4f675)
+        * Fixed "invokeMethod" call to use only the method name instead of
+          full signature. (f177b47)
+        * releasing version 0.2.4. (073cbc4)
+        * releasing version 0.2.4 (aa7a055)
+        * Implemented QMenuModel as tree model. Sections and SubMenus are
+          exported as tree.
+          Fixes:
+          https://bugs.launchpad.net/bugs/1090305. (c53b046)
+        * Used 'invokeMethod' to call slot, to make the code simple.
+          (00bd7d4)
 
-2013-02-11 11:30:44 -0300 Renato Araujo Oliveira Filho (eb7de53)
+2013-01-11 Renato Araujo Oliveira Filho
 
-	* Added missing file ".bzr-builddeb/default.conf¨
+        * Merged mainline. (6a56cd8)
+        * Added missing license header.
+          Fixes:
+          https://bugs.launchpad.net/bugs/1097080. (84b4e66)
+        * Added missing license header. (50efc4d)
+        * Merged mainline. (0115b56)
+        * Removed the use of Qt Widgets from tests. (774f7c4)
 
-2013-02-11 11:25:43 -0300 Renato Araujo Oliveira Filho (b0127d3)
+2013-01-10 Renato Araujo Oliveira Filho
 
-	* Fixed variable export in rules file.
+        * Fixed item removal and insertion. Removed debug messages. Fixed
+          tests to work with new tree model structure. (33147e9)
 
-2013-02-11 11:24:31 -0300 Renato Araujo Oliveira Filho (8deae77)
+2013-01-03 Renato Araujo Oliveira Filho
 
-	* Fixed source format.
+        * Implmeneted QMenuModel as tree model. (2d050cd)
 
-2013-02-11 10:06:05 -0300 Renato Araujo Oliveira Filho (0a72006)
+2012-12-17 Renato Araujo Oliveira Filho
 
-	* Added missing file (COPYING.LGPL); Updated debian maintainer;
-          Update debian scripts to follow Ubuntu standard;
+        * releasing version 0.2.3. (70adf10)
+        * releasing version 0.2.3 (7002fc2)
+        * Try to keep the module unchanged until the function
+          begin[Insert|Remove]Rows is called.
+          Fixes:
+          https://bugs.launchpad.net/bugs/1090305. (df3cd0c)
+        * Added missing test. (c34c5af)
 
-2013-01-31 20:02:58 +0000 Renato Araujo Oliveira Filho (54bb804)
+2012-12-16 Renato Araujo Oliveira Filho
 
-	* releasing version 0.2.6.
+        * Fixed model changes and singal. (64e7281)
 
-2013-01-31 19:18:48 +0000 Renato Araujo Oliveira Filho (095aed4)
+2012-12-15 Renato Araujo Oliveira Filho
 
-	* Updated to qt5 final.
+        * Removed keywords from VIRTUAL functions. (b601ff7)
 
-2013-01-31 15:11:57 -0300 Renato Araujo Oliveira Filho (08e25df)
+2012-12-14 Renato Araujo Oliveira Filho
 
-	* Added missing dependency.
+        * Only checks for row index in cache. Used Q_EMIT keywork for
+          signals. (96a4d9c)
+        * Avoid change rowCount value outside of
+          BeginModel[Insert|Remove|Reset] functions (9b94a0f)
 
-2013-01-31 12:28:46 -0300 Renato Araujo Oliveira Filho (e5b89ef)
+2012-12-12 Bill Filler
 
-	* Used qmake to retrieve the import dir used to install QML modules.
+        * fix release number and formatting. (c7cd7a4)
 
-2013-01-31 11:42:09 -0300 Renato Araujo Oliveira Filho (101c523)
+2012-12-11 Bill Filler
 
-	* Fixed extra '/' in the file path.
+        * releasing version 0.2.2 (83a2418)
 
-2013-01-31 10:43:58 -0300 Renato Araujo Oliveira Filho (b9bbb75)
+2012-12-11 Renato Araujo Oliveira Filho
 
-	* Fixed missing license header.
-
-2013-01-31 01:22:06 -0300 Renato Araujo Oliveira Filho (5a4ff7a)
-
-	* Fixed files missing license header.
-
-2013-01-31 01:14:26 -0300 Renato Araujo Oliveira Filho (35305e3)
-
-	* releasing version 0.2.6
-
-2013-01-18 09:10:29 -0300 Renato Araujo Oliveira Filho (5234489)
-
-	* Updated to qt5 final.
-
-2013-01-15 02:28:41 +0000 Renato Araujo Oliveira Filho (954e6e6)
-
-	* releasing version 0.2.5.
-
-2013-01-14 22:54:40 -0300 Renato Araujo Oliveira Filho (ba32c60)
-
-	* Fixed changelog.
-
-2013-01-15 01:30:39 +0000 Renato Araujo Oliveira Filho (f72cdbb)
-
-	* Fixed "invokeMethod" call to use only the method name instead of
-          full signature.
-
-2013-01-14 21:26:04 -0300 Renato Araujo Oliveira Filho (9a4f675)
-
-	* releasing version 0.2.5
-
-2013-01-14 21:22:16 -0300 Renato Araujo Oliveira Filho (f177b47)
-
-	* Fixed "invokeMethod" call to use only the method name instead of
-          full signature.
-
-2013-01-14 21:38:29 +0000 Renato Araujo Oliveira Filho (073cbc4)
-
-	* releasing version 0.2.4.
-
-2013-01-14 16:26:55 -0300 Renato Araujo Oliveira Filho (aa7a055)
-
-	* releasing version 0.2.4
-
-2013-01-14 15:57:10 +0000 Renato Araujo Oliveira Filho (c53b046)
-
-	* Implemented QMenuModel as tree model. Sections and SubMenus are
-          exported as tree. Fixes:
-          https://bugs.launchpad.net/bugs/1090305.
-
-2013-01-14 10:01:57 -0300 Renato Araujo Oliveira Filho (00bd7d4)
-
-	* Used 'invokeMethod' to call slot, to make the code simple.
-
-2013-01-11 16:00:03 -0300 Renato Araujo Oliveira Filho (6a56cd8)
-
-	* Merged mainline.
-
-2013-01-11 18:52:07 +0000 Renato Araujo Oliveira Filho (84b4e66)
-
-	* Added missing license header. Fixes:
-          https://bugs.launchpad.net/bugs/1097080.
-
-2013-01-11 11:10:06 -0300 Renato Araujo Oliveira Filho (50efc4d)
-
-	* Added missing license header.
-
-2013-01-11 10:30:01 -0300 Renato Araujo Oliveira Filho (0115b56)
-
-	* Merged mainline.
-
-2013-01-11 09:41:30 -0300 Renato Araujo Oliveira Filho (774f7c4)
-
-	* Removed the use of Qt Widgets from tests.
-
-2013-01-10 15:54:35 -0300 Renato Araujo Oliveira Filho (33147e9)
-
-	* Fixed item removal and insertion. Removed debug messages. Fixed
-          tests to work with new tree model structure.
-
-2013-01-03 18:38:23 -0300 Renato Araujo Oliveira Filho (2d050cd)
-
-	* Implmeneted QMenuModel as tree model.
-
-2012-12-17 20:42:27 +0000 Renato Araujo Oliveira Filho (70adf10)
-
-	* releasing version 0.2.3.
-
-2012-12-17 17:06:19 -0300 Renato Araujo Oliveira Filho (7002fc2)
-
-	* releasing version 0.2.3
-
-2012-12-17 18:37:53 +0000 Renato Araujo Oliveira Filho (df3cd0c)
-
-	* Try to keep the module unchanged until the function
-          begin[Insert|Remove]Rows is called. Fixes:
-          https://bugs.launchpad.net/bugs/1090305.
-
-2012-12-17 08:46:20 -0300 Renato Araujo Oliveira Filho (c34c5af)
-
-	* Added missing test.
-
-2012-12-16 23:00:41 -0300 Renato Araujo Oliveira Filho (64e7281)
-
-	* Fixed model changes and singal.
-
-2012-12-15 10:20:43 -0300 Renato Araujo Oliveira Filho (b601ff7)
-
-	* Removed keywords from VIRTUAL functions.
-
-2012-12-14 22:15:05 -0300 Renato Araujo Oliveira Filho (96a4d9c)
-
-	* Only checks for row index in cache. Used Q_EMIT keywork for
-          signals.
-
-2012-12-14 12:03:52 -0300 Renato Araujo Oliveira Filho (9b94a0f)
-
-	* Avoid change rowCount value outside of
-          BeginModel[Insert|Remove|Reset] functions
-
-2012-12-12 04:31:43 +0000 Bill Filler (c7cd7a4)
-
-	* fix release number and formatting.
-
-2012-12-11 23:13:00 -0500 Bill Filler (83a2418)
-
-	* releasing version 0.2.2
-
-2012-12-11 16:53:21 +0000 Renato Araujo Oliveira Filho (4b2c268)
-
-	* Fixed model disconnect function. Fixes:
-          https://bugs.launchpad.net/bugs/1088518.
-
-2012-12-11 16:07:48 +0000 Renato Araujo Oliveira Filho (edbfcdf)
-
-	* Fixed model disconnect function. Set the model null during the
+        * Fixed model disconnect function.
+          Fixes:
+          https://bugs.launchpad.net/bugs/1088518. (4b2c268)
+        * Fixed model disconnect function. Set the model null during the
           disconnection will make sure that the model was cleared
           and the new call of connect will populate the model again.
+          (edbfcdf)
+        * Avoid emit signal during the model reset, this can crash qml.
+          (0f20cc0)
+        * Avoid emit signal during the model reset, this can crash qml.
+          (d4ce0d4)
+        * Fixed crash during model changes. (b9e5fb6)
+        * Fixed crash during model changes. (0b3bfd9)
+
+2012-12-10 Renato Araujo Oliveira Filho
+
+        * releasing version 0.2.1. (5c88419)
+        * releasing version 0.2.1 (3f548e8)
+
+2012-12-07 Renato Araujo Oliveira Filho
+
+        * Implemented conversion for GVariant and Arrays. (afd68a3)
+        * Implemented conversion for GVariant and Arrays. (e8b1e40)
+
+2012-12-04 Olivier Tilloy
 
-2012-12-11 11:55:34 +0000 Renato Araujo Oliveira Filho (0f20cc0)
+        * releasing version 0.2. (94f07ed)
+        * releasing version 0.2 (cf798a4)
+        * Cache sub-menus. (c544a5f)
+        * Better comment. (ac9450d)
+        * Add myself to the list of authors. (f9ced66)
+        * Add comments to explain non-trivial cache updates. (395a8c6)
+        * Add a test to verify that normal menu items are not cached (only
+          sub-menus are). (02cfba5)
+        * Add a test to verify that the cache is correctly updated after
+          multiple insertions and removals. (e8927d8)
+        * Updated comments. (bf8e579)
+        * Compare the exact cache indexes instead of just comparing the size
+          of the cache. (50d449d)
+        * Simplify test code. (af2608a)
+        * Remove useless include. (4b57869)
+        * Add myself to the list of authors. (517c21c)
+        * Make the cache a pointer, to enforce const correctness. (7b2badf)
 
-	* Avoid emit signal during the model reset, this can crash qml.
+2012-12-03 Olivier Tilloy
 
-2012-12-11 11:09:49 +0000 Renato Araujo Oliveira Filho (d4ce0d4)
+        * Simplify the caching mechanism using a a QHash that associates
+          indexes (int) to QMenuModel*. (2f32994)
 
-	* Avoid emit signal during the model reset, this can crash qml.
+2012-12-03 Renato Araujo Oliveira Filho
 
-2012-12-11 02:43:08 +0000 Renato Araujo Oliveira Filho (b9e5fb6)
+        * Udated ignored files list. (d39a6e1)
+        * Changed getLink function to not be const. (5c52963)
 
-	* Fixed crash during model changes.
+2012-12-01 Renato Araujo Oliveira Filho
 
-2012-12-11 00:51:16 +0000 Renato Araujo Oliveira Filho (0b3bfd9)
+        * QMenuModel now keeps cache of any link element. (15ac92c)
 
-	* Fixed crash during model changes.
+2012-11-29 Renato Araujo Oliveira Filho
 
-2012-12-10 15:58:28 +0000 Renato Araujo Oliveira Filho (5c88419)
+        * releasing version 0.1.9. (6eb5409)
+        * releasing version 0.1.9 (85c41ee)
+        * Created auxiliary functions. To allows access the model data from
+          JavaScript;. (49810b9)
+        * Used a shorter QObject::connect signature. (b3ac378)
 
-	* releasing version 0.2.1.
+2012-11-28 Renato Araujo Oliveira Filho
 
-2012-12-10 12:20:13 +0000 Renato Araujo Oliveira Filho (3f548e8)
+        * Created unit test for get data function. (08b143c)
+        * Optimized get function code. (236259b)
+        * Merged mainline. (98ed17e)
 
-	* releasing version 0.2.1
+2012-11-23 Renato Araujo Oliveira Filho
 
-2012-12-07 19:27:34 +0000 Renato Araujo Oliveira Filho (afd68a3)
+        * releasing version 0.1.8. (da5a043)
+        * releasing version 0.1.8 (8d9b6dc)
+        * Fixed QMenumodel behavior when the GMenuModel is destroyed.
+          (68533d0)
+        * Removed missing function declaration. (bdc349d)
+        * Take care of object ref internally on QMenumodel, instead of
+          QDBusMenuModel. (aa56c7b)
+        * Replaced 'reinterpret_cast' for gobject cast when possible.
+          (af103eb)
+        * Removed QAction dependency from QStateAction. Exported activate
+          function on QStateAction. (7cfd1a4)
+        * Merged mainline. (f68764a)
+        * Fixed QMenumodel behaviour when the GMenuModel is destroyed.
+          (6078bd7)
+        * Create unit test for name property and activate function. (5d755f4)
+        * Added 'TEST_XML_OUTPUT' option on cmake to enable/disalbe test
+          output in xml. OBS: The default value is On. (de8eea6)
+        * Implemented support to tuple conversions. (374e999)
+        * Fixed code style. (2b54bfb)
 
-	* Implemented conversion for GVariant and Arrays.
+2012-11-22 Renato Araujo Oliveira Filho
 
-2012-12-07 18:20:53 +0000 Renato Araujo Oliveira Filho (e8b1e40)
+        * Added docs on new functions. (41f6ce5)
+        * Only unref variant if its is valid. (193ddd3)
+        * Implemented support to tuple conversions. (c377489)
+        * Added 'TEST_XML_OUTPUT' option on cmake to enable/disalbe test
+          output in xml. OBS: The default value is On. (560f14f)
+        * Removed QAction dependecy from QStateAction. Exported activate
+          function on QStateAction. (a745160)
+        * Fixed memory leak after the service disappear. (04391e9)
+        * Avoid find children recursive during the model cleanup. (a8dec79)
+        * Moved model children clear to clearModel function. (f221fee)
 
-	* Implemented conversion for GVariant and Arrays.
+2012-11-21 Renato Araujo Oliveira Filho
 
-2012-12-04 12:34:18 +0000 Olivier Tilloy (94f07ed)
+        * Fixed memory leak after the service disapear. (af61347)
 
-	* releasing version 0.2.
+2012-11-20 Olivier Tilloy
 
-2012-12-04 11:58:24 +0100 Olivier Tilloy (cf798a4)
+        * Reimplement roleNames() instead of using setRoleNames(…). (3dec94a)
 
-	* releasing version 0.2
+2012-11-19 Olivier Tilloy
 
-2012-12-04 10:39:31 +0000 Olivier Tilloy (c544a5f)
+        * Reimplement roleNames() instead of using setRoleNames(…). (5d33dd5)
 
-	* Cache sub-menus.
+2012-11-15 Olivier Tilloy
 
-2012-12-04 09:31:46 +0100 Olivier Tilloy (ac9450d)
+        * releasing version 0.1.7. (1430572)
 
-	* Better comment.
+2012-11-14 Olivier Tilloy
 
-2012-12-04 09:31:33 +0100 Olivier Tilloy (f9ced66)
+        * releasing version 0.1.7 (368a2e2)
 
-	* Add myself to the list of authors.
+2012-11-13 Renato Araujo Oliveira Filho
 
-2012-12-04 09:21:06 +0100 Olivier Tilloy (395a8c6)
+        * Created auxiliary functions. To allows access the model data from
+          JavaScript; (53dfc2a)
 
-	* Add comments to explain non-trivial cache updates.
+2012-11-08 Renato Araujo Oliveira Filho
 
-2012-12-04 09:14:04 +0100 Olivier Tilloy (02cfba5)
+        * Updates to get coverage and test results in jenkins. (1915b09)
 
-	* Add a test to verify that normal menu items are not cached (only
-          sub-menus are).
+2012-11-07 Renato Araujo Oliveira Filho
 
-2012-12-04 09:11:18 +0100 Olivier Tilloy (e8927d8)
+        * Merged 'lp:~renatofilho/girden/debian-dh'. (67680f3)
+        * Merged mainline. (e6cddf7)
+        * Make the rule 'make check' always enabled. (664f162)
+        * Appended auto generated xml test output files into ignored list.
+          (9dd5954)
+        * Updated README file with the new coverage flag. (6b8fd9e)
+        * Updated debian package to use debhelper instead of cdbs. (fc58dd6)
+        * Merged 'lp:~renatofilho/girden/debian-dh' branch. (987dd97)
+        * Merged mainline. (cba9178)
+        * Updated tests make file to outpu xml results files. (79c1256)
 
-	* Add a test to verify that the cache is correctly updated after
-          multiple insertions and removals.
+2012-11-06 Renato Araujo Oliveira Filho
 
-2012-12-04 08:57:38 +0100 Olivier Tilloy (bf8e579)
+        * Fixed string comparation on cmake files. (21a8952)
+        * Skip tests on qemu to avoid crashes. (dd3e64c)
+        * Removed 'xvfb' from the dependency list. (a086f90)
 
-	* Updated comments.
+2012-11-02 Renato Araujo Oliveira Filho
 
-2012-12-04 08:53:19 +0100 Olivier Tilloy (50d449d)
+        * Fixed tests to avoid crashing if dbus session is not available.
+          (28245a5)
+        * Fixed tests code to avoid crash if dbus session is not avaliable.
+          (59dfda6)
 
-	* Compare the exact cache indexes instead of just comparing the size
-          of the cache.
+2012-11-01 Renato Araujo Oliveira Filho
 
-2012-12-04 08:34:20 +0100 Olivier Tilloy (af2608a)
+        * Uses "QT_QPA_PLATFORM=minimal" to run qt tests. (8432596)
 
-	* Simplify test code.
+2012-10-31 Olivier Tilloy
 
-2012-12-04 08:32:24 +0100 Olivier Tilloy (4b57869)
+        * releasing version 0.1.6. (2e6ccdb)
+        * releasing version 0.1.6 (cf0b1b6)
 
-	* Remove useless include.
+2012-10-31 Renato Araujo Oliveira Filho
 
-2012-12-04 08:32:13 +0100 Olivier Tilloy (517c21c)
+        * Rename coverage option name. (50600e1)
+        * Updated dependency list to use python3 packages. (bf5a53e)
+        * Added missing python dependencies. (abd20be)
+        * Merged mainline. (c9c9d58)
+        * Revert last commit. (4aee0f1)
+        * Reverted use of xvfb for tests. (Does not work with opengl)
+          (7f4ba1a)
+        * Removed QtTestGui include from tests. (b4e04e3)
+        * Added xvfb option on cmake to enable run tests without X running.
+          (49797fd)
+        * Added missing opengl dependency. Necessary for examples. (07087af)
+        * Removed show widgets functions to avoid problems in the auto
+          builder. (485cab8)
+        * Added 'dbus-test-runner' ad build dependency. (89f52ae)
 
-	* Add myself to the list of authors.
+2012-10-31 Olivier Tilloy
 
-2012-12-04 08:30:24 +0100 Olivier Tilloy (7b2badf)
+        * Migrate all the scripts to python3. (521a582)
 
-	* Make the cache a pointer, to enforce const correctness.
+2012-10-31 Renato Araujo Oliveira Filho
 
-2012-12-03 18:52:59 +0100 Olivier Tilloy (2f32994)
+        * Updated rules to avoid warnings during the package build. (bed4cab)
+        * Fixed control file to accept any python3 version. (7ee5b38)
+        * Updated debian package to use debhelper instead of cdbs. (d7ae33e)
 
-	* Simplify the caching mechanism using a a QHash that associates
-          indexes (int) to QMenuModel*.
+2012-10-30 Renato Araujo Oliveira Filho
 
-2012-12-03 10:12:02 -0300 Renato Araujo Oliveira Filho (d39a6e1)
+        * Use the correct function "g_action_group_change_action_state" to
+          change the action state. (e26fff2)
+        * Used utf8 instead of latin1 for strings. (fac3a65)
 
-	* Udated ignored files list.
+2012-10-30 Olivier Tilloy
 
-2012-12-03 09:36:59 -0300 Renato Araujo Oliveira Filho (5c52963)
+        * Merge the latest changes from trunk. (0ad7c83)
+        * Migrate all scripts to python3. (209c95e)
 
-	* Changed getLink function to not be const.
+2012-10-30 Renato Araujo Oliveira Filho
 
-2012-12-01 17:37:46 -0300 Renato Araujo Oliveira Filho (15ac92c)
+        * Replaced gchar <-> QString convertion function, from Latin1 to
+          Utf8. (035b608)
+        * Created function actionActivate on QDbusActionGroup. (fd715d4)
+        * Use the correct function "g_action_group_change_action_state" to
+          change the action state. (2496687)
+        * Created unit test for utf8 strings. (307b793)
+        * Replaced string convertion from Latin1 to Utf8. (ed490f2)
 
-	* QMenuModel now keeps cache of any link element.
+2012-10-25 Renato Araujo Oliveira Filho
 
-2012-11-29 22:39:12 +0000 Renato Araujo Oliveira Filho (6eb5409)
+        * Changed the 'g_bus_watch_name' flag to auto start the service;.
+          Approved by PS Jenkins bot, Olivier Tilloy. (4d47b26)
 
-	* releasing version 0.1.9.
+2012-10-24 Renato Araujo Oliveira Filho
 
-2012-11-29 18:12:41 -0300 Renato Araujo Oliveira Filho (85c41ee)
+        * Changed the 'g_bus_watch_name' flag to auto start the servic.
+          (3c1b2d2)
 
-	* releasing version 0.1.9
+2012-10-18 Olivier Tilloy
 
-2012-11-29 12:39:49 +0000 Renato Araujo Oliveira Filho (49810b9)
+        * releasing version 0.1.5 (fef978e)
+        * Add missing changelog entry. (fe42b80)
 
-	* Created auxiliary functions. To allows access the model data from
-          JavaScript;.
+2012-10-17 Renato Araujo Oliveira Filho
 
-2012-11-29 09:08:15 -0300 Renato Araujo Oliveira Filho (b3ac378)
-
-	* Used a shorter QObject::connect signature.
-
-2012-11-28 20:19:42 -0300 Renato Araujo Oliveira Filho (08b143c)
-
-	* Created unit test for get data function.
-
-2012-11-28 20:19:14 -0300 Renato Araujo Oliveira Filho (236259b)
-
-	* Optimized get function code.
-
-2012-11-28 20:07:56 -0300 Renato Araujo Oliveira Filho (98ed17e)
-
-	* Merged mainline.
-
-2012-11-23 19:41:15 +0000 Renato Araujo Oliveira Filho (da5a043)
-
-	* releasing version 0.1.8.
-
-2012-11-23 16:17:16 -0300 Renato Araujo Oliveira Filho (8d9b6dc)
-
-	* releasing version 0.1.8
-
-2012-11-23 18:25:47 +0000 Renato Araujo Oliveira Filho (68533d0)
-
-	* Fixed QMenumodel behavior when the GMenuModel is destroyed.
-
-2012-11-23 14:56:22 -0300 Renato Araujo Oliveira Filho (bdc349d)
-
-	* Removed missing function declaration.
-
-2012-11-23 14:41:21 -0300 Renato Araujo Oliveira Filho (aa56c7b)
-
-	* Take care of object ref internally on QMenumodel, instead of
-          QDBusMenuModel.
-
-2012-11-23 14:25:39 -0300 Renato Araujo Oliveira Filho (af103eb)
-
-	* Replaced 'reinterpret_cast' for gobject cast when possible.
-
-2012-11-23 15:10:42 +0000 Renato Araujo Oliveira Filho (7cfd1a4)
-
-	* Removed QAction dependency from QStateAction. Exported activate
-          function on QStateAction.
-
-2012-11-23 12:03:54 -0300 Renato Araujo Oliveira Filho (f68764a)
-
-	* Merged mainline.
-
-2012-11-23 12:03:07 -0300 Renato Araujo Oliveira Filho (6078bd7)
-
-	* Fixed QMenumodel behaviour when the GMenuModel is destroyed.
-
-2012-11-23 10:22:04 -0300 Renato Araujo Oliveira Filho (5d755f4)
-
-	* Create unit test for name property and activate function.
-
-2012-11-23 12:41:03 +0000 Renato Araujo Oliveira Filho (de8eea6)
-
-	* Added 'TEST_XML_OUTPUT' option on cmake to enable/disalbe test
-          output in xml. OBS: The default value is On.
-
-2012-11-23 12:22:57 +0000 Renato Araujo Oliveira Filho (374e999)
-
-	* Implemented support to tuple conversions.
-
-2012-11-23 08:50:51 -0300 Renato Araujo Oliveira Filho (2b54bfb)
-
-	* Fixed code style.
-
-2012-11-22 17:58:56 -0300 Renato Araujo Oliveira Filho (41f6ce5)
-
-	* Added docs on new functions.
-
-2012-11-22 17:48:25 -0300 Renato Araujo Oliveira Filho (193ddd3)
-
-	* Only unref variant if its is valid.
-
-2012-11-22 17:39:25 -0300 Renato Araujo Oliveira Filho (c377489)
-
-	* Implemented support to tuple conversions.
-
-2012-11-22 17:04:03 -0300 Renato Araujo Oliveira Filho (560f14f)
-
-	* Added 'TEST_XML_OUTPUT' option on cmake to enable/disalbe test
-          output in xml. OBS: The default value is On.
-
-2012-11-22 16:13:02 -0300 Renato Araujo Oliveira Filho (a745160)
-
-	* Removed QAction dependecy from QStateAction. Exported activate
-          function on QStateAction.
-
-2012-11-22 16:17:37 +0000 Renato Araujo Oliveira Filho (04391e9)
-
-	* Fixed memory leak after the service disappear.
-
-2012-11-22 08:57:18 -0300 Renato Araujo Oliveira Filho (a8dec79)
-
-	* Avoid find children recursive during the model cleanup.
-
-2012-11-22 08:05:13 -0300 Renato Araujo Oliveira Filho (f221fee)
-
-	* Moved model children clear to clearModel function.
-
-2012-11-21 10:54:29 -0300 Renato Araujo Oliveira Filho (af61347)
-
-	* Fixed memory leak after the service disapear.
-
-2012-11-20 12:04:25 +0000 Olivier Tilloy (3dec94a)
-
-	* Reimplement roleNames() instead of using setRoleNames(…).
-
-2012-11-19 16:06:21 +0100 Olivier Tilloy (5d33dd5)
-
-	* Reimplement roleNames() instead of using setRoleNames(…).
-
-2012-11-15 02:18:25 +0000 Olivier Tilloy (1430572)
-
-	* releasing version 0.1.7.
-
-2012-11-14 10:44:35 +0100 Olivier Tilloy (368a2e2)
-
-	* releasing version 0.1.7
-
-2012-11-13 17:16:59 -0300 Renato Araujo Oliveira Filho (53dfc2a)
-
-	* Created auxiliary functions. To allows access the model data from
-          JavaScript;
-
-2012-11-08 17:38:23 +0000 Renato Araujo Oliveira Filho (1915b09)
-
-	* Updates to get coverage and test results in jenkins.
-
-2012-11-07 09:54:44 -0300 Renato Araujo Oliveira Filho (67680f3)
-
-	* Merged 'lp:~renatofilho/girden/debian-dh'.
-
-2012-11-07 09:54:06 -0300 Renato Araujo Oliveira Filho (e6cddf7)
-
-	* Merged mainline.
-
-2012-11-07 09:16:24 -0300 Renato Araujo Oliveira Filho (664f162)
-
-	* Make the rule 'make check' always enabled.
-
-2012-11-07 09:08:57 -0300 Renato Araujo Oliveira Filho (9dd5954)
-
-	* Appended auto generated xml test output files into ignored list.
-
-2012-11-07 09:07:59 -0300 Renato Araujo Oliveira Filho (6b8fd9e)
-
-	* Updated README file with the new coverage flag.
-
-2012-11-07 11:51:13 +0000 Renato Araujo Oliveira Filho (fc58dd6)
-
-	* Updated debian package to use debhelper instead of cdbs.
-
-2012-11-07 08:43:47 -0300 Renato Araujo Oliveira Filho (987dd97)
-
-	* Merged 'lp:~renatofilho/girden/debian-dh' branch.
-
-2012-11-07 08:43:20 -0300 Renato Araujo Oliveira Filho (cba9178)
-
-	* Merged mainline.
-
-2012-11-07 08:35:52 -0300 Renato Araujo Oliveira Filho (79c1256)
-
-	* Updated tests make file to outpu xml results files.
-
-2012-11-06 12:57:58 -0300 Renato Araujo Oliveira Filho (21a8952)
-
-	* Fixed string comparation on cmake files.
-
-2012-11-06 11:21:48 -0300 Renato Araujo Oliveira Filho (dd3e64c)
-
-	* Skip tests on qemu to avoid crashes.
-
-2012-11-06 09:25:10 -0300 Renato Araujo Oliveira Filho (a086f90)
-
-	* Removed 'xvfb' from the dependency list.
-
-2012-11-02 14:22:35 +0000 Renato Araujo Oliveira Filho (28245a5)
-
-	* Fixed tests to avoid crashing if dbus session is not available.
-
-2012-11-02 12:39:28 +0100 Renato Araujo Oliveira Filho (59dfda6)
-
-	* Fixed tests code to avoid crash if dbus session is not avaliable.
-
-2012-11-01 16:02:37 +0100 Renato Araujo Oliveira Filho (8432596)
-
-	* Uses "QT_QPA_PLATFORM=minimal" to run qt tests.
-
-2012-10-31 17:38:45 +0000 Olivier Tilloy (2e6ccdb)
-
-	* releasing version 0.1.6.
-
-2012-10-31 18:21:58 +0100 Olivier Tilloy (cf0b1b6)
-
-	* releasing version 0.1.6
-
-2012-10-31 17:49:11 +0100 Renato Araujo Oliveira Filho (50600e1)
-
-	* Rename coverage option name.
-
-2012-10-31 16:36:28 +0100 Renato Araujo Oliveira Filho (bf5a53e)
-
-	* Updated dependency list to use python3 packages.
-
-2012-10-31 16:04:16 +0100 Renato Araujo Oliveira Filho (abd20be)
-
-	* Added missing python dependencies.
-
-2012-10-31 15:33:16 +0100 Renato Araujo Oliveira Filho (c9c9d58)
-
-	* Merged mainline.
-
-2012-10-31 15:32:38 +0100 Renato Araujo Oliveira Filho (4aee0f1)
-
-	* Revert last commit.
-
-2012-10-31 13:48:39 +0100 Renato Araujo Oliveira Filho (7f4ba1a)
-
-	* Reverted use of xvfb for tests. (Does not work with opengl)
-
-2012-10-31 13:48:03 +0100 Renato Araujo Oliveira Filho (b4e04e3)
-
-	* Removed QtTestGui include from tests.
-
-2012-10-31 13:09:44 +0100 Renato Araujo Oliveira Filho (49797fd)
-
-	* Added xvfb option on cmake to enable run tests without X running.
-
-2012-10-31 11:51:50 +0100 Renato Araujo Oliveira Filho (07087af)
-
-	* Added missing opengl dependency. Necessary for examples.
-
-2012-10-31 11:10:59 +0100 Renato Araujo Oliveira Filho (485cab8)
-
-	* Removed show widgets functions to avoid problems in the auto
-          builder.
-
-2012-10-31 11:09:33 +0100 Renato Araujo Oliveira Filho (89f52ae)
-
-	* Added 'dbus-test-runner' ad build dependency.
-
-2012-10-31 09:37:23 +0000 Olivier Tilloy (521a582)
-
-	* Migrate all the scripts to python3.
-
-2012-10-31 10:23:54 +0100 Renato Araujo Oliveira Filho (bed4cab)
-
-	* Updated rules to avoid warnings during the package build.
-
-2012-10-31 10:21:00 +0100 Renato Araujo Oliveira Filho (7ee5b38)
-
-	* Fixed control file to accept any python3 version.
-
-2012-10-31 09:30:37 +0100 Renato Araujo Oliveira Filho (d7ae33e)
-
-	* Updated debian package to use debhelper instead of cdbs.
-
-2012-10-30 13:53:37 +0000 Renato Araujo Oliveira Filho (e26fff2)
-
-	* Use the correct function "g_action_group_change_action_state" to
-          change the action state.
-
-2012-10-30 13:06:35 +0100 Renato Araujo Oliveira Filho (fac3a65)
-
-	* Used utf8 instead of latin1 for strings.
-
-2012-10-30 13:01:18 +0100 Olivier Tilloy (0ad7c83)
-
-	* Merge the latest changes from trunk.
-
-2012-10-30 12:59:37 +0100 Olivier Tilloy (209c95e)
-
-	* Migrate all scripts to python3.
-
-2012-10-30 11:56:37 +0000 Renato Araujo Oliveira Filho (035b608)
-
-	* Replaced gchar <-> QString convertion function, from Latin1 to
-          Utf8.
-
-2012-10-30 12:51:31 +0100 Renato Araujo Oliveira Filho (fd715d4)
-
-	* Created function actionActivate on QDbusActionGroup.
-
-2012-10-30 12:32:09 +0100 Renato Araujo Oliveira Filho (2496687)
-
-	* Use the correct function "g_action_group_change_action_state" to
-          change the action state.
-
-2012-10-30 12:04:42 +0100 Renato Araujo Oliveira Filho (307b793)
-
-	* Created unit test for utf8 strings.
-
-2012-10-30 12:04:07 +0100 Renato Araujo Oliveira Filho (ed490f2)
-
-	* Replaced string convertion from Latin1 to Utf8.
-
-2012-10-25 13:12:13 +0000 Renato Araujo Oliveira Filho (4d47b26)
-
-	* Changed the 'g_bus_watch_name' flag to auto start the service;.
-          Approved by PS Jenkins bot, Olivier Tilloy.
-
-2012-10-24 16:57:15 +0200 Renato Araujo Oliveira Filho (3c1b2d2)
-
-	* Changed the 'g_bus_watch_name' flag to auto start the service;
-
-2012-10-18 16:26:50 +0200 Olivier Tilloy (fef978e)
-
-	* releasing version 0.1.5
-
-2012-10-18 16:25:37 +0200 Olivier Tilloy (fe42b80)
-
-	* Add missing changelog entry.
-
-2012-10-17 15:10:49 +0000 Renato Araujo Oliveira Filho (d46ee24)
-
-	* Implemented conversion for QVariantMap; Created unit test for
+        * Implemented conversion for QVariantMap; Created unit test for
           QVariantMap conversion;. Approved by Olivier Tilloy, PS
-          Jenkins bot.
+          Jenkins bot. (d46ee24)
+        * Used utf8 instead of latin1 on QString conversion; (cdd910c)
+        * Used 'G_VARIANT_TYPE_VARDICT' in GVariantBuilder constructor.
+          (c805b48)
 
-2012-10-17 10:43:30 -0300 Renato Araujo Oliveira Filho (cdd910c)
+2012-10-16 Renato Araujo Oliveira Filho
 
-	* Used utf8 instead of latin1 on QString conversion;
+        * Merged mainline. (cc79785)
 
-2012-10-17 10:41:37 -0300 Renato Araujo Oliveira Filho (c805b48)
+2012-10-16 Olivier Tilloy
 
-	* Used 'G_VARIANT_TYPE_VARDICT' in GVariantBuilder constructor.
+        * releasing version 0.1.4 (ced307a)
 
-2012-10-16 14:30:47 -0300 Renato Araujo Oliveira Filho (cc79785)
+2012-10-16 Renato Araujo Oliveira Filho
 
-	* Merged mainline.
-
-2012-10-16 10:57:24 +0200 Olivier Tilloy (ced307a)
-
-	* releasing version 0.1.4
-
-2012-10-16 07:56:41 +0000 Renato Araujo Oliveira Filho (340e67d)
-
-	* Avoid emit model reset during QMenuModel destructor, to avoid crash
+        * Avoid emit model reset during QMenuModel destructor, to avoid crash
           in QML engine.. Approved by Olivier Tilloy, PS Jenkins
-          bot, jenkins.
+          bot, jenkins. (340e67d)
 
-2012-10-15 17:22:27 -0300 Renato Araujo Oliveira Filho (a98d548)
+2012-10-15 Renato Araujo Oliveira Filho
 
-	* Created unit test for QVariantMap conversion;
+        * Created unit test for QVariantMap conversion; (a98d548)
+        * Implemented conversion for QVariantMap; (7f09723)
+        * Merged mainline. (5c56d12)
 
-2012-10-15 17:22:05 -0300 Renato Araujo Oliveira Filho (7f09723)
+2012-10-15 Olivier Tilloy
 
-	* Implemented conversion for QVariantMap;
-
-2012-10-15 09:54:06 -0300 Renato Araujo Oliveira Filho (5c56d12)
-
-	* Merged mainline.
-
-2012-10-15 12:40:44 +0000 Olivier Tilloy (5999e7a)
-
-	* Expose a C++ library, and separate into 3 binary packages:  -
+        * Expose a C++ library, and separate into 3 binary packages:  -
           libqmenumodel0: C++ library  - libqmenumodel-dev:
           development headers for the C++ library  - qmenumodel-qml:
           QML module. Approved by Renato Araujo Oliveira Filho,
-          jenkins.
+          jenkins. (5999e7a)
+        * Merge the latest changes from trunk. (4366f70)
 
-2012-10-15 11:52:09 +0200 Olivier Tilloy (4366f70)
+2012-10-11 Renato Araujo Oliveira Filho
 
-	* Merge the latest changes from trunk.
+        * Merged mainline. (e243399)
 
-2012-10-11 17:02:31 -0300 Renato Araujo Oliveira Filho (e243399)
+2012-10-11 Ricardo Mendoza
 
-	* Merged mainline.
+        * Rebuild for armhf. Approved by Florian Boucault, jenkins. (46b559b)
 
-2012-10-11 20:01:16 +0000 Ricardo Mendoza (46b559b)
+2012-10-11 Renato Araujo Oliveira Filho
 
-	* Rebuild for armhf. Approved by Florian Boucault, jenkins.
+        * Added new generated test files into bzrignore. (99229ab)
+        * Created unit test for crash during model destruction. (9bf1472)
 
-2012-10-11 16:15:30 -0300 Renato Araujo Oliveira Filho (99229ab)
+2012-10-11 Ricardo Mendoza
 
-	* Added new generated test files into bzrignore.
+        * Rebuild for armhf (ef7435e)
+        * Bump version to propagate release to the corresponding PPAs.
+          Approved by Florian Boucault. (0f71225)
+        * Bump version for Release (bcd640b)
 
-2012-10-11 16:15:17 -0300 Renato Araujo Oliveira Filho (9bf1472)
+2012-10-11 Renato Araujo Oliveira Filho
 
-	* Created unit test for crash during model destruction.
+        * Added comments on qml file used in tests. (f430d60)
 
-2012-10-11 14:42:48 -0430 Ricardo Mendoza (ef7435e)
+2012-10-11 Olivier Tilloy
 
-	* Rebuild for armhf
+        * Updated the TODO list: upon Renato’s suggestion, it would be
+          interesting to add a ProjectConfig.cmake file. (f04b692)
+        * Merge the latest changes from trunk. (6504ccc)
 
-2012-10-11 17:45:55 +0000 Ricardo Mendoza (0f71225)
+2012-10-10 Renato Araujo Oliveira Filho
 
-	* Bump version to propagate release to the corresponding PPAs.
-          Approved by Florian Boucault.
+        * Fixed typo in function name. (7c27fad)
+        * Clenup qml file, removed debug messages and unused code. (5dd33f3)
+        * Created a new private function "clearModel" instead of change
+          signature of "setModel" function. (1e659ae)
 
-2012-10-11 12:56:53 -0430 Ricardo Mendoza (bcd640b)
+2012-10-10 Olivier Tilloy
 
-	* Bump version for Release
-
-2012-10-11 09:15:32 -0300 Renato Araujo Oliveira Filho (f430d60)
-
-	* Added comments on qml file used in tests.
-
-2012-10-11 11:04:59 +0200 Olivier Tilloy (f04b692)
-
-	* Updated the TODO list: upon Renato’s suggestion, it would be
-          interesting to add a ProjectConfig.cmake file.
-
-2012-10-11 10:54:49 +0200 Olivier Tilloy (6504ccc)
-
-	* Merge the latest changes from trunk.
-
-2012-10-10 09:51:12 -0300 Renato Araujo Oliveira Filho (7c27fad)
-
-	* Fixed typo in function name.
-
-2012-10-10 09:49:39 -0300 Renato Araujo Oliveira Filho (5dd33f3)
-
-	* Clenup qml file, removed debug messages and unused code.
-
-2012-10-10 09:47:23 -0300 Renato Araujo Oliveira Filho (1e659ae)
-
-	* Created a new private function "clearModel" instead of change
-          signature of "setModel" function.
-
-2012-10-10 12:43:14 +0000 Olivier Tilloy (24faac7)
-
-	* Avoid including C headers (glib/gio) in public headers; use
+        * Avoid including C headers (glib/gio) in public headers; use
           "forward declarations" instead.. Approved by Renato Araujo
-          Oliveira Filho, jenkins.
+          Oliveira Filho, jenkins. (24faac7)
+        * Revert to using g* types, and forward-declare them. This is more
+          future-proof. (92ee9e3)
 
-2012-10-10 09:41:24 +0200 Olivier Tilloy (92ee9e3)
+2012-10-09 Olivier Tilloy
 
-	* Revert to using g* types, and forward-declare them. This is more
-          future-proof.
-
-2012-10-09 18:45:05 +0000 Olivier Tilloy (f8266c8)
-
-	* Reset the navigation history when the connection to the model is
+        * Reset the navigation history when the connection to the model is
           lost.. Approved by Renato Araujo Oliveira Filho, jenkins.
+          (f8266c8)
 
-2012-10-09 15:44:25 -0300 Renato Araujo Oliveira Filho (c07f87e)
+2012-10-09 Renato Araujo Oliveira Filho
 
-	* Fixed crash during model destruction in QML.
+        * Fixed crash during model destruction in QML. (c07f87e)
 
-2012-10-09 18:37:30 +0200 Olivier Tilloy (bced31c)
+2012-10-09 Olivier Tilloy
 
-	* Avoid including C headers (glib/gio) in public headers; use
-          "forward declarations" instead.
+        * Avoid including C headers (glib/gio) in public headers; use
+          "forward declarations" instead. (bced31c)
+        * Reset the navigation history when the connection to the model is
+          lost. (f5e0285)
+        * Add a changelog entry to explain the split into 3 binary packages.
+          (a3c6400)
+        * Add a C++ example that demonstrates the use of libqmenumodel.
+          (69538ac)
+        * Update TODO list. (35dfc73)
+        * Add a missing Pre-Depends field to the control file. Fixes a
+          lintian error. (b3dc371)
+        * Ensure dh_makeshlibs ignores the QML module. Fixes an error and two
+          warnings in lintian. (b81741d)
+        * Add extended descriptions for all packages. Fixes lintian errors.
+          (3ba2b41)
 
-2012-10-09 18:29:28 +0200 Olivier Tilloy (f5e0285)
+2012-10-08 Olivier Tilloy
 
-	* Reset the navigation history when the connection to the model is
-          lost.
-
-2012-10-09 16:03:11 +0200 Olivier Tilloy (a3c6400)
-
-	* Add a changelog entry to explain the split into 3 binary packages.
-
-2012-10-09 15:52:06 +0200 Olivier Tilloy (69538ac)
-
-	* Add a C++ example that demonstrates the use of libqmenumodel.
-
-2012-10-09 15:24:38 +0200 Olivier Tilloy (35dfc73)
-
-	* Update TODO list.
-
-2012-10-09 13:57:16 +0200 Olivier Tilloy (b3dc371)
-
-	* Add a missing Pre-Depends field to the control file. Fixes a
-          lintian error.
-
-2012-10-09 13:34:42 +0200 Olivier Tilloy (b81741d)
-
-	* Ensure dh_makeshlibs ignores the QML module. Fixes an error and two
-          warnings in lintian.
-
-2012-10-09 13:32:52 +0200 Olivier Tilloy (3ba2b41)
-
-	* Add extended descriptions for all packages. Fixes lintian errors.
-
-2012-10-08 17:01:04 +0200 Olivier Tilloy (93c81bd)
-
-	* Split the package into 3 packages: libqmenumodel0,
-          libqmenumodel-dev, qmenumodel-qml.
-
-2012-10-08 16:25:49 +0200 Olivier Tilloy (d2ec653)
-
-	* Ensure the model is set before advertising the status as
-          'Connected'.
-
-2012-10-08 16:25:10 +0200 Olivier Tilloy (bc7eb61)
-
-	* Use the Q_EMIT keyword to emit signals.
-
-2012-10-08 13:45:00 +0200 Olivier Tilloy (07c3252)
-
-	* Ensure libqmenumodel is linked against libglib and libgio.
-
-2012-10-08 13:44:24 +0200 Olivier Tilloy (fa5d7c1)
-
-	* Call g_type_init() in the constructor for QDBusObject. This ensures
+        * Split the package into 3 packages: libqmenumodel0,
+          libqmenumodel-dev, qmenumodel-qml. (93c81bd)
+        * Ensure the model is set before advertising the status as
+          'Connected'. (d2ec653)
+        * Use the Q_EMIT keyword to emit signals. (bc7eb61)
+        * Ensure libqmenumodel is linked against libglib and libgio.
+          (07c3252)
+        * Call g_type_init() in the constructor for QDBusObject. This ensures
           it is always called where needed: clients don’t need to
-          invoke it themselves.
+          invoke it themselves. (fa5d7c1)
+        * Cosmetics: remove trailing spaces. (a7852ea)
+        * Add a pkgconfig file for developers. (0186c4a)
+        * Install the shared library and dev headers. (1fec6fd)
+        * Make libqmenumodel a shared library. (2ebcae8)
 
-2012-10-08 12:37:52 +0200 Olivier Tilloy (a7852ea)
+2012-10-05 Olivier Tilloy
 
-	* Cosmetics: remove trailing spaces.
-
-2012-10-08 11:43:21 +0200 Olivier Tilloy (0186c4a)
-
-	* Add a pkgconfig file for developers.
-
-2012-10-08 11:13:55 +0200 Olivier Tilloy (1fec6fd)
-
-	* Install the shared library and dev headers.
-
-2012-10-08 10:52:20 +0200 Olivier Tilloy (2ebcae8)
-
-	* Make libqmenumodel a shared library.
-
-2012-10-05 15:26:44 +0000 Olivier Tilloy (a03e7e7)
-
-	* Port to Qt5.
-
-2012-10-05 13:26:10 +0000 Olivier Tilloy (c3fbab2)
-
-	* Tweaks to the structure of the code, and added example code..
+        * Port to Qt5. (a03e7e7)
+        * Tweaks to the structure of the code, and added example code..
           Approved by Renato Araujo Oliveira Filho, jenkins.
+          (c3fbab2)
+        * Fixed some deprecation warnings when generating the API
+          documentation. (900b75e)
+        * Fix coverage to ignore all moc files. (2956675)
+        * Use the automoc feature to simplify a lot the build system.
+          (82677d0)
+        * Fix packaging for Qt5. (8c51550)
+        * Port to Qt5. (81dbf09)
+        * Fix source dir for documentation generation. (696fba5)
 
-2012-10-05 15:23:11 +0200 Olivier Tilloy (900b75e)
+2012-10-04 Olivier Tilloy
 
-	* Fixed some deprecation warnings when generating the API
-          documentation.
+        * Fix variant conversion on 32-bits platforms. (5fb1863)
+        * Renamed source package to 'qmenumodel', and removed useless build
+          dependencies. (795bf87)
+        * Updated ignore rules. (5292d53)
+        * Updated ignore rules. (c81ecae)
+        * Do not install under "Ubuntu" prefix. (9fab6d5)
+        * Ignore clicks on menu items that do not have a submenu. (957046e)
+        * Updated TODO list. (8e65ebb)
+        * Updated examples/README to reflect name changes. (3fbfb27)
+        * Rename the source directories. (36cebbb)
+        * Add a TODO file. (62d2c4b)
+        * Fixed some #include statements. (1e045bb)
+        * Add instructions. (7a410b5)
+        * Minor doc fixes. (af778cf)
+        * Merged back doc fixes from Renato. (4385dad)
 
-2012-10-05 15:18:01 +0200 Olivier Tilloy (2956675)
+2012-10-04 Renato Araujo Oliveira Filho
 
-	* Fix coverage to ignore all moc files.
+        * Created doc source dir. (7961150)
 
-2012-10-05 15:13:34 +0200 Olivier Tilloy (82677d0)
+2012-10-04 Olivier Tilloy
 
-	* Use the automoc feature to simplify a lot the build system.
-
-2012-10-05 13:17:59 +0200 Olivier Tilloy (8c51550)
-
-	* Fix packaging for Qt5.
-
-2012-10-05 11:59:50 +0200 Olivier Tilloy (81dbf09)
-
-	* Port to Qt5.
-
-2012-10-05 11:50:07 +0200 Olivier Tilloy (696fba5)
-
-	* Fix source dir for documentation generation.
-
-2012-10-04 17:53:52 +0200 Olivier Tilloy (5fb1863)
-
-	* Fix variant conversion on 32-bits platforms.
-
-2012-10-04 17:42:30 +0200 Olivier Tilloy (795bf87)
-
-	* Renamed source package to 'qmenumodel', and removed useless build
-          dependencies.
-
-2012-10-04 17:31:08 +0200 Olivier Tilloy (5292d53)
-
-	* Updated ignore rules.
-
-2012-10-04 17:26:16 +0200 Olivier Tilloy (c81ecae)
-
-	* Updated ignore rules.
-
-2012-10-04 17:26:06 +0200 Olivier Tilloy (9fab6d5)
-
-	* Do not install under "Ubuntu" prefix.
-
-2012-10-04 17:16:14 +0200 Olivier Tilloy (957046e)
-
-	* Ignore clicks on menu items that do not have a submenu.
-
-2012-10-04 17:15:44 +0200 Olivier Tilloy (8e65ebb)
-
-	* Updated TODO list.
-
-2012-10-04 17:15:27 +0200 Olivier Tilloy (3fbfb27)
-
-	* Updated examples/README to reflect name changes.
-
-2012-10-04 17:12:09 +0200 Olivier Tilloy (36cebbb)
-
-	* Rename the source directories.
-
-2012-10-04 16:48:48 +0200 Olivier Tilloy (62d2c4b)
-
-	* Add a TODO file.
-
-2012-10-04 15:53:06 +0200 Olivier Tilloy (1e045bb)
-
-	* Fixed some #include statements.
-
-2012-10-04 15:35:35 +0200 Olivier Tilloy (7a410b5)
-
-	* Add instructions.
-
-2012-10-04 15:35:16 +0200 Olivier Tilloy (af778cf)
-
-	* Minor doc fixes.
-
-2012-10-04 15:20:54 +0200 Olivier Tilloy (4385dad)
-
-	* Merged back doc fixes from Renato.
-
-2012-10-04 10:17:58 -0300 Renato Araujo Oliveira Filho (7961150)
-
-	* Created doc source dir.
-
-2012-10-04 14:52:34 +0200 Olivier Tilloy (e14ab1e)
-
-	* Replace #include statements with forward declarations in
-          converter.h.
-
-2012-10-04 13:56:02 +0200 Olivier Tilloy (ba89bb2)
-
-	* Remove useless code from the Converter namespace.
-
-2012-10-04 13:40:02 +0200 Olivier Tilloy (445945d)
-
-	* Add examples.
-
-2012-10-04 12:39:55 +0200 Olivier Tilloy (37dd625)
-
-	* Remove a leftover dependency.
-
-2012-10-04 12:12:13 +0200 Olivier Tilloy (244ec05)
-
-	* Removed leftover examples infrastructure.
-
-2012-10-04 12:08:54 +0200 Olivier Tilloy (c2d5761)
-
-	* Fix a typo.
-
-2012-10-04 12:04:46 +0200 Olivier Tilloy (36426c5)
-
-	* Move the enums into a class that inherits QObject, so they can be
-          exposed and used directly from QML.
-
-2012-10-04 10:40:43 +0200 Olivier Tilloy (a9416eb)
-
-	* Fix signal parameter type, unaccessible in QMl otherwise.
-
-2012-10-04 09:31:10 +0200 Olivier Tilloy (facb9bf)
-
-	* Fix a typo.
-
-2012-10-04 08:51:45 +0200 Olivier Tilloy (57b1e3f)
-
-	* Remove the implementation of columnCount. According to the
+        * Replace #include statements with forward declarations in
+          converter.h. (e14ab1e)
+        * Remove useless code from the Converter namespace. (ba89bb2)
+        * Add examples. (445945d)
+        * Remove a leftover dependency. (37dd625)
+        * Removed leftover examples infrastructure. (244ec05)
+        * Fix a typo. (c2d5761)
+        * Move the enums into a class that inherits QObject, so they can be
+          exposed and used directly from QML. (36426c5)
+        * Fix signal parameter type, unaccessible in QMl otherwise. (a9416eb)
+        * Fix a typo. (facb9bf)
+        * Remove the implementation of columnCount. According to the
           documentation
           (http://doc.qt.digia.com/stable/model-view-programming.html#model-subclassing-reference),
           « List models do not provide this function because it is
-          already implemented in QAbstractListModel. »
+          already implemented in QAbstractListModel. » (57b1e3f)
+        * Fix a typo. (90bd3a7)
+        * Updated ignore rules. (63c4e47)
 
-2012-10-04 08:49:47 +0200 Olivier Tilloy (90bd3a7)
+2012-10-02 Olivier Tilloy
 
-	* Fix a typo.
+        * Add ignore rules. (0ce83ea)
 
-2012-10-04 08:30:40 +0200 Olivier Tilloy (63c4e47)
+2012-09-14 Renato Araujo Oliveira Filho
 
-	* Updated ignore rules.
+        * Fixed action state initialization. (759356c)
+        * Created function to convert from QVariant to GVariant. Moved
+          QStateAction controler from QACtionGroup. (ebe349e)
+        * Renamed Converter::parseGVariant. (2b9cf16)
 
-2012-10-02 18:58:33 +0200 Olivier Tilloy (0ce83ea)
+2012-09-13 Renato Araujo Oliveira Filho
 
-	* Add ignore rules.
+        * Appended comments on unit test. Added 'valid' property in
+          QStateAction. (7dec723)
+        * Created class QStateAction to use as GAction proxy. (a03360c)
 
-2012-09-14 16:54:28 -0300 Renato Araujo Oliveira Filho (759356c)
+2012-09-12 Renato Araujo Oliveira Filho
 
-	* Fixed action state initialization.
+        * Parse extra properties name to remove 'x-' and replace '-' to '_'.
+          (d2e99cf)
+        * Removed invalid examples. (48e027e)
+        * Created debian directory. (d09eaad)
+        * Created unit test for QDBusActionGroup. (9a62817)
+        * Added QML documentation. (a3aa532)
 
-2012-09-14 16:11:28 -0300 Renato Araujo Oliveira Filho (ebe349e)
+2012-09-11 Renato Araujo Oliveira Filho
 
-	* Created function to convert from QVariant to GVariant. Moved
-          QStateAction controler from QACtionGroup.
+        * Append the default licence header into source files. (638bcc9)
+        * Splitted qmenumodel plugin in two libraries to make it testable.
+          Create unit test for qmenumodel library. (6bacc0d)
 
-2012-09-14 09:46:29 -0300 Renato Araujo Oliveira Filho (2b9cf16)
+2012-09-06 Renato Araujo Oliveira Filho
 
-	* Renamed Converter::parseGVariant.
+        * Implemented QDBusActionGroup. (31f8103)
 
-2012-09-13 18:09:26 -0300 Renato Araujo Oliveira Filho (7dec723)
+2012-09-05 Renato Araujo Oliveira Filho
 
-	* Appended comments on unit test. Added 'valid' property in
-          QStateAction.
-
-2012-09-13 14:14:56 -0300 Renato Araujo Oliveira Filho (a03360c)
-
-	* Created class QStateAction to use as GAction proxy.
-
-2012-09-12 16:28:34 -0300 Renato Araujo Oliveira Filho (d2e99cf)
-
-	* Parse extra properties name to remove 'x-' and replace '-' to '_'.
-
-2012-09-12 16:09:38 -0300 Renato Araujo Oliveira Filho (48e027e)
-
-	* Removed invalid examples.
-
-2012-09-12 15:19:18 -0300 Renato Araujo Oliveira Filho (d09eaad)
-
-	* Created debian directory.
-
-2012-09-12 14:48:24 -0300 Renato Araujo Oliveira Filho (9a62817)
-
-	* Created unit test for QDBusActionGroup.
-
-2012-09-12 14:47:26 -0300 Renato Araujo Oliveira Filho (a3aa532)
-
-	* Added QML documentation.
-
-2012-09-11 20:24:27 -0300 Renato Araujo Oliveira Filho (638bcc9)
-
-	* Append the default licence header into source files.
-
-2012-09-11 17:57:08 -0300 Renato Araujo Oliveira Filho (6bacc0d)
-
-	* Splitted qmenumodel plugin in two libraries to make it testable.
-          Create unit test for qmenumodel library.
-
-2012-09-06 16:43:27 -0300 Renato Araujo Oliveira Filho (31f8103)
-
-	* Implemented QDBusActionGroup.
-
-2012-09-05 16:15:39 -0300 Renato Araujo Oliveira Filho (0dfd3d4)
-
-	* Initial import.
-
+        * Initial import. (0dfd3d4)
