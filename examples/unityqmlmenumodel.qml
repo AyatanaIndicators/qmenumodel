@@ -42,7 +42,7 @@ Item {
                 if (isSeparator) {
                     return separator;
                 }
-                else if (type == "com.canonical.unity.slider") {
+                else if (type == "org.ayatana.indicator.slider") {
                     listview.model.loadExtendedAttributes(index, {'min-icon': 'icon',
                                                                   'max-icon': 'icon'});
                     return slider;
