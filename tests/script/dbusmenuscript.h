@@ -24,9 +24,9 @@
 #include <QDBusInterface>
 #include <QPair>
 
-#define SCRIPT_SERVICE_NAME     "com.canonical.test"
-#define SCRIPT_OBJECT_PATH      "/com/canonical/test/menuscript"
-#define SCRIPT_INTERFACE_NAME   "com.canonical.test.menuscript"
+#define SCRIPT_SERVICE_NAME     "org.ayatana.test"
+#define SCRIPT_OBJECT_PATH      "/org/ayatana/test/menuscript"
+#define SCRIPT_INTERFACE_NAME   "org.ayatana.test.menuscript"
 
 #define MENU_SERVICE_NAME       SCRIPT_SERVICE_NAME ".menu"
 #define MENU_OBJECT_PATH        SCRIPT_OBJECT_PATH "/menu"

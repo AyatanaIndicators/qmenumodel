@@ -18,7 +18,7 @@
 
 """
 This example script exports a menu model on the session bus under the name
-com.canonical.testmenu and at the object path /com/canonical/testmenu.
+org.ayatana.testmenu and at the object path /org/ayatana/testmenu.
 The menu model contains items that have attributes with custom values, as well
 as sub-menus.
 """
@@ -29,8 +29,8 @@ from gi.repository import Gio
 from gi.repository import GLib
 
 
-BUS_NAME = 'com.canonical.testmenu'
-BUS_OBJECT_PATH = '/com/canonical/testmenu'
+BUS_NAME = 'org.ayatana.testmenu'
+BUS_OBJECT_PATH = '/org/ayatana/testmenu'
 
 def bus_acquired(bus, name):
     menu = Gio.Menu()
