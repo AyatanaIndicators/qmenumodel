@@ -42,7 +42,7 @@ def bus_acquired(bus, name):
     bar = Gio.MenuItem.new('bar', 'bar')
     bar.set_attribute_value('x-defaultvalue',
                             GLib.Variant.new_string('Hello World!'))
-    bar.set_attribute_value('x-canonical-currentvalue',
+    bar.set_attribute_value('x-ayatana-currentvalue',
                             GLib.Variant.new_string('awesome'))
     bar.set_attribute_value('x-velocity', GLib.Variant.new_uint64(83374))
     menu.append_item(bar)
