@@ -38,8 +38,8 @@
     QDBusMenuModel {
         id: menuModel
         busType: 1
-        busName: "com.ubuntu.menu"
-        objectPath: "com/ubuntu/menu"
+        busName: "org.ayatana.menu"
+        objectPath: "org/ayatana/menu"
     }
 
     ListView {

@@ -36,8 +36,8 @@
     QDBusActionGroup {
         id: actionGroup
         busType: 1
-        busName: "com.ubuntu.menu"
-        objectPath: "com/ubuntu/menu/actions"
+        busName: "org.ayatana.menu"
+        objectPath: "org/ayatana/menu/actions"
     }
 
     Button {
