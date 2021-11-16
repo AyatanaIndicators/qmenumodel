@@ -16,12 +16,12 @@
  * Authors: Lars Uebernickel <lars.uebernickel@canonical.com>
  */
 
-#include "unitymenumodel.h"
+#include "ayatanamenumodel.h"
 #include "converter.h"
 #include "actionstateparser.h"
-#include "unitymenumodelevents.h"
-#include "unitymenuaction.h"
-#include "unitymenuactionevents.h"
+#include "ayatanamenumodelevents.h"
+#include "ayatanamenuaction.h"
+#include "ayatanamenuactionevents.h"
 #include "logging.h"
 
 #include <QIcon>

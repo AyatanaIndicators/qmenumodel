@@ -16,9 +16,9 @@
  * Authors: Nick Dedekind <nick.dedekind@canonical.com>
  */
 
-#include "unitymenuaction.h"
-#include "unitymenumodel.h"
-#include "unitymenuactionevents.h"
+#include "ayatanamenuaction.h"
+#include "ayatanamenumodel.h"
+#include "ayatanamenuactionevents.h"
 
 UnityMenuAction::UnityMenuAction(QObject* parent)
     :   QObject(parent),

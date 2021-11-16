@@ -16,8 +16,8 @@
  * Authors: Nick Dedekind <nick.dedekind@canonical.com>
  */
 
-#ifndef UNITYMENUACTION_H
-#define UNITYMENUACTION_H
+#ifndef AYATANAMENUACTION_H
+#define AYATANAMENUACTION_H
 
 #include <QObject>
 #include <QVariant>
@@ -81,4 +81,4 @@ private:
     int m_index;
 };
 
-#endif // UNITYMENUACTIONGROUP_H
+#endif // AYATANAMENUACTIONGROUP_H

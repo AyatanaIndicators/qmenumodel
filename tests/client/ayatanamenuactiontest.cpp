@@ -17,8 +17,8 @@
  *      Nick Dedekind <nick.dedekind@canonical.com>
  */
 
-#include "unitymenumodel.h"
-#include "unitymenuaction.h"
+#include "ayatanamenumodel.h"
+#include "ayatanamenuaction.h"
 
 #include <QObject>
 #include <QtTest>

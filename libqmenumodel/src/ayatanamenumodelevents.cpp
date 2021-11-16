@@ -20,8 +20,8 @@
 #include <glib-object.h>
 #include <gio/gio.h>
 
-#include "unitymenumodelevents.h"
-#include "unitymenumodel.h"
+#include "ayatanamenumodelevents.h"
+#include "ayatanamenumodel.h"
 
 const QEvent::Type UnityMenuModelClearEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
 const QEvent::Type UnityMenuModelAddRowEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());

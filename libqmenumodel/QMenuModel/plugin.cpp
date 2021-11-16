@@ -22,8 +22,8 @@
 #include "qdbusmenumodel.h"
 #include "qdbusactiongroup.h"
 #include "qstateaction.h"
-#include "unitymenuaction.h"
-#include "unitymenumodel.h"
+#include "ayatanamenuaction.h"
+#include "ayatanamenumodel.h"
 
 #include <QtQml>
 

@@ -17,7 +17,7 @@
  *      Nicholas Dedekind <nick.dedekind@canonical.com
  */
 
-#include "unitymenuactionevents.h"
+#include "ayatanamenuactionevents.h"
 
 const QEvent::Type UnityMenuActionAddEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
 const QEvent::Type UnityMenuActionRemoveEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());

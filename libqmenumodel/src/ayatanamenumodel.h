@@ -16,8 +16,8 @@
  * Authors: Lars Uebernickel <lars.uebernickel@canonical.com>
  */
 
-#ifndef UNITYMENUMODEL_H
-#define UNITYMENUMODEL_H
+#ifndef AYATANAMENUMODEL_H
+#define AYATANAMENUMODEL_H
 
 #include <QAbstractListModel>
 class ActionStateParser;
