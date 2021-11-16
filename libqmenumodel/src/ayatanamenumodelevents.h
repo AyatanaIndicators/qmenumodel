@@ -25,45 +25,45 @@
 
 typedef struct _GtkMenuTrackerItem GtkMenuTrackerItem;
 
-/* Event for a unitymenumodel clear */
-class UnityMenuModelClearEvent : public QEvent
+/* Event for a ayatanamenumodel clear */
+class AyatanaMenuModelClearEvent : public QEvent
 {
 public:
     static const QEvent::Type eventType;
-    UnityMenuModelClearEvent(bool reset);
+    AyatanaMenuModelClearEvent(bool reset);
 
     bool reset;
 };
 
-/* Event for a row add for unitymenumodel */
-class UnityMenuModelAddRowEvent : public QEvent
+/* Event for a row add for ayatanamenumodel */
+class AyatanaMenuModelAddRowEvent : public QEvent
 {
 public:
     static const QEvent::Type eventType;
-    UnityMenuModelAddRowEvent(GPtrArray *_items, int position);
-    ~UnityMenuModelAddRowEvent();
+    AyatanaMenuModelAddRowEvent(GPtrArray *_items, int position);
+    ~AyatanaMenuModelAddRowEvent();
 
     GPtrArray *items;
     int position;
 };
 
-/* Event for a row remove for unitymenumodel */
-class UnityMenuModelRemoveRowEvent : public QEvent
+/* Event for a row remove for ayatanamenumodel */
+class AyatanaMenuModelRemoveRowEvent : public QEvent
 {
 public:
     static const QEvent::Type eventType;
-    UnityMenuModelRemoveRowEvent(int position, int nItems);
+    AyatanaMenuModelRemoveRowEvent(int position, int nItems);
 
     int position;
     int nItems;
 };
 
-/* Event for a row data change for unitymenumodel */
-class UnityMenuModelDataChangeEvent : public QEvent
+/* Event for a row data change for ayatanamenumodel */
+class AyatanaMenuModelDataChangeEvent : public QEvent
 {
 public:
     static const QEvent::Type eventType;
-    UnityMenuModelDataChangeEvent(int position);
+    AyatanaMenuModelDataChangeEvent(int position);
 
     int position;
 };

@@ -23,7 +23,7 @@
 #include <QObject>
 #include <QtTest>
 
-class UnityMenuActionTest : public QObject
+class AyatanaMenuActionTest : public QObject
 {
     Q_OBJECT
 private:
@@ -35,8 +35,8 @@ private Q_SLOTS:
      */
     void testDestroyAfterModel()
     {
-        UnityMenuModel* model = new UnityMenuModel;
-        UnityMenuAction* action = new UnityMenuAction;
+        AyatanaMenuModel* model = new AyatanaMenuModel;
+        AyatanaMenuAction* action = new AyatanaMenuAction;
         action->setModel(model);
 
         delete model;
@@ -48,8 +48,8 @@ private Q_SLOTS:
      */
     void testDestroyBeforeModel()
     {
-        UnityMenuModel* model = new UnityMenuModel;
-        UnityMenuAction* action = new UnityMenuAction;
+        AyatanaMenuModel* model = new AyatanaMenuModel;
+        AyatanaMenuAction* action = new AyatanaMenuAction;
         action->setModel(model);
 
         delete action;
@@ -57,6 +57,6 @@ private Q_SLOTS:
     }
 };
 
-QTEST_MAIN(UnityMenuActionTest)
+QTEST_MAIN(AyatanaMenuActionTest)
 
-#include "unitymenuactiontest.moc"
+#include "ayatanamenuactiontest.moc"

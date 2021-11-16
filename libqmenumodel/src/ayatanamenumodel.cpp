@@ -35,12 +35,12 @@ extern "C" {
   #include "gtk/gtksimpleactionobserver.h"
 }
 
-Q_LOGGING_CATEGORY(unitymenumodel, "qmenumodel.unitymenumodel", QtCriticalMsg)
+Q_LOGGING_CATEGORY(ayatanamenumodel, "qmenumodel.ayatanamenumodel", QtCriticalMsg)
 
-G_DEFINE_QUARK (UNITY_MENU_MODEL, unity_menu_model)
-G_DEFINE_QUARK (UNITY_SUBMENU_MODEL, unity_submenu_model)
-G_DEFINE_QUARK (UNITY_MENU_ITEM_EXTENDED_ATTRIBUTES, unity_menu_item_extended_attributes)
-G_DEFINE_QUARK (UNITY_MENU_ACTION, unity_menu_action)
+G_DEFINE_QUARK (AYATANA_MENU_MODEL, ayatana_menu_model)
+G_DEFINE_QUARK (AYATANA_SUBMENU_MODEL, ayatana_submenu_model)
+G_DEFINE_QUARK (AYATANA_MENU_ITEM_EXTENDED_ATTRIBUTES, ayatana_menu_item_extended_attributes)
+G_DEFINE_QUARK (AYATANA_MENU_ACTION, ayatana_menu_action)
 
 
 enum MenuRoles {
@@ -59,12 +59,12 @@ enum MenuRoles {
     HasSubmenuRole
 };
 
-class UnityMenuModelPrivate
+class AyatanaMenuModelPrivate
 {
 public:
-    UnityMenuModelPrivate(UnityMenuModel *model);
-    UnityMenuModelPrivate(const UnityMenuModelPrivate& other, UnityMenuModel *model);
-    ~UnityMenuModelPrivate();
+    AyatanaMenuModelPrivate(AyatanaMenuModel *model);
+    AyatanaMenuModelPrivate(const AyatanaMenuModelPrivate& other, AyatanaMenuModel *model);
+    ~AyatanaMenuModelPrivate();
 
     void clearItems(bool resetModel=true);
     void clearName();
@@ -72,7 +72,7 @@ public:
     void updateMenuModel();
     QVariant itemState(GtkMenuTrackerItem *item);
 
-    UnityMenuModel *model;
+    AyatanaMenuModel *model;
     GtkActionMuxer *muxer;
     GtkMenuTracker *menutracker;
     GSequence *items;
@@ -84,7 +84,7 @@ public:
     QByteArray menuObjectPath;
     QHash<QByteArray, int> roles;
     ActionStateParser* actionStateParser;
-    QHash<UnityMenuAction*, GtkSimpleActionObserver*> registeredActions;
+    QHash<AyatanaMenuAction*, GtkSimpleActionObserver*> registeredActions;
     bool destructorGuard;
 
     static void nameAppeared(GDBusConnection *connection, const gchar *name, const gchar *owner, gpointer user_data);
@@ -101,19 +101,19 @@ public:
     static void registeredActionStateChanged(GtkSimpleActionObserver *observer_item, const gchar *action_name, GVariant *state);
     static void registeredActionRemoved(GtkSimpleActionObserver *observer_item, const gchar *action_name);
 
-    gchar * fullActionName(UnityMenuAction *action);
-    void updateRegisteredAction(UnityMenuAction *action);
+    gchar * fullActionName(AyatanaMenuAction *action);
+    void updateRegisteredAction(AyatanaMenuAction *action);
 };
 
 void menu_item_free (gpointer data)
 {
     GtkMenuTrackerItem *item = (GtkMenuTrackerItem *) data;
 
-    g_signal_handlers_disconnect_by_func (item, (gpointer) UnityMenuModelPrivate::menuItemChanged, NULL);
+    g_signal_handlers_disconnect_by_func (item, (gpointer) AyatanaMenuModelPrivate::menuItemChanged, NULL);
     g_object_unref (item);
 }
 
-UnityMenuModelPrivate::UnityMenuModelPrivate(UnityMenuModel *model)
+AyatanaMenuModelPrivate::AyatanaMenuModelPrivate(AyatanaMenuModel *model)
 {
     this->model = model;
     this->menutracker = NULL;
@@ -127,7 +127,7 @@ UnityMenuModelPrivate::UnityMenuModelPrivate(UnityMenuModel *model)
     this->items = g_sequence_new (menu_item_free);
 }
 
-UnityMenuModelPrivate::UnityMenuModelPrivate(const UnityMenuModelPrivate& other, UnityMenuModel *model)
+AyatanaMenuModelPrivate::AyatanaMenuModelPrivate(const AyatanaMenuModelPrivate& other, AyatanaMenuModel *model)
 {
     this->model = model;
     this->menutracker = NULL;
@@ -141,7 +141,7 @@ UnityMenuModelPrivate::UnityMenuModelPrivate(const UnityMenuModelPrivate& other,
     this->items = g_sequence_new (menu_item_free);
 }
 
-UnityMenuModelPrivate::~UnityMenuModelPrivate()
+AyatanaMenuModelPrivate::~AyatanaMenuModelPrivate()
 {
     this->destructorGuard = true;
     this->clearItems(false);
@@ -151,7 +151,7 @@ UnityMenuModelPrivate::~UnityMenuModelPrivate()
     g_clear_object (&this->muxer);
     g_clear_object (&this->connection);
 
-    QHash<UnityMenuAction*, GtkSimpleActionObserver*>::const_iterator it = this->registeredActions.constBegin();
+    QHash<AyatanaMenuAction*, GtkSimpleActionObserver*>::const_iterator it = this->registeredActions.constBegin();
     for (; it != this->registeredActions.constEnd(); ++it) {
         g_object_unref(it.value());
         it.key()->setModel(NULL);
@@ -162,13 +162,13 @@ UnityMenuModelPrivate::~UnityMenuModelPrivate()
         g_bus_unwatch_name (this->nameWatchId);
 }
 
-void UnityMenuModelPrivate::clearItems(bool resetModel)
+void AyatanaMenuModelPrivate::clearItems(bool resetModel)
 {
-    UnityMenuModelClearEvent ummce(resetModel);
+    AyatanaMenuModelClearEvent ummce(resetModel);
     QCoreApplication::sendEvent(model, &ummce);
 }
 
-void UnityMenuModelPrivate::clearName()
+void AyatanaMenuModelPrivate::clearName()
 {
     this->clearItems();
 
@@ -180,7 +180,7 @@ void UnityMenuModelPrivate::clearName()
     Q_EMIT model->nameOwnerChanged (this->nameOwner);
 }
 
-void UnityMenuModelPrivate::updateActions()
+void AyatanaMenuModelPrivate::updateActions()
 {
     Q_FOREACH (QString prefix, this->actions.keys())
         gtk_action_muxer_remove (this->muxer, prefix.toUtf8());
@@ -198,7 +198,7 @@ void UnityMenuModelPrivate::updateActions()
     }
 }
 
-void UnityMenuModelPrivate::updateMenuModel()
+void AyatanaMenuModelPrivate::updateMenuModel()
 {
     this->clearItems();
     g_clear_pointer (&this->menutracker, gtk_menu_tracker_free);
@@ -215,7 +215,7 @@ void UnityMenuModelPrivate::updateMenuModel()
     }
 }
 
-QVariant UnityMenuModelPrivate::itemState(GtkMenuTrackerItem *item)
+QVariant AyatanaMenuModelPrivate::itemState(GtkMenuTrackerItem *item)
 {
     QVariant result;
 
@@ -230,9 +230,9 @@ QVariant UnityMenuModelPrivate::itemState(GtkMenuTrackerItem *item)
     return result;
 }
 
-void UnityMenuModelPrivate::nameAppeared(GDBusConnection *connection, const gchar *name, const gchar *owner, gpointer user_data)
+void AyatanaMenuModelPrivate::nameAppeared(GDBusConnection *connection, const gchar *name, const gchar *owner, gpointer user_data)
 {
-    UnityMenuModelPrivate *priv = (UnityMenuModelPrivate *)user_data;
+    AyatanaMenuModelPrivate *priv = (AyatanaMenuModelPrivate *)user_data;
 
     priv->connection = (GDBusConnection *) g_object_ref (connection);
     priv->nameOwner = owner;
@@ -243,74 +243,74 @@ void UnityMenuModelPrivate::nameAppeared(GDBusConnection *connection, const gcha
     Q_EMIT priv->model->nameOwnerChanged (priv->nameOwner);
 }
 
-void UnityMenuModelPrivate::nameVanished(GDBusConnection *connection, const gchar *name, gpointer user_data)
+void AyatanaMenuModelPrivate::nameVanished(GDBusConnection *connection, const gchar *name, gpointer user_data)
 {
-    UnityMenuModelPrivate *priv = (UnityMenuModelPrivate *)user_data;
+    AyatanaMenuModelPrivate *priv = (AyatanaMenuModelPrivate *)user_data;
 
     priv->clearName();
 }
 
-void UnityMenuModelPrivate::menuItemInserted(GPtrArray *items, gint position, gpointer user_data)
+void AyatanaMenuModelPrivate::menuItemInserted(GPtrArray *items, gint position, gpointer user_data)
 {
-    UnityMenuModelPrivate *priv = (UnityMenuModelPrivate *)user_data;
+    AyatanaMenuModelPrivate *priv = (AyatanaMenuModelPrivate *)user_data;
 
-    UnityMenuModelAddRowEvent ummare(items, position);
+    AyatanaMenuModelAddRowEvent ummare(items, position);
     QCoreApplication::sendEvent(priv->model, &ummare);
 }
 
-void UnityMenuModelPrivate::menuItemRemoved(gint position, gint n_items, gpointer user_data)
+void AyatanaMenuModelPrivate::menuItemRemoved(gint position, gint n_items, gpointer user_data)
 {
-    UnityMenuModelPrivate *priv = (UnityMenuModelPrivate *)user_data;
+    AyatanaMenuModelPrivate *priv = (AyatanaMenuModelPrivate *)user_data;
 
-    UnityMenuModelRemoveRowEvent ummrre(position, n_items);
+    AyatanaMenuModelRemoveRowEvent ummrre(position, n_items);
     QCoreApplication::sendEvent(priv->model, &ummrre);
 }
 
-void UnityMenuModelPrivate::menuItemChanged(GObject *object, GParamSpec *pspec, gpointer user_data)
+void AyatanaMenuModelPrivate::menuItemChanged(GObject *object, GParamSpec *pspec, gpointer user_data)
 {
     GSequenceIter *it = (GSequenceIter *) user_data;
     GtkMenuTrackerItem *item;
     GtkActionObservable *muxer;
-    UnityMenuModel *model;
+    AyatanaMenuModel *model;
     gint position;
 
     item = (GtkMenuTrackerItem *) g_sequence_get (it);
     muxer = _gtk_menu_tracker_item_get_observable (item);
-    model = (UnityMenuModel *) g_object_get_qdata (G_OBJECT (item), unity_menu_model_quark ());
+    model = (AyatanaMenuModel *) g_object_get_qdata (G_OBJECT (item), ayatana_menu_model_quark ());
     position = g_sequence_iter_get_position (it);
 
-    UnityMenuModelDataChangeEvent ummdce(position);
+    AyatanaMenuModelDataChangeEvent ummdce(position);
     QCoreApplication::sendEvent(model, &ummdce);
 }
 
-UnityMenuModel::UnityMenuModel(QObject *parent):
+AyatanaMenuModel::AyatanaMenuModel(QObject *parent):
     QAbstractListModel(parent)
 {
-    priv = new UnityMenuModelPrivate(this);
+    priv = new AyatanaMenuModelPrivate(this);
 }
 
-UnityMenuModel::UnityMenuModel(const UnityMenuModelPrivate& other, UnityMenuModel *parent):
+AyatanaMenuModel::AyatanaMenuModel(const AyatanaMenuModelPrivate& other, AyatanaMenuModel *parent):
     QAbstractListModel(parent)
 {
-    priv = new UnityMenuModelPrivate(other, this);
+    priv = new AyatanaMenuModelPrivate(other, this);
 }
 
-UnityMenuModel::~UnityMenuModel()
+AyatanaMenuModel::~AyatanaMenuModel()
 {
     delete priv;
 }
 
-QByteArray UnityMenuModel::busName() const
+QByteArray AyatanaMenuModel::busName() const
 {
     return priv->busName;
 }
 
-QByteArray UnityMenuModel::nameOwner() const
+QByteArray AyatanaMenuModel::nameOwner() const
 {
     return priv->nameOwner;
 }
 
-void UnityMenuModel::setBusName(const QByteArray &name)
+void AyatanaMenuModel::setBusName(const QByteArray &name)
 {
     if (name == priv->busName)
         return;
@@ -321,40 +321,40 @@ void UnityMenuModel::setBusName(const QByteArray &name)
         g_bus_unwatch_name (priv->nameWatchId);
 
     priv->nameWatchId = g_bus_watch_name (G_BUS_TYPE_SESSION, name.constData(), G_BUS_NAME_WATCHER_FLAGS_AUTO_START,
-                                          UnityMenuModelPrivate::nameAppeared, UnityMenuModelPrivate::nameVanished,
+                                          AyatanaMenuModelPrivate::nameAppeared, AyatanaMenuModelPrivate::nameVanished,
                                           priv, NULL);
     priv->busName = name;
     Q_EMIT busNameChanged (priv->busName);
 }
 
-QVariantMap UnityMenuModel::actions() const
+QVariantMap AyatanaMenuModel::actions() const
 {
     return priv->actions;
 }
 
-void UnityMenuModel::setActions(const QVariantMap &actions)
+void AyatanaMenuModel::setActions(const QVariantMap &actions)
 {
     priv->actions = actions;
     priv->updateActions();
 }
 
-QByteArray UnityMenuModel::menuObjectPath() const
+QByteArray AyatanaMenuModel::menuObjectPath() const
 {
     return priv->menuObjectPath;
 }
 
-void UnityMenuModel::setMenuObjectPath(const QByteArray &path)
+void AyatanaMenuModel::setMenuObjectPath(const QByteArray &path)
 {
     priv->menuObjectPath = path;
     priv->updateMenuModel();
 }
 
-ActionStateParser* UnityMenuModel::actionStateParser() const
+ActionStateParser* AyatanaMenuModel::actionStateParser() const
 {
     return priv->actionStateParser;
 }
 
-void UnityMenuModel::setActionStateParser(ActionStateParser* actionStateParser)
+void AyatanaMenuModel::setActionStateParser(ActionStateParser* actionStateParser)
 {
     if (priv->actionStateParser != actionStateParser) {
         priv->actionStateParser = actionStateParser;
@@ -362,12 +362,12 @@ void UnityMenuModel::setActionStateParser(ActionStateParser* actionStateParser)
     }
 }
 
-int UnityMenuModel::rowCount(const QModelIndex &parent) const
+int AyatanaMenuModel::rowCount(const QModelIndex &parent) const
 {
     return !parent.isValid() ? g_sequence_get_length (priv->items) : 0;
 }
 
-int UnityMenuModel::columnCount(const QModelIndex &parent) const
+int AyatanaMenuModel::columnCount(const QModelIndex &parent) const
 {
     return 1;
 }
@@ -417,7 +417,7 @@ static QString iconUri(GIcon *icon)
     return uri;
 }
 
-QVariant UnityMenuModel::data(const QModelIndex &index, int role) const
+QVariant AyatanaMenuModel::data(const QModelIndex &index, int role) const
 {
     GSequenceIter *it;
     GtkMenuTrackerItem *item;
@@ -471,7 +471,7 @@ QVariant UnityMenuModel::data(const QModelIndex &index, int role) const
         }
 
         case ExtendedAttributesRole: {
-            QVariantMap *map = (QVariantMap *) g_object_get_qdata (G_OBJECT (item), unity_menu_item_extended_attributes_quark ());
+            QVariantMap *map = (QVariantMap *) g_object_get_qdata (G_OBJECT (item), ayatana_menu_item_extended_attributes_quark ());
             return map ? *map : QVariant();
         }
 
@@ -505,17 +505,17 @@ QVariant UnityMenuModel::data(const QModelIndex &index, int role) const
     }
 }
 
-QModelIndex UnityMenuModel::index(int row, int column, const QModelIndex &parent) const
+QModelIndex AyatanaMenuModel::index(int row, int column, const QModelIndex &parent) const
 {
     return createIndex(row, column);
 }
 
-QModelIndex UnityMenuModel::parent(const QModelIndex &index) const
+QModelIndex AyatanaMenuModel::parent(const QModelIndex &index) const
 {
     return QModelIndex();
 }
 
-QHash<int, QByteArray> UnityMenuModel::roleNames() const
+QHash<int, QByteArray> AyatanaMenuModel::roleNames() const
 {
     QHash<int, QByteArray> names;
 
@@ -536,11 +536,11 @@ QHash<int, QByteArray> UnityMenuModel::roleNames() const
     return names;
 }
 
-QObject * UnityMenuModel::submenu(int position, QQmlComponent* actionStateParser)
+QObject * AyatanaMenuModel::submenu(int position, QQmlComponent* actionStateParser)
 {
     GSequenceIter *it;
     GtkMenuTrackerItem *item;
-    UnityMenuModel *model;
+    AyatanaMenuModel *model;
 
     it = g_sequence_get_iter_at_pos (priv->items, position);
     if (g_sequence_iter_is_end (it)) {
@@ -552,9 +552,9 @@ QObject * UnityMenuModel::submenu(int position, QQmlComponent* actionStateParser
         return NULL;
     }
 
-    model = (UnityMenuModel *) g_object_get_qdata (G_OBJECT (item), unity_submenu_model_quark ());
+    model = (AyatanaMenuModel *) g_object_get_qdata (G_OBJECT (item), ayatana_submenu_model_quark ());
     if (model == NULL) {
-        model = new UnityMenuModel(*priv, this);
+        model = new AyatanaMenuModel(*priv, this);
 
         if (actionStateParser) {
             ActionStateParser* parser = qobject_cast<ActionStateParser*>(actionStateParser->create());
@@ -564,10 +564,10 @@ QObject * UnityMenuModel::submenu(int position, QQmlComponent* actionStateParser
         }
 
         model->priv->menutracker = gtk_menu_tracker_new_for_item_submenu (item,
-                                                                          UnityMenuModelPrivate::menuItemInserted,
-                                                                          UnityMenuModelPrivate::menuItemRemoved,
+                                                                          AyatanaMenuModelPrivate::menuItemInserted,
+                                                                          AyatanaMenuModelPrivate::menuItemRemoved,
                                                                           model->priv);
-        g_object_set_qdata (G_OBJECT (item), unity_submenu_model_quark (), model);
+        g_object_set_qdata (G_OBJECT (item), ayatana_submenu_model_quark (), model);
     }
 
     return model;
@@ -649,7 +649,7 @@ static QString qtify_name(const char *name)
     return result;
 }
 
-bool UnityMenuModel::loadExtendedAttributes(int position, const QVariantMap &schema)
+bool AyatanaMenuModel::loadExtendedAttributes(int position, const QVariantMap &schema)
 {
     GSequenceIter *it;
     GtkMenuTrackerItem *item;
@@ -673,7 +673,7 @@ bool UnityMenuModel::loadExtendedAttributes(int position, const QVariantMap &sch
 
         GVariant *value = gtk_menu_tracker_item_get_attribute_value (item, name.toUtf8(), NULL);
         if (value == NULL) {
-            qCWarning(unitymenumodel, "loadExtendedAttributes: menu item does not contain '%s'", it.key().toUtf8().constData());
+            qCWarning(ayatanamenumodel, "loadExtendedAttributes: menu item does not contain '%s'", it.key().toUtf8().constData());
             continue;
         }
 
@@ -681,20 +681,20 @@ bool UnityMenuModel::loadExtendedAttributes(int position, const QVariantMap &sch
         if (qvalue.isValid())
             extendedAttrs->insert(qtify_name (name.toUtf8()), qvalue);
         else
-            qCWarning(unitymenumodel, "loadExtendedAttributes: key '%s' is of type '%s' (expected '%s')",
+            qCWarning(ayatanamenumodel, "loadExtendedAttributes: key '%s' is of type '%s' (expected '%s')",
                      name.toUtf8().constData(), g_variant_get_type_string(value), type.constData());
 
         g_variant_unref (value);
     }
 
-    g_object_set_qdata_full (G_OBJECT (item), unity_menu_item_extended_attributes_quark (),
+    g_object_set_qdata_full (G_OBJECT (item), ayatana_menu_item_extended_attributes_quark (),
                              extendedAttrs, freeExtendedAttrs);
 
     Q_EMIT dataChanged(index(position, 0), index(position, 0), QVector<int>() << ExtendedAttributesRole);
     return true;
 }
 
-QVariant UnityMenuModel::get(int row, const QByteArray &role)
+QVariant AyatanaMenuModel::get(int row, const QByteArray &role)
 {
     if (priv->roles.isEmpty()) {
         QHash<int, QByteArray> names = roleNames();
@@ -705,7 +705,7 @@ QVariant UnityMenuModel::get(int row, const QByteArray &role)
     return this->data(this->index(row, 0), priv->roles[role]);
 }
 
-void UnityMenuModel::activate(int index, const QVariant& parameter)
+void AyatanaMenuModel::activate(int index, const QVariant& parameter)
 {
     GSequenceIter *it;
     GtkMenuTrackerItem *item;
@@ -736,7 +736,7 @@ void UnityMenuModel::activate(int index, const QVariant& parameter)
     }
 }
 
-void UnityMenuModel::aboutToShow(int index)
+void AyatanaMenuModel::aboutToShow(int index)
 {
     GSequenceIter *it = g_sequence_get_iter_at_pos (priv->items, index);
     if (g_sequence_iter_is_end (it)) {
@@ -750,10 +750,10 @@ void UnityMenuModel::aboutToShow(int index)
 
     quint64 actionTag;
     if (gtk_menu_tracker_item_get_attribute (item, "qtubuntu-tag", "t", &actionTag)) {
-        // Child UnityMenuModel have priv->connection null, so climb to the parent until we find a non null one
-        UnityMenuModelPrivate *privToUse = priv;
+        // Child AyatanaMenuModel have priv->connection null, so climb to the parent until we find a non null one
+        AyatanaMenuModelPrivate *privToUse = priv;
         while (privToUse && !privToUse->connection) {
-            auto pModel = dynamic_cast<UnityMenuModel*>(privToUse->model->QObject::parent());
+            auto pModel = dynamic_cast<AyatanaMenuModel*>(privToUse->model->QObject::parent());
             if (pModel) {
                 privToUse = pModel->priv;
             } else {
@@ -777,17 +777,17 @@ void UnityMenuModel::aboutToShow(int index)
     }
 }
 
-void UnityMenuModel::activateByVariantString(int index, const QString& parameter)
+void AyatanaMenuModel::activateByVariantString(int index, const QString& parameter)
 {
     activate(index, Converter::toQVariantFromVariantString(parameter));
 }
 
-void UnityMenuModel::changeStateByVariantString(int index, const QString& parameter)
+void AyatanaMenuModel::changeStateByVariantString(int index, const QString& parameter)
 {
     changeState(index, Converter::toQVariantFromVariantString(parameter));
 }
 
-void UnityMenuModel::changeState(int index, const QVariant& parameter)
+void AyatanaMenuModel::changeState(int index, const QVariant& parameter)
 {
     GSequenceIter *it;
     GtkMenuTrackerItem* item;
@@ -820,10 +820,10 @@ void UnityMenuModel::changeState(int index, const QVariant& parameter)
 }
 
 
-bool UnityMenuModel::event(QEvent* e)
+bool AyatanaMenuModel::event(QEvent* e)
 {
-    if (e->type() == UnityMenuModelClearEvent::eventType) {
-        UnityMenuModelClearEvent *emmce = static_cast<UnityMenuModelClearEvent*>(e);
+    if (e->type() == AyatanaMenuModelClearEvent::eventType) {
+        AyatanaMenuModelClearEvent *emmce = static_cast<AyatanaMenuModelClearEvent*>(e);
 
         GSequenceIter *begin;
         GSequenceIter *end;
@@ -839,8 +839,8 @@ bool UnityMenuModel::event(QEvent* e)
             endResetModel();
 
         return true;
-    } else if (e->type() == UnityMenuModelAddRowEvent::eventType) {
-        UnityMenuModelAddRowEvent *ummrce = static_cast<UnityMenuModelAddRowEvent*>(e);
+    } else if (e->type() == AyatanaMenuModelAddRowEvent::eventType) {
+        AyatanaMenuModelAddRowEvent *ummrce = static_cast<AyatanaMenuModelAddRowEvent*>(e);
 
         GSequenceIter *it;
         it = g_sequence_get_iter_at_pos (priv->items, ummrce->position);
@@ -850,14 +850,14 @@ bool UnityMenuModel::event(QEvent* e)
         for (gint i = ummrce->items->len - 1; i >= 0; --i) {
             GtkMenuTrackerItem *item = (GtkMenuTrackerItem*)g_ptr_array_index(ummrce->items, i);
             it = g_sequence_insert_before (it, g_object_ref (item));
-            g_object_set_qdata (G_OBJECT (item), unity_menu_model_quark (), this);
-            g_signal_connect (item, "notify", G_CALLBACK (UnityMenuModelPrivate::menuItemChanged), it);
+            g_object_set_qdata (G_OBJECT (item), ayatana_menu_model_quark (), this);
+            g_signal_connect (item, "notify", G_CALLBACK (AyatanaMenuModelPrivate::menuItemChanged), it);
         }
 
         endInsertRows();
         return true;
-    } else if (e->type() == UnityMenuModelRemoveRowEvent::eventType) {
-        UnityMenuModelRemoveRowEvent *ummrre = static_cast<UnityMenuModelRemoveRowEvent*>(e);
+    } else if (e->type() == AyatanaMenuModelRemoveRowEvent::eventType) {
+        AyatanaMenuModelRemoveRowEvent *ummrre = static_cast<AyatanaMenuModelRemoveRowEvent*>(e);
 
         beginRemoveRows(QModelIndex(), ummrre->position, ummrre->position + ummrre->nItems - 1);
         for (int i = 0; i < ummrre->nItems; ++i) {
@@ -869,8 +869,8 @@ bool UnityMenuModel::event(QEvent* e)
         endRemoveRows();
 
         return true;
-    } else if (e->type() == UnityMenuModelDataChangeEvent::eventType) {
-        UnityMenuModelDataChangeEvent *ummdce = static_cast<UnityMenuModelDataChangeEvent*>(e);
+    } else if (e->type() == AyatanaMenuModelDataChangeEvent::eventType) {
+        AyatanaMenuModelDataChangeEvent *ummdce = static_cast<AyatanaMenuModelDataChangeEvent*>(e);
 
         Q_EMIT dataChanged(index(ummdce->position, 0), index(ummdce->position, 0));
         return true;
@@ -878,7 +878,7 @@ bool UnityMenuModel::event(QEvent* e)
     return QAbstractListModel::event(e);
 }
 
-void UnityMenuModel::registerAction(UnityMenuAction* action)
+void AyatanaMenuModel::registerAction(AyatanaMenuAction* action)
 {
     if (priv->destructorGuard)
         return;
@@ -886,12 +886,12 @@ void UnityMenuModel::registerAction(UnityMenuAction* action)
     if (!priv->registeredActions.contains(action)) {
         GtkSimpleActionObserver* observer_item;
         observer_item = gtk_simple_action_observer_new(GTK_ACTION_OBSERVABLE (priv->muxer),
-                                                     UnityMenuModelPrivate::registeredActionAdded,
-                                                     UnityMenuModelPrivate::registeredActionEnabledChanged,
-                                                     UnityMenuModelPrivate::registeredActionStateChanged,
-                                                     UnityMenuModelPrivate::registeredActionRemoved);
+                                                     AyatanaMenuModelPrivate::registeredActionAdded,
+                                                     AyatanaMenuModelPrivate::registeredActionEnabledChanged,
+                                                     AyatanaMenuModelPrivate::registeredActionStateChanged,
+                                                     AyatanaMenuModelPrivate::registeredActionRemoved);
 
-        g_object_set_qdata (G_OBJECT (observer_item), unity_menu_action_quark (), action);
+        g_object_set_qdata (G_OBJECT (observer_item), ayatana_menu_action_quark (), action);
 
         priv->registeredActions[action] = observer_item;
 
@@ -902,7 +902,7 @@ void UnityMenuModel::registerAction(UnityMenuAction* action)
     }
 }
 
-void UnityMenuModel::unregisterAction(UnityMenuAction* action)
+void AyatanaMenuModel::unregisterAction(AyatanaMenuAction* action)
 {
     if (priv->destructorGuard)
         return;
@@ -923,7 +923,7 @@ void UnityMenuModel::unregisterAction(UnityMenuAction* action)
  * section or submenu with "action-namespace" set, this namespace
  * is prepended to @action->name()
  */
-char * UnityMenuModelPrivate::fullActionName(UnityMenuAction *action)
+char * AyatanaMenuModelPrivate::fullActionName(AyatanaMenuAction *action)
 {
     GSequenceIter *iter;
     QByteArray bytes;
@@ -951,7 +951,7 @@ char * UnityMenuModelPrivate::fullActionName(UnityMenuAction *action)
     return g_strdup (name);
 }
 
-void UnityMenuModelPrivate::updateRegisteredAction(UnityMenuAction *action)
+void AyatanaMenuModelPrivate::updateRegisteredAction(AyatanaMenuAction *action)
 {
     GtkSimpleActionObserver *observer_item;
     gchar *action_name;
@@ -969,7 +969,7 @@ void UnityMenuModelPrivate::updateRegisteredAction(UnityMenuAction *action)
     if (g_action_group_query_action (G_ACTION_GROUP (this->muxer), action_name,
                                      &enabled, NULL, NULL, NULL, &state))
     {
-        UnityMenuActionAddEvent umaae(enabled, Converter::toQVariant(state));
+        AyatanaMenuActionAddEvent umaae(enabled, Converter::toQVariant(state));
         QCoreApplication::sendEvent(action, &umaae);
 
         if (state) {
@@ -980,19 +980,19 @@ void UnityMenuModelPrivate::updateRegisteredAction(UnityMenuAction *action)
     g_free(action_name);
 }
 
-void UnityMenuModel::onRegisteredActionNameChanged(const QString& name)
+void AyatanaMenuModel::onRegisteredActionNameChanged(const QString& name)
 {
-    priv->updateRegisteredAction(qobject_cast<UnityMenuAction*>(sender()));
+    priv->updateRegisteredAction(qobject_cast<AyatanaMenuAction*>(sender()));
 }
 
-void UnityMenuModel::onRegisteredActionIndexChanged(int index)
+void AyatanaMenuModel::onRegisteredActionIndexChanged(int index)
 {
-    priv->updateRegisteredAction(qobject_cast<UnityMenuAction*>(sender()));
+    priv->updateRegisteredAction(qobject_cast<AyatanaMenuAction*>(sender()));
 }
 
-void UnityMenuModel::onRegisteredActionActivated(const QVariant& parameter)
+void AyatanaMenuModel::onRegisteredActionActivated(const QVariant& parameter)
 {
-    UnityMenuAction* action = qobject_cast<UnityMenuAction*>(sender());
+    AyatanaMenuAction* action = qobject_cast<AyatanaMenuAction*>(sender());
     if (!action || action->name().isEmpty())
         return;
 
@@ -1003,9 +1003,9 @@ void UnityMenuModel::onRegisteredActionActivated(const QVariant& parameter)
     g_free(action_name);
 }
 
-void UnityMenuModel::onRegisteredActionStateChanged(const QVariant& parameter)
+void AyatanaMenuModel::onRegisteredActionStateChanged(const QVariant& parameter)
 {
-    UnityMenuAction* action = qobject_cast<UnityMenuAction*>(sender());
+    AyatanaMenuAction* action = qobject_cast<AyatanaMenuAction*>(sender());
     if (!action || action->name().isEmpty())
         return;
 
@@ -1016,49 +1016,49 @@ void UnityMenuModel::onRegisteredActionStateChanged(const QVariant& parameter)
     g_free(action_name);
 }
 
-void UnityMenuModelPrivate::registeredActionAdded(GtkSimpleActionObserver    *observer_item,
+void AyatanaMenuModelPrivate::registeredActionAdded(GtkSimpleActionObserver    *observer_item,
                                   const gchar          *action_name,
                                   gboolean              enabled,
                                   GVariant             *state)
 {
-    UnityMenuAction *action;
-    action = (UnityMenuAction *) g_object_get_qdata (G_OBJECT (observer_item), unity_menu_action_quark ());
+    AyatanaMenuAction *action;
+    action = (AyatanaMenuAction *) g_object_get_qdata (G_OBJECT (observer_item), ayatana_menu_action_quark ());
 
     if (action) {
-        UnityMenuActionAddEvent umaae(enabled, Converter::toQVariant(state));
+        AyatanaMenuActionAddEvent umaae(enabled, Converter::toQVariant(state));
         QCoreApplication::sendEvent(action, &umaae);
     }
 }
 
-void UnityMenuModelPrivate::registeredActionEnabledChanged(GtkSimpleActionObserver *observer_item,  const gchar *action_name, gboolean enabled)
+void AyatanaMenuModelPrivate::registeredActionEnabledChanged(GtkSimpleActionObserver *observer_item,  const gchar *action_name, gboolean enabled)
 {
-    UnityMenuAction *action;
-    action = (UnityMenuAction *) g_object_get_qdata (G_OBJECT (observer_item), unity_menu_action_quark ());
+    AyatanaMenuAction *action;
+    action = (AyatanaMenuAction *) g_object_get_qdata (G_OBJECT (observer_item), ayatana_menu_action_quark ());
 
     if (action) {
-        UnityMenuActionEnabledChangedEvent umaece(enabled);
+        AyatanaMenuActionEnabledChangedEvent umaece(enabled);
         QCoreApplication::sendEvent(action, &umaece);
     }
 }
 
-void UnityMenuModelPrivate::registeredActionStateChanged(GtkSimpleActionObserver *observer_item, const gchar *action_name, GVariant *state)
+void AyatanaMenuModelPrivate::registeredActionStateChanged(GtkSimpleActionObserver *observer_item, const gchar *action_name, GVariant *state)
 {
-    UnityMenuAction *action;
-    action = (UnityMenuAction *) g_object_get_qdata (G_OBJECT (observer_item), unity_menu_action_quark ());
+    AyatanaMenuAction *action;
+    action = (AyatanaMenuAction *) g_object_get_qdata (G_OBJECT (observer_item), ayatana_menu_action_quark ());
 
     if (action) {
-        UnityMenuActionStateChangeEvent umasce(Converter::toQVariant(state));
+        AyatanaMenuActionStateChangeEvent umasce(Converter::toQVariant(state));
         QCoreApplication::sendEvent(action, &umasce);
     }
 }
 
-void UnityMenuModelPrivate::registeredActionRemoved(GtkSimpleActionObserver *observer_item, const gchar *action_name)
+void AyatanaMenuModelPrivate::registeredActionRemoved(GtkSimpleActionObserver *observer_item, const gchar *action_name)
 {
-    UnityMenuAction *action;
-    action = (UnityMenuAction *) g_object_get_qdata (G_OBJECT (observer_item), unity_menu_action_quark ());
+    AyatanaMenuAction *action;
+    action = (AyatanaMenuAction *) g_object_get_qdata (G_OBJECT (observer_item), ayatana_menu_action_quark ());
 
     if (action) {
-        UnityMenuActionRemoveEvent umare;
+        AyatanaMenuActionRemoveEvent umare;
         QCoreApplication::sendEvent(action, &umare);
     }
 }

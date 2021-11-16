@@ -19,28 +19,28 @@
 
 #include "ayatanamenuactionevents.h"
 
-const QEvent::Type UnityMenuActionAddEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
-const QEvent::Type UnityMenuActionRemoveEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
-const QEvent::Type UnityMenuActionEnabledChangedEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
-const QEvent::Type UnityMenuActionStateChangeEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
+const QEvent::Type AyatanaMenuActionAddEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
+const QEvent::Type AyatanaMenuActionRemoveEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
+const QEvent::Type AyatanaMenuActionEnabledChangedEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
+const QEvent::Type AyatanaMenuActionStateChangeEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
 
-UnityMenuActionAddEvent::UnityMenuActionAddEvent(bool _enabled, const QVariant& _state)
-    : QEvent(UnityMenuActionAddEvent::eventType),
+AyatanaMenuActionAddEvent::AyatanaMenuActionAddEvent(bool _enabled, const QVariant& _state)
+    : QEvent(AyatanaMenuActionAddEvent::eventType),
       enabled(_enabled),
       state(_state)
 {}
 
-UnityMenuActionRemoveEvent::UnityMenuActionRemoveEvent()
-    : QEvent(UnityMenuActionRemoveEvent::eventType)
+AyatanaMenuActionRemoveEvent::AyatanaMenuActionRemoveEvent()
+    : QEvent(AyatanaMenuActionRemoveEvent::eventType)
 {
 }
 
-UnityMenuActionEnabledChangedEvent::UnityMenuActionEnabledChangedEvent(bool _enabled)
-    : QEvent(UnityMenuActionEnabledChangedEvent::eventType),
+AyatanaMenuActionEnabledChangedEvent::AyatanaMenuActionEnabledChangedEvent(bool _enabled)
+    : QEvent(AyatanaMenuActionEnabledChangedEvent::eventType),
       enabled(_enabled)
 {}
 
-UnityMenuActionStateChangeEvent::UnityMenuActionStateChangeEvent(const QVariant& _state)
-    : QEvent(UnityMenuActionStateChangeEvent::eventType),
+AyatanaMenuActionStateChangeEvent::AyatanaMenuActionStateChangeEvent(const QVariant& _state)
+    : QEvent(AyatanaMenuActionStateChangeEvent::eventType),
       state(_state)
 {}

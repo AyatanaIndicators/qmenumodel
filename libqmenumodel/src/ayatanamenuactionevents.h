@@ -23,41 +23,41 @@
 #include <QEvent>
 #include <QVariant>
 
-/* Event for a unitymenuaction add */
-class UnityMenuActionAddEvent : public QEvent
+/* Event for a ayatanamenuaction add */
+class AyatanaMenuActionAddEvent : public QEvent
 {
 public:
     static const QEvent::Type eventType;
-    UnityMenuActionAddEvent(bool enabled, const QVariant& state);
+    AyatanaMenuActionAddEvent(bool enabled, const QVariant& state);
 
     bool enabled;
     QVariant state;
 };
 
-/* Event for a unitymenuaction remove */
-class UnityMenuActionRemoveEvent : public QEvent
+/* Event for a ayatanamenuaction remove */
+class AyatanaMenuActionRemoveEvent : public QEvent
 {
 public:
     static const QEvent::Type eventType;
-    UnityMenuActionRemoveEvent();
+    AyatanaMenuActionRemoveEvent();
 };
 
-/* Event for change in enabled value of a unitymenuaction */
-class UnityMenuActionEnabledChangedEvent : public QEvent
+/* Event for change in enabled value of a ayatanamenuaction */
+class AyatanaMenuActionEnabledChangedEvent : public QEvent
 {
 public:
     static const QEvent::Type eventType;
-    UnityMenuActionEnabledChangedEvent(bool enabled);
+    AyatanaMenuActionEnabledChangedEvent(bool enabled);
 
     int enabled;
 };
 
-/* Event for change in state value of a unitymenuaction */
-class UnityMenuActionStateChangeEvent : public QEvent
+/* Event for change in state value of a ayatanamenuaction */
+class AyatanaMenuActionStateChangeEvent : public QEvent
 {
 public:
     static const QEvent::Type eventType;
-    UnityMenuActionStateChangeEvent(const QVariant& state);
+    AyatanaMenuActionStateChangeEvent(const QVariant& state);
 
     QVariant state;
 };

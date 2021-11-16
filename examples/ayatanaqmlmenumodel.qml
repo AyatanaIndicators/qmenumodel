@@ -23,7 +23,7 @@ Item {
     width: 400;
     height: 500;
 
-    UnityMenuModel {
+    AyatanaMenuModel {
         id: menu
         busName: "org.ayatana.indicator.sound"
         actions: { "indicator": "/org/ayatana/indicator/sound" }

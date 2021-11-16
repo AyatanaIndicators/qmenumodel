@@ -23,18 +23,18 @@
 #include "ayatanamenumodelevents.h"
 #include "ayatanamenumodel.h"
 
-const QEvent::Type UnityMenuModelClearEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
-const QEvent::Type UnityMenuModelAddRowEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
-const QEvent::Type UnityMenuModelRemoveRowEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
-const QEvent::Type UnityMenuModelDataChangeEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
+const QEvent::Type AyatanaMenuModelClearEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
+const QEvent::Type AyatanaMenuModelAddRowEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
+const QEvent::Type AyatanaMenuModelRemoveRowEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
+const QEvent::Type AyatanaMenuModelDataChangeEvent::eventType = static_cast<QEvent::Type>(QEvent::registerEventType());
 
-UnityMenuModelClearEvent::UnityMenuModelClearEvent(bool _reset)
-    : QEvent(UnityMenuModelClearEvent::eventType),
+AyatanaMenuModelClearEvent::AyatanaMenuModelClearEvent(bool _reset)
+    : QEvent(AyatanaMenuModelClearEvent::eventType),
       reset(_reset)
 {}
 
-UnityMenuModelAddRowEvent::UnityMenuModelAddRowEvent(GPtrArray *_items, int _position)
-    : QEvent(UnityMenuModelAddRowEvent::eventType),
+AyatanaMenuModelAddRowEvent::AyatanaMenuModelAddRowEvent(GPtrArray *_items, int _position)
+    : QEvent(AyatanaMenuModelAddRowEvent::eventType),
       items(_items),
       position(_position)
 {
@@ -45,7 +45,7 @@ UnityMenuModelAddRowEvent::UnityMenuModelAddRowEvent(GPtrArray *_items, int _pos
     }
 }
 
-UnityMenuModelAddRowEvent::~UnityMenuModelAddRowEvent()
+AyatanaMenuModelAddRowEvent::~AyatanaMenuModelAddRowEvent()
 {
     if (items) {
         for (gint i = 0; i < items->len; ++i)
@@ -54,12 +54,12 @@ UnityMenuModelAddRowEvent::~UnityMenuModelAddRowEvent()
     }
 }
 
-UnityMenuModelRemoveRowEvent::UnityMenuModelRemoveRowEvent(int _position, int _nItems)
-    : QEvent(UnityMenuModelRemoveRowEvent::eventType),
+AyatanaMenuModelRemoveRowEvent::AyatanaMenuModelRemoveRowEvent(int _position, int _nItems)
+    : QEvent(AyatanaMenuModelRemoveRowEvent::eventType),
       position(_position), nItems(_nItems)
 {}
 
-UnityMenuModelDataChangeEvent::UnityMenuModelDataChangeEvent(int _position)
-    : QEvent(UnityMenuModelDataChangeEvent::eventType),
+AyatanaMenuModelDataChangeEvent::AyatanaMenuModelDataChangeEvent(int _position)
+    : QEvent(AyatanaMenuModelDataChangeEvent::eventType),
       position(_position)
 {}

@@ -61,7 +61,7 @@ declare_test(qmltest)
 declare_test(convertertest)
 declare_test(modelsignalstest)
 declare_test(treetest)
-declare_test(unitymenuactiontest)
+declare_test(ayatanamenuactiontest)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/qmlfiles.h.in
                ${CMAKE_CURRENT_BINARY_DIR}/qmlfiles.h)
