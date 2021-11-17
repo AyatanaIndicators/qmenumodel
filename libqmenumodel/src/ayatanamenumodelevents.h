@@ -17,49 +17,55 @@
  *      Nicholas Dedekind <nick.dedekind@canonical.com
  */
 
-#ifndef UNITYMENUACTIONEVENTS_H
-#define UNITYMENUACTIONEVENTS_H
+#ifndef AYATANAMENUMODELEVENTS_H
+#define AYATANAMENUMODELEVENTS_H
 
 #include <QEvent>
-#include <QVariant>
+#include <glib.h>
 
-/* Event for a unitymenuaction add */
-class UnityMenuActionAddEvent : public QEvent
+typedef struct _GtkMenuTrackerItem GtkMenuTrackerItem;
+
+/* Event for a ayatanamenumodel clear */
+class AyatanaMenuModelClearEvent : public QEvent
 {
 public:
     static const QEvent::Type eventType;
-    UnityMenuActionAddEvent(bool enabled, const QVariant& state);
+    AyatanaMenuModelClearEvent(bool reset);
 
-    bool enabled;
-    QVariant state;
+    bool reset;
 };
 
-/* Event for a unitymenuaction remove */
-class UnityMenuActionRemoveEvent : public QEvent
+/* Event for a row add for ayatanamenumodel */
+class AyatanaMenuModelAddRowEvent : public QEvent
 {
 public:
     static const QEvent::Type eventType;
-    UnityMenuActionRemoveEvent();
+    AyatanaMenuModelAddRowEvent(GPtrArray *_items, int position);
+    ~AyatanaMenuModelAddRowEvent();
+
+    GPtrArray *items;
+    int position;
 };
 
-/* Event for change in enabled value of a unitymenuaction */
-class UnityMenuActionEnabledChangedEvent : public QEvent
+/* Event for a row remove for ayatanamenumodel */
+class AyatanaMenuModelRemoveRowEvent : public QEvent
 {
 public:
     static const QEvent::Type eventType;
-    UnityMenuActionEnabledChangedEvent(bool enabled);
+    AyatanaMenuModelRemoveRowEvent(int position, int nItems);
 
-    int enabled;
+    int position;
+    int nItems;
 };
 
-/* Event for change in state value of a unitymenuaction */
-class UnityMenuActionStateChangeEvent : public QEvent
+/* Event for a row data change for ayatanamenumodel */
+class AyatanaMenuModelDataChangeEvent : public QEvent
 {
 public:
     static const QEvent::Type eventType;
-    UnityMenuActionStateChangeEvent(const QVariant& state);
+    AyatanaMenuModelDataChangeEvent(int position);
 
-    QVariant state;
+    int position;
 };
 
-#endif //UNITYMENUACTIONEVENTS_H
+#endif //AYATANAMENUMODELEVENTS_H

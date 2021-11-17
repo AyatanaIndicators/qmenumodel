@@ -16,15 +16,15 @@
  * Authors: Lars Uebernickel <lars.uebernickel@canonical.com>
  */
 
-#ifndef UNITYMENUMODEL_H
-#define UNITYMENUMODEL_H
+#ifndef AYATANAMENUMODEL_H
+#define AYATANAMENUMODEL_H
 
 #include <QAbstractListModel>
 class ActionStateParser;
 class QQmlComponent;
-class UnityMenuAction;
+class AyatanaMenuAction;
 
-class UnityMenuModel: public QAbstractListModel
+class AyatanaMenuModel: public QAbstractListModel
 {
     Q_OBJECT
     Q_PROPERTY(QByteArray busName READ busName WRITE setBusName NOTIFY busNameChanged)
@@ -34,8 +34,8 @@ class UnityMenuModel: public QAbstractListModel
     Q_PROPERTY(ActionStateParser* actionStateParser READ actionStateParser WRITE setActionStateParser NOTIFY actionStateParserChanged)
 
 public:
-    UnityMenuModel(QObject *parent = NULL);
-    virtual ~UnityMenuModel();
+    AyatanaMenuModel(QObject *parent = NULL);
+    virtual ~AyatanaMenuModel();
 
     QByteArray busName() const;
     void setBusName(const QByteArray &name);
@@ -68,8 +68,8 @@ public:
     Q_INVOKABLE void changeState(int index, const QVariant& parameter);
     Q_INVOKABLE void changeStateByVariantString(int index, const QString& parameter);
 
-    void registerAction(UnityMenuAction* action);
-    void unregisterAction(UnityMenuAction* action);
+    void registerAction(AyatanaMenuAction* action);
+    void unregisterAction(AyatanaMenuAction* action);
 
 Q_SIGNALS:
     void busNameChanged(const QByteArray &name);
@@ -88,10 +88,10 @@ protected:
     virtual bool event(QEvent* e);
 
 private:
-    class UnityMenuModelPrivate *priv;
-    friend class UnityMenuModelPrivate;
+    class AyatanaMenuModelPrivate *priv;
+    friend class AyatanaMenuModelPrivate;
 
-    UnityMenuModel(const UnityMenuModelPrivate& other, UnityMenuModel *parent);
+    AyatanaMenuModel(const AyatanaMenuModelPrivate& other, AyatanaMenuModel *parent);
 };
 
 #endif

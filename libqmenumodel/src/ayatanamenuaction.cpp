@@ -16,11 +16,11 @@
  * Authors: Nick Dedekind <nick.dedekind@canonical.com>
  */
 
-#include "unitymenuaction.h"
-#include "unitymenumodel.h"
-#include "unitymenuactionevents.h"
+#include "ayatanamenuaction.h"
+#include "ayatanamenumodel.h"
+#include "ayatanamenuactionevents.h"
 
-UnityMenuAction::UnityMenuAction(QObject* parent)
+AyatanaMenuAction::AyatanaMenuAction(QObject* parent)
     :   QObject(parent),
         m_valid(false),
         m_enabled(false),
@@ -29,17 +29,17 @@ UnityMenuAction::UnityMenuAction(QObject* parent)
 {
 }
 
-UnityMenuAction::~UnityMenuAction()
+AyatanaMenuAction::~AyatanaMenuAction()
 {
     unregisterAction();
 }
 
-QString UnityMenuAction::name() const
+QString AyatanaMenuAction::name() const
 {
     return m_name;
 }
 
-void UnityMenuAction::setName(const QString& name)
+void AyatanaMenuAction::setName(const QString& name)
 {
     if (m_name != name) {
         m_name = name;
@@ -47,12 +47,12 @@ void UnityMenuAction::setName(const QString& name)
     }
 }
 
-UnityMenuModel* UnityMenuAction::model() const
+AyatanaMenuModel* AyatanaMenuAction::model() const
 {
     return m_model;
 }
 
-void UnityMenuAction::setModel(UnityMenuModel* model)
+void AyatanaMenuAction::setModel(AyatanaMenuModel* model)
 {
     if (m_model != model) {
         unregisterAction();
@@ -62,12 +62,12 @@ void UnityMenuAction::setModel(UnityMenuModel* model)
     }
 }
 
-QVariant UnityMenuAction::state() const
+QVariant AyatanaMenuAction::state() const
 {
     return m_state;
 }
 
-void UnityMenuAction::setState(const QVariant& state)
+void AyatanaMenuAction::setState(const QVariant& state)
 {
     if (m_state != state) {
         m_state = state;
@@ -75,12 +75,12 @@ void UnityMenuAction::setState(const QVariant& state)
     }
 }
 
-bool UnityMenuAction::isEnabled() const
+bool AyatanaMenuAction::isEnabled() const
 {
     return m_enabled;
 }
 
-void UnityMenuAction::setEnabled(bool enabled)
+void AyatanaMenuAction::setEnabled(bool enabled)
 {
     if (m_enabled != enabled) {
         m_enabled = enabled;
@@ -88,12 +88,12 @@ void UnityMenuAction::setEnabled(bool enabled)
     }
 }
 
-bool UnityMenuAction::isValid() const
+bool AyatanaMenuAction::isValid() const
 {
     return m_valid;
 }
 
-void UnityMenuAction::setValid(bool valid)
+void AyatanaMenuAction::setValid(bool valid)
 {
     if (m_valid != valid) {
         m_valid = valid;
@@ -101,12 +101,12 @@ void UnityMenuAction::setValid(bool valid)
     }
 }
 
-int UnityMenuAction::index() const
+int AyatanaMenuAction::index() const
 {
     return m_index;
 }
 
-void UnityMenuAction::setIndex(int i)
+void AyatanaMenuAction::setIndex(int i)
 {
     if (i != m_index) {
         m_index = i;
@@ -114,41 +114,41 @@ void UnityMenuAction::setIndex(int i)
     }
 }
 
-void UnityMenuAction::registerAction()
+void AyatanaMenuAction::registerAction()
 {
     if (m_model) {
         m_model->registerAction(this);
     }
 }
 
-void UnityMenuAction::unregisterAction()
+void AyatanaMenuAction::unregisterAction()
 {
     if (m_model) {
         m_model->unregisterAction(this);
     }
 }
 
-bool UnityMenuAction::event(QEvent* e)
+bool AyatanaMenuAction::event(QEvent* e)
 {
-    if (e->type() == UnityMenuActionAddEvent::eventType) {
-        UnityMenuActionAddEvent *umaae = static_cast<UnityMenuActionAddEvent*>(e);
+    if (e->type() == AyatanaMenuActionAddEvent::eventType) {
+        AyatanaMenuActionAddEvent *umaae = static_cast<AyatanaMenuActionAddEvent*>(e);
 
         setEnabled(umaae->enabled);
         setState(umaae->state);
         setValid(true);
         return true;
-    } else if (e->type() == UnityMenuActionEnabledChangedEvent::eventType) {
-        UnityMenuActionEnabledChangedEvent *umaece = static_cast<UnityMenuActionEnabledChangedEvent*>(e);
+    } else if (e->type() == AyatanaMenuActionEnabledChangedEvent::eventType) {
+        AyatanaMenuActionEnabledChangedEvent *umaece = static_cast<AyatanaMenuActionEnabledChangedEvent*>(e);
 
         setEnabled(umaece->enabled);
         return true;
-    } else if (e->type() == UnityMenuActionStateChangeEvent::eventType) {
-        UnityMenuActionStateChangeEvent *umasce = static_cast<UnityMenuActionStateChangeEvent*>(e);
+    } else if (e->type() == AyatanaMenuActionStateChangeEvent::eventType) {
+        AyatanaMenuActionStateChangeEvent *umasce = static_cast<AyatanaMenuActionStateChangeEvent*>(e);
 
         setState(umasce->state);
         return true;
-    } else if (e->type() == UnityMenuActionRemoveEvent::eventType) {
-        UnityMenuActionRemoveEvent *umare = static_cast<UnityMenuActionRemoveEvent*>(e);
+    } else if (e->type() == AyatanaMenuActionRemoveEvent::eventType) {
+        AyatanaMenuActionRemoveEvent *umare = static_cast<AyatanaMenuActionRemoveEvent*>(e);
 
         setValid(false);
         return true;

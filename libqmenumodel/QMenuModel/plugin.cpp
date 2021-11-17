@@ -22,8 +22,8 @@
 #include "qdbusmenumodel.h"
 #include "qdbusactiongroup.h"
 #include "qstateaction.h"
-#include "unitymenuaction.h"
-#include "unitymenumodel.h"
+#include "ayatanamenuaction.h"
+#include "ayatanamenumodel.h"
 
 #include <QtQml>
 
@@ -42,6 +42,6 @@ void QMenuModelQmlPlugin::registerTypes(const char *uri)
 
     qmlRegisterType<QDBusMenuModel>(uri, 0, 1, "QDBusMenuModel");
     qmlRegisterType<QDBusActionGroup>(uri, 0, 1, "QDBusActionGroup");
-    qmlRegisterType<UnityMenuModel>(uri, 0, 1, "UnityMenuModel");
-    qmlRegisterType<UnityMenuAction>(uri, 0, 1, "UnityMenuAction");
+    qmlRegisterType<AyatanaMenuModel>(uri, 0, 1, "AyatanaMenuAction");
+    qmlRegisterType<AyatanaMenuAction>(uri, 0, 1, "AyatanaMenuAction");
 }

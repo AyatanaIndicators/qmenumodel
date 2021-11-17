@@ -11,10 +11,10 @@ set(QMENUMODEL_SRC
     qdbusactiongroup.cpp
     qmenumodelevents.cpp
     qstateaction.cpp
-    unitymenuaction.cpp
-    unitymenuactionevents.cpp
-    unitymenumodel.cpp
-    unitymenumodelevents.cpp
+    ayatanamenuaction.cpp
+    ayatanamenuactionevents.cpp
+    ayatanamenumodel.cpp
+    ayatanamenumodelevents.cpp
     gtk/gtkactionmuxer.c
     gtk/gtkactionmuxer.h
     gtk/gtkactionobservable.c
@@ -62,8 +62,8 @@ set(QMENUMODEL_HEADERS
     qdbusobject.h
     qmenumodel.h
     qstateaction.h
-    unitymenuaction.h
-    unitymenumodel.h
+    ayatanamenuaction.h
+    ayatanamenumodel.h
 )
 
 set(INCLUDEDIR qmenumodel)

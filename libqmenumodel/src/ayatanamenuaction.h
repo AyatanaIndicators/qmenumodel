@@ -16,14 +16,14 @@
  * Authors: Nick Dedekind <nick.dedekind@canonical.com>
  */
 
-#ifndef UNITYMENUACTION_H
-#define UNITYMENUACTION_H
+#ifndef AYATANAMENUACTION_H
+#define AYATANAMENUACTION_H
 
 #include <QObject>
 #include <QVariant>
-class UnityMenuModel;
+class AyatanaMenuModel;
 
-class UnityMenuAction: public QObject
+class AyatanaMenuAction: public QObject
 {
     Q_OBJECT
 
@@ -31,18 +31,18 @@ class UnityMenuAction: public QObject
     Q_PROPERTY(QVariant state READ state NOTIFY stateChanged)
     Q_PROPERTY(bool enabled READ isEnabled NOTIFY enabledChanged)
     Q_PROPERTY(bool valid READ isValid NOTIFY validChanged)
-    Q_PROPERTY(UnityMenuModel* model READ model WRITE setModel NOTIFY modelChanged)
+    Q_PROPERTY(AyatanaMenuModel* model READ model WRITE setModel NOTIFY modelChanged)
     Q_PROPERTY(int index READ index WRITE setIndex NOTIFY indexChanged)
 
 public:
-    UnityMenuAction(QObject* parent = 0);
-    ~UnityMenuAction();
+    AyatanaMenuAction(QObject* parent = 0);
+    ~AyatanaMenuAction();
 
     QString name() const;
     void setName(const QString& str);
 
-    UnityMenuModel* model() const;
-    void setModel(UnityMenuModel* model);
+    AyatanaMenuModel* model() const;
+    void setModel(AyatanaMenuModel* model);
 
     int index() const;
     void setIndex(int i);
@@ -56,7 +56,7 @@ Q_SIGNALS:
     Q_INVOKABLE void changeState(const QVariant& parameter);
 
     void nameChanged(const QString& name);
-    void modelChanged(UnityMenuModel* model);
+    void modelChanged(AyatanaMenuModel* model);
     void stateChanged(const QVariant& name);
     void enabledChanged(bool enabled);
     void validChanged(bool valid);
@@ -77,8 +77,8 @@ private:
     QVariant m_state;
     bool m_valid;
     bool m_enabled;
-    UnityMenuModel* m_model;
+    AyatanaMenuModel* m_model;
     int m_index;
 };
 
-#endif // UNITYMENUACTIONGROUP_H
+#endif // AYATANAMENUACTIONGROUP_H
