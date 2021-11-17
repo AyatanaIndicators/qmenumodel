@@ -18,8 +18,8 @@
  */
 
 // This example QML application renders a menu model exposed on the session bus
-// under the well-known name com.canonical.testmenu and at the object path
-// /com/canonical/testmenu.
+// under the well-known name org.ayatana.testmenu and at the object path
+// /org/ayatana/testmenu.
 
 import QtQuick 2.0
 import QMenuModel 0.1
@@ -32,8 +32,8 @@ Item {
     QDBusMenuModel {
         id: menuModel
         busType: DBus.SessionBus
-        busName: "com.canonical.testmenu"
-        objectPath: "/com/canonical/testmenu"
+        busName: "org.ayatana.testmenu"
+        objectPath: "/org/ayatana/testmenu"
         onStatusChanged: {
             if (status == DBus.Connecting) {
                 view.reset()

@@ -21,9 +21,9 @@ from gi.repository import GObject
 from gi.repository import GLib
 from gi.repository import Gio
 
-SERVICE_NAME     = "com.canonical.test"
-INTERFACE_NAME   = "com.canonical.test.menuscript"
-OBJECT_PATH      = "/com/canonical/test/menuscript"
+SERVICE_NAME     = "org.ayatana.test"
+INTERFACE_NAME   = "org.ayatana.test.menuscript"
+OBJECT_PATH      = "/org/ayatana/test/menuscript"
 MENU_SERVICE_NAME= SERVICE_NAME + ".menu"
 MENU_OBJECT_PATH = OBJECT_PATH + "/menu"
 bus = None

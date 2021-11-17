@@ -25,7 +25,7 @@
 class QMenuModelQmlPlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
-    Q_PLUGIN_METADATA(IID "com.canonical.qmenumodel")
+    Q_PLUGIN_METADATA(IID "org.ayatana.qmenumodel")
 
 public:
     void initializeEngine(QQmlEngine *engine, const char *uri);

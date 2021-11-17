@@ -33,8 +33,8 @@
 #include <QtCore/QObject>
 
 
-#define BUS_NAME "com.canonical.testmenu"
-#define BUS_OBJECT_PATH "/com/canonical/testmenu"
+#define BUS_NAME "org.ayatana.testmenu"
+#define BUS_OBJECT_PATH "/org/ayatana/testmenu"
 
 
 class MenuModelMonitor : public QDBusMenuModel

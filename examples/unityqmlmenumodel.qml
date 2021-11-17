@@ -25,9 +25,9 @@ Item {
 
     UnityMenuModel {
         id: menu
-        busName: "com.canonical.indicator.sound"
-        actions: { "indicator": "/com/canonical/indicator/sound" }
-        menuObjectPath: "/com/canonical/indicator/sound/desktop"
+        busName: "org.ayatana.indicator.sound"
+        actions: { "indicator": "/org/ayatana/indicator/sound" }
+        menuObjectPath: "/org/ayatana/indicator/sound/desktop"
     }
 
     ListView {
@@ -42,7 +42,7 @@ Item {
                 if (isSeparator) {
                     return separator;
                 }
-                else if (type == "com.canonical.unity.slider") {
+                else if (type == "org.ayatana.indicator.slider") {
                     listview.model.loadExtendedAttributes(index, {'min-icon': 'icon',
                                                                   'max-icon': 'icon'});
                     return slider;

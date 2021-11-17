@@ -18,8 +18,8 @@
 
 """
 This example script exports an action group on the session bus under the name
-com.canonical.testactiongroup and at the object path
-/com/canonical/testactiongroup.
+org.ayatana.testactiongroup and at the object path
+/org/ayatana/testactiongroup.
 """
 
 import sys
@@ -28,8 +28,8 @@ from gi.repository import Gio
 from gi.repository import GLib
 
 
-BUS_NAME = 'com.canonical.testactiongroup'
-BUS_OBJECT_PATH = '/com/canonical/testactiongroup'
+BUS_NAME = 'org.ayatana.testactiongroup'
+BUS_OBJECT_PATH = '/org/ayatana/testactiongroup'
 
 
 def action_activated(action, data):
