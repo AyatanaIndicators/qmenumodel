@@ -15,7 +15,6 @@ pkg_check_modules(GLIB REQUIRED glib-2.0>=2.32)
 pkg_check_modules(GIO REQUIRED gio-2.0>=2.32)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-SET(CMAKE_CXX_FLAGS "-std=c++11")
 add_definitions(-DQT_NO_KEYWORDS)
 
 find_program(DBUS_RUNNER dbus-test-runner)
