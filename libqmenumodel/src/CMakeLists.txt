@@ -36,8 +36,8 @@ add_library(${SHAREDLIBNAME} SHARED
 
 set_target_properties(${SHAREDLIBNAME} PROPERTIES
     COMPILE_FLAGS -fPIC
-    SOVERSION 0
-    VERSION 0.1.1
+    SOVERSION 1
+    VERSION 1.0.0
 )
 
 include_directories(
