@@ -23,7 +23,7 @@ Homepage: https://github.com/AyatanaIndicators/qmenumodel
 Vcs-Git: https://github.com/AyatanaIndicators/qmenumodel.git
 Vcs-Browser: https://github.com/AyatanaIndicators/qmenumodel
 
-Package: libqmenumodel0
+Package: libqmenumodel1
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends},
@@ -42,7 +42,7 @@ Section: libdevel
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
-         libqmenumodel0 (= ${binary:Version}),
+         libqmenumodel1 (= ${binary:Version}),
 Description: Qt binding for GMenuModel - development files
  Qt binding for GMenuModel that allows connecting to a menu model exposed on
  D-Bus and presents it as a list model. It can be used to expose indicator or
@@ -55,7 +55,7 @@ Section: libs
 Architecture: any
 Depends: ${shlibs:Depends},
          ${misc:Depends},
-         libqmenumodel0 (= ${binary:Version}),
+         libqmenumodel1 (= ${binary:Version}),
 Description: Qt binding for GMenuModel - QML module
  Qt binding for GMenuModel that allows connecting to a menu model exposed on
  D-Bus and presents it as a list model. It can be used to expose indicator or
