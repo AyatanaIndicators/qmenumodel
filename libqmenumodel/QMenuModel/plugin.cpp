@@ -1,5 +1,6 @@
 /*
  * Copyright 2012 Canonical Ltd.
+ * Copyright 2021 Robert Tari
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -15,6 +16,7 @@
  *
  * Authors:
  *      Renato Araujo Oliveira Filho <renato@canonical.com>
+ *      Robert Tari <robert@tari.in>
  */
 
 #include "plugin.h"
@@ -33,15 +35,15 @@ void QMenuModelQmlPlugin::initializeEngine(QQmlEngine *engine, const char *uri)
 
 void QMenuModelQmlPlugin::registerTypes(const char *uri)
 {
-    qmlRegisterUncreatableType<QMenuModel>(uri, 0, 1, "QMenuModel",
+    qmlRegisterUncreatableType<QMenuModel>(uri, 1, 0, "QMenuModel",
                                            "QMenuModel is a interface");
-    qmlRegisterUncreatableType<QStateAction>(uri, 0, 1, "QStateAction",
+    qmlRegisterUncreatableType<QStateAction>(uri, 1, 0, "QStateAction",
                                              "QStateAction must be created by QDBusActionGroup::action");
-    qmlRegisterUncreatableType<DBusEnums>(uri, 0, 1, "DBus",
+    qmlRegisterUncreatableType<DBusEnums>(uri, 1, 0, "DBus",
                                           "DBus is only a namespace");
 
-    qmlRegisterType<QDBusMenuModel>(uri, 0, 1, "QDBusMenuModel");
-    qmlRegisterType<QDBusActionGroup>(uri, 0, 1, "QDBusActionGroup");
-    qmlRegisterType<AyatanaMenuModel>(uri, 0, 1, "AyatanaMenuAction");
-    qmlRegisterType<AyatanaMenuAction>(uri, 0, 1, "AyatanaMenuAction");
+    qmlRegisterType<QDBusMenuModel>(uri, 1, 0, "QDBusMenuModel");
+    qmlRegisterType<QDBusActionGroup>(uri, 1, 0, "QDBusActionGroup");
+    qmlRegisterType<AyatanaMenuModel>(uri, 1, 0, "AyatanaMenuAction");
+    qmlRegisterType<AyatanaMenuAction>(uri, 1, 0, "AyatanaMenuAction");
 }
