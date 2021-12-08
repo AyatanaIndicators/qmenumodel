@@ -1,11 +1,16 @@
 macro(declare_test testname)
     add_executable(${testname} ${testname}.cpp)
-    qt5_use_modules(${testname} Core DBus Widgets Test Qml Quick)
     target_link_libraries(${testname}
                           qmenumodel
                           dbusmenuscript
                           ${GLIB_LDFLAGS}
                           ${GIO_LDFLAGS}
+                          Qt5::Core
+                          Qt5::DBus
+                          Qt5::Widgets
+                          Qt5::Test
+                          Qt5::Qml
+                          Qt5::Quick
     )
 
     if(TEST_XML_OUTPUT)
@@ -28,11 +33,12 @@ endmacro(declare_test testname)
 
 macro(declare_simple_test testname)
     add_executable(${testname} ${testname}.cpp)
-    qt5_use_modules(${testname} Core Test)
     target_link_libraries(${testname}
                           qmenumodel
                           ${GLIB_LDFLAGS}
                           ${GIO_LDFLAGS}
+                          Qt5::Core
+                          Qt5::Test
     )
 
     add_test(${testname}

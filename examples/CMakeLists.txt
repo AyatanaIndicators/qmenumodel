@@ -14,7 +14,6 @@ pkg_check_modules(QMENUMODEL REQUIRED qmenumodel)
 
 add_executable(info-menumodel info-menumodel.cpp)
 
-qt5_use_modules(info-menumodel Core)
 include_directories(${QMENUMODEL_INCLUDE_DIRS})
-target_link_libraries(info-menumodel ${QMENUMODEL_LDFLAGS})
+target_link_libraries(info-menumodel ${QMENUMODEL_LDFLAGS} Qt5::Core)
 
