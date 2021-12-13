@@ -1,4 +1,12 @@
 macro(declare_test testname)
+    find_package(Qt5 COMPONENTS Core REQUIRED)
+    find_package(Qt5 COMPONENTS Gui REQUIRED)
+    find_package(Qt5 COMPONENTS Widgets REQUIRED)
+    find_package(Qt5 COMPONENTS DBus REQUIRED)
+    find_package(Qt5 COMPONENTS Test REQUIRED)
+    find_package(Qt5 COMPONENTS Quick REQUIRED)
+    find_package(Qt5 COMPONENTS Qml REQUIRED)
+
     add_executable(${testname} ${testname}.cpp)
     target_link_libraries(${testname}
                           qmenumodel
