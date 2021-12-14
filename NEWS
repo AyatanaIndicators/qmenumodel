@@ -1,3 +1,17 @@
+Overview of changes in ayatana-indicator-session 0.9.0
+
+  * Rename Unity* symbols.
+  * Rename unity* source files.
+  * libqmenumodel/src/CMakeLists.txt: Bump the SOVERSION of
+    libqmenumodel.
+  * Bump QMenuModel QML module to 1.0.
+  * Rename com.ubuntu.menu.
+  * examples/exportmenu.py: Rename x-canonical-currentvalue.
+  * examples/unityqmlmenumodel.qml: Rename
+    com.canonical.indicator.sound.
+  * libqmenumodel/QMenuModel/plugin.h: Rename com.canonical.qmenumodel.
+  * Rename com.canonical.test*.
+
 Overview of changes in ayatana-indicator-session 0.8.1
 
   * Move glib includes outside of extern "C".

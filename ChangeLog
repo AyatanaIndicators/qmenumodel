@@ -1,6 +1,87 @@
+2021-12-14 Mike Gabriel
+
+        * release 0.9.0 (HEAD -> main, tag: 0.9.0)
+        * Merge branch 'tari01-pr/qml-1-0' (0924c28)
+
+2021-12-08 Mike Gabriel
+
+        * debian/{control,*qmenumodel*}: Rename bin:pkg qmenumodel-qml to
+          qml-module-qmenumodel1 (reflecting the version bump _and_
+          becoming compliant to Debian's naming policy for QML
+          modules. (efb9bed)
+
+2021-12-02 Robert Tari
+
+        * debian/qmenumodel-qml.install: Update QMenuModel name (a22b26b)
+        * Bump QMenuModel to 1.0 (8fda779)
+
+2021-12-10 Robert Tari
+
+        * Fix CMake version and add required test packages (6abf908)
+
+2021-12-08 Mike Gabriel
+
+        * Merge branch 'tari01-pr/fix-qt5-use-modules-warning' (66af742)
+
+2021-12-07 Robert Tari
+
+        * Fix qt5_use_modules warning (af5a575)
+
+2021-11-18 Mike Gabriel
+
+        * Merge branch 'tari01-pr/bump-std-version' (5b84c10)
+
+2021-11-18 Robert Tari
+
+        * CMakeLists.txt: Stop enforcing C++11 standard. (621d577)
+
+2021-11-18 Mike Gabriel
+
+        * Merge branch 'tari01-pr/bump-soversion' (a817c0d)
+
+2021-11-18 Robert Tari
+
+        * debian/*: Update libqmenumodel0 to libqmenumodel1 (6a0f949)
+        * libqmenumodel/src/CMakeLists.txt: Bump the SOVERSION of
+          libqmenumodel (f7f503f)
+        * Merge branch 'sunweaver-pr/amend-version-in-pkgconfig-file'
+          (d9d7b02)
+
+2021-11-18 Mike Gabriel
+
+        * libqmenumodel/src/qmenumodel.pc.in: Use @PROJECT_VERSION@ for
+          Version: field. (79516ac)
+
+2021-11-17 Mike Gabriel
+
+        * Merge branch 'tari01-pr/rename-unity-symbols' (62a8b8b)
+
+2021-11-16 Robert Tari
+
+        * Rename Unity* symbols (f4e75e1)
+        * Rename unity* source files (f803689)
+
+2021-11-17 Mike Gabriel
+
+        * Merge branch 'tari01-pr/rename-canonical-properties' (8089cd5)
+
+2021-11-15 Robert Tari
+
+        * Rename com.ubuntu.menu (0d2c880)
+        * examples/exportmenu.py: Rename x-canonical-currentvalue (a4f024e)
+        * examples/unityqmlmenumodel.qml: Rename
+          com.canonical.indicator.sound (f89d653)
+        * libqmenumodel/QMenuModel/plugin.h: Rename com.canonical.qmenumodel
+          (9e464fb)
+        * Rename com.canonical.test* (e728156)
+
+2021-11-13 Robert Tari
+
+        * Rename com.canonical.unity.slider (7bb1253)
+
 2021-10-24 Mike Gabriel
 
-        * release 0.8.1 (HEAD -> main, tag: 0.8.1)
+        * release 0.8.1 (7f41ec3) (tag: 0.8.1)
 
 2021-09-09 Robert Tari
 

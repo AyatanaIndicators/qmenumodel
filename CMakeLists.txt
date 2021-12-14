@@ -1,6 +1,6 @@
 project(qmenumodel)
 
-set (PROJECT_VERSION "0.8.1")
+set (PROJECT_VERSION "0.9.0")
 
 cmake_minimum_required(VERSION 3.13)
 
