@@ -2,7 +2,7 @@ project(qmenumodel)
 
 set (PROJECT_VERSION "0.8.1")
 
-cmake_minimum_required(VERSION 2.8.9)
+cmake_minimum_required(VERSION 3.13)
 
 # Standard install paths
 include(GNUInstallDirs)

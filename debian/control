@@ -50,7 +50,7 @@ Description: Qt binding for GMenuModel - development files
  .
  This package contains the development headers for libqmenumodel.
 
-Package: qmenumodel-qml
+Package: qml-module-qmenumodel1
 Section: libs
 Architecture: any
 Depends: ${shlibs:Depends},
@@ -63,4 +63,3 @@ Description: Qt binding for GMenuModel - QML module
  .
  This package contains the QML module for building applications using the
  QMenuModel library.
-
