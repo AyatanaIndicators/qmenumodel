@@ -1,5 +1,6 @@
 /*
  * Copyright 2012 Canonical Ltd.
+ * Copyright 2021 UBports Foundation
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -15,7 +16,10 @@
  *
  * Authors:
  *      Renato Araujo Oliveira Filho <renato@canonical.com>
+ *      Dalton Durst <dalton@ubports.com>
  */
+
+#include <memory>
 
 #include <glib-object.h>
 
@@ -27,6 +31,7 @@
 #include <QSignalSpy>
 #include <QtTest>
 #include <QDebug>
+#include <QString>
 
 #include <QQmlContext>
 #include <QQmlEngine>
@@ -38,6 +43,13 @@ class QMLTest : public QObject
     Q_OBJECT
 private:
     DBusMenuScript m_script;
+    std::shared_ptr<QQuickView> loadView(const QString baseDir, const QString fileLocation)
+    {
+        std::shared_ptr<QQuickView> view = std::make_shared<QQuickView>();
+        view->engine()->addImportPath(baseDir);
+        view->setSource(QUrl::fromLocalFile(fileLocation));
+        return view;
+    }
 
 private Q_SLOTS:
     void initTestCase()
@@ -60,53 +72,12 @@ private Q_SLOTS:
     }
 
     /*
-     * Test if model is destroyed without crash
+     * Test if importtest.qml can be loaded successfully
      */
-    void destroyModel()
+    void importtest()
     {
-        m_script.publishMenu();
-        m_script.run();
-        QTest::qWait(500);
-
-        QQuickView *view = new QQuickView;
-        view->engine()->addImportPath(QML_BASE_DIR);
-        view->engine()->rootContext()->setContextProperty("resetModel", QVariant(false));
-        view->engine()->rootContext()->setContextProperty("globalBusType", DBusEnums::SessionBus);
-        view->engine()->rootContext()->setContextProperty("globalBusName", MENU_SERVICE_NAME);
-        view->engine()->rootContext()->setContextProperty("globalObjectPath", MENU_OBJECT_PATH);
-        view->setSource(QUrl::fromLocalFile(LOADMODEL_QML));
-        QTest::qWait(500);
-        view->engine()->rootContext()->setContextProperty("resetModel", true);
-        QTest::qWait(500);
-    }
-
-    /*
-     * Test the menu model disappearing from the bus and reappearing
-     * while the QML application is running.
-     */
-    void testServiceDisappear()
-    {
-        m_script.publishMenu();
-        m_script.run();
-        QTest::qWait(500);
-
-        QQuickView *view = new QQuickView;
-        view->engine()->addImportPath(QML_BASE_DIR);
-        view->engine()->rootContext()->setContextProperty("globalBusType", DBusEnums::SessionBus);
-        view->engine()->rootContext()->setContextProperty("globalBusName", MENU_SERVICE_NAME);
-        view->engine()->rootContext()->setContextProperty("globalObjectPath", MENU_OBJECT_PATH);
-        view->setSource(QUrl::fromLocalFile(LOADMODEL2_QML));
-        QTest::qWait(500);
-
-        m_script.unpublishMenu();
-        QTest::qWait(500);
-
-        m_script.publishMenu();
-        m_script.run();
-        QTest::qWait(500);
-
-        delete view;
-        QTest::qWait(1000);
+        std::shared_ptr<QQuickView> view = loadView(QML_BASE_DIR, IMPORTTEST_QML);
+        QTRY_VERIFY2((view->status() == QQuickView::Ready), "loadmodel.qml view never became ready");
     }
 };
 
