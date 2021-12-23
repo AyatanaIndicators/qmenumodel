@@ -18,7 +18,7 @@
  */
 
 import QtQuick 2.0
-import QMenuModel 0.1
+import QMenuModel 1.0
 
 Item {
     id: root
@@ -44,9 +44,8 @@ Item {
 
     Component.onCompleted: {
         // dynamically create the model to destroy it later
-        var model = Qt.createQmlObject("import QMenuModel 0.1; QDBusMenuModel { id: menuModel; busType: globalBusType; busName: globalBusName; objectPath: globalObjectPath; }", view, "");
+        var model = Qt.createQmlObject("import QMenuModel 1.0; QDBusMenuModel { id: menuModel; busType: globalBusType; busName: globalBusName; objectPath: globalObjectPath; }", view, "");
         model.start();
         view.model = model;
     }
 }
-

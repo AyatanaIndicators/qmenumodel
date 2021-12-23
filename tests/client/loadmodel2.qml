@@ -18,7 +18,7 @@
  */
 
 import QtQuick 2.0
-import QMenuModel 0.1
+import QMenuModel 1.0
 
 Item {
     width: 100
@@ -38,4 +38,3 @@ Item {
 
     Component.onCompleted: menuModel.start()
 }
-
