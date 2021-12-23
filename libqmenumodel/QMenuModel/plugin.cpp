@@ -44,6 +44,6 @@ void QMenuModelQmlPlugin::registerTypes(const char *uri)
 
     qmlRegisterType<QDBusMenuModel>(uri, 1, 0, "QDBusMenuModel");
     qmlRegisterType<QDBusActionGroup>(uri, 1, 0, "QDBusActionGroup");
-    qmlRegisterType<AyatanaMenuModel>(uri, 1, 0, "AyatanaMenuAction");
+    qmlRegisterType<AyatanaMenuModel>(uri, 1, 0, "AyatanaMenuModel");
     qmlRegisterType<AyatanaMenuAction>(uri, 1, 0, "AyatanaMenuAction");
 }
