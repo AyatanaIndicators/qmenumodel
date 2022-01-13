@@ -1,5 +1,6 @@
 /*
  * Copyright 2013 Canonical Ltd.
+ * Copyright 2022 Robert Tari
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -13,7 +14,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * Authors: Nick Dedekind <nick.dedekind@canonical.com>
+ * Authors:
+ *      Nick Dedekind <nick.dedekind@canonical.com>
+ *      Robert Tari <robert@tari.in>
  */
 
 #include "ayatanamenuaction.h"
@@ -148,8 +151,6 @@ bool AyatanaMenuAction::event(QEvent* e)
         setState(umasce->state);
         return true;
     } else if (e->type() == AyatanaMenuActionRemoveEvent::eventType) {
-        AyatanaMenuActionRemoveEvent *umare = static_cast<AyatanaMenuActionRemoveEvent*>(e);
-
         setValid(false);
         return true;
     }

@@ -1,5 +1,6 @@
 /*
  * Copyright 2012 Canonical Ltd.
+ * Copyright 2022 Robert Tari
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -15,10 +16,11 @@
  *
  * Authors:
  *      Renato Araujo Oliveira Filho <renato@canonical.com>
+ *      Robert Tari <robert@tari.in>
  */
 
 #ifndef DBUSMENUSCRIPT_H
-#define DBUSMENUSCRITP_H
+#define DBUSMENUSCRIPT_H
 
 #include <QObject>
 #include <QDBusInterface>
