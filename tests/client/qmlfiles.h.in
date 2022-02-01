@@ -1,3 +1,4 @@
-const char* QML_BASE_DIR = "@libqmenumodel_BINARY_DIR@";
-const char* LOADMODEL_QML = "@CMAKE_CURRENT_SOURCE_DIR@/loadmodel.qml";
-const char* LOADMODEL2_QML = "@CMAKE_CURRENT_SOURCE_DIR@/loadmodel2.qml";
+#include <QString>
+
+const QString QML_BASE_DIR = QStringLiteral("@libqmenumodel_BINARY_DIR@");
+const QString IMPORTTEST_QML = QStringLiteral("@CMAKE_CURRENT_SOURCE_DIR@/importtest.qml");

@@ -682,7 +682,7 @@ bool AyatanaMenuModel::loadExtendedAttributes(int position, const QVariantMap &s
             extendedAttrs->insert(qtify_name (name.toUtf8()), qvalue);
         else
             qCWarning(ayatanamenumodel, "loadExtendedAttributes: key '%s' is of type '%s' (expected '%s')",
-                     name.toUtf8().constData(), g_variant_get_type_string(value), type.constData());
+                     name.toUtf8().constData(), g_variant_get_type_string(value), type.toUtf8().constData());
 
         g_variant_unref (value);
     }

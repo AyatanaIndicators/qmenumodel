@@ -1,5 +1,6 @@
 /*
  * Copyright 2012 Canonical Ltd.
+ * Copyright 2021 UBports Foundation
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -15,27 +16,11 @@
  *
  * Authors:
  *      Renato Araujo Oliveira Filho <renato@canonical.com>
+ *      Dalton Durst <dalton@ubports.com>
  */
 
 import QtQuick 2.0
-import QMenuModel 0.1
+import QMenuModel 1.0
 
 Item {
-    width: 100
-    height: 100
-
-    QDBusMenuModel {
-        id: menuModel
-        busType: globalBusType
-        busName: globalBusName
-        objectPath: globalObjectPath
-    }
-
-    ListView {
-        model: menuModel
-        delegate: Item {}
-    }
-
-    Component.onCompleted: menuModel.start()
 }
-
