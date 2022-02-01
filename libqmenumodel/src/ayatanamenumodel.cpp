@@ -1,5 +1,6 @@
 /*
  * Copyright 2013 Canonical Ltd.
+ * Copyright 2022 Robert Tari
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -13,7 +14,9 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
- * Authors: Lars Uebernickel <lars.uebernickel@canonical.com>
+ * Authors:
+ *      Lars Uebernickel <lars.uebernickel@canonical.com>
+ *      Robert Tari <robert@tari.in>
  */
 
 #include "ayatanamenumodel.h"
@@ -270,12 +273,10 @@ void AyatanaMenuModelPrivate::menuItemChanged(GObject *object, GParamSpec *pspec
 {
     GSequenceIter *it = (GSequenceIter *) user_data;
     GtkMenuTrackerItem *item;
-    GtkActionObservable *muxer;
     AyatanaMenuModel *model;
     gint position;
 
     item = (GtkMenuTrackerItem *) g_sequence_get (it);
-    muxer = _gtk_menu_tracker_item_get_observable (item);
     model = (AyatanaMenuModel *) g_object_get_qdata (G_OBJECT (item), ayatana_menu_model_quark ());
     position = g_sequence_iter_get_position (it);
 
@@ -928,7 +929,6 @@ char * AyatanaMenuModelPrivate::fullActionName(AyatanaMenuAction *action)
     GSequenceIter *iter;
     QByteArray bytes;
     const gchar *name;
-    gchar *full_name = NULL;
 
     bytes = action->name().toUtf8();
     name = bytes.constData();

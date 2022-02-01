@@ -1,5 +1,6 @@
 /*
  * Copyright 2012-2016 Canonical Ltd.
+ * Copyright 2022 Robert Tari
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -16,6 +17,7 @@
  * Authors:
  *      Renato Araujo Oliveira Filho <renato@canonical.com>
  *      Marco Trevisan <marco.trevisan@canonical.com>
+ *      Robert Tari <robert@tari.in>
  */
 
 #include <glib.h>
@@ -164,29 +166,29 @@ GVariant* Converter::toGVariant(const QVariant &value)
     if (value.isNull() || !value.isValid())
         return result;
 
-    switch(value.type()) {
-    case QVariant::Bool:
+    switch((QMetaType::Type)value.type()) {
+    case QMetaType::Bool:
         result = g_variant_new_boolean(value.toBool());
         break;
-    case QVariant::ByteArray:
+    case QMetaType::QByteArray:
         result = g_variant_new_bytestring(value.toByteArray());
         break;
-    case QVariant::Double:
+    case QMetaType::Double:
         result = g_variant_new_double(value.toDouble());
         break;
-    case QVariant::Int:
+    case QMetaType::Int:
         result = g_variant_new_int32(value.toInt());
         break;
-    case QVariant::LongLong:
+    case QMetaType::LongLong:
         result = g_variant_new_int64(value.toLongLong());
         break;
-    case QVariant::String:
+    case QMetaType::QString:
         result = g_variant_new_string(qUtf8Printable(value.toString()));
         break;
-    case QVariant::UInt:
+    case QMetaType::UInt:
         result = g_variant_new_uint32(value.toUInt());
         break;
-    case QVariant::ULongLong:
+    case QMetaType::ULongLong:
         result = g_variant_new_uint64(value.toULongLong());
         break;
     case QMetaType::UChar:
@@ -204,10 +206,9 @@ GVariant* Converter::toGVariant(const QVariant &value)
     case QMetaType::ULong:
         result = g_variant_new_uint64(value.value<ulong>());
         break;
-    case QVariant::Map:
+    case QMetaType::QVariantMap:
     {
         GVariantBuilder *b;
-        GVariant *dict;
 
         b = g_variant_builder_new(G_VARIANT_TYPE_VARDICT);
         QMapIterator<QString, QVariant> i(value.toMap());
@@ -231,7 +232,7 @@ GVariant* Converter::toGVariant(const QVariant &value)
         g_variant_builder_unref(b);
         break;
     }
-    case QVariant::List:
+    case QMetaType::QVariantList:
     {
         GVariantBuilder *b = g_variant_builder_new(G_VARIANT_TYPE_TUPLE);
 
@@ -242,7 +243,7 @@ GVariant* Converter::toGVariant(const QVariant &value)
         g_variant_builder_unref(b);
         break;
     }
-    case QVariant::StringList:
+    case QMetaType::QStringList:
     {
         GVariantBuilder *b = g_variant_builder_new(G_VARIANT_TYPE_STRING_ARRAY);
 

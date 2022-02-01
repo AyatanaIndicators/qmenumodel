@@ -1,5 +1,6 @@
 /*
  * Copyright 2013 Canonical Ltd.
+ * Copyright 2022 Robert Tari
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -15,6 +16,7 @@
  *
  * Authors:
  *      Nicholas Dedekind <nick.dedekind@canonical.com
+ *      Robert Tari <robert@tari.in>
  */
 
 #include <glib-object.h>
@@ -39,7 +41,7 @@ AyatanaMenuModelAddRowEvent::AyatanaMenuModelAddRowEvent(GPtrArray *_items, int 
       position(_position)
 {
     if (items) {
-        for (gint i = 0; i < items->len; ++i)
+        for (guint i = 0; i < items->len; ++i)
             g_object_ref(g_ptr_array_index(items, i));
         g_ptr_array_ref(items);
     }
@@ -48,7 +50,7 @@ AyatanaMenuModelAddRowEvent::AyatanaMenuModelAddRowEvent(GPtrArray *_items, int 
 AyatanaMenuModelAddRowEvent::~AyatanaMenuModelAddRowEvent()
 {
     if (items) {
-        for (gint i = 0; i < items->len; ++i)
+        for (guint i = 0; i < items->len; ++i)
             g_object_unref(g_ptr_array_index(items, i));
         g_ptr_array_unref(items);
     }

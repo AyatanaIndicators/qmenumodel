@@ -1,5 +1,6 @@
 /*
  * Copyright 2012 Canonical Ltd.
+ * Copyright 2022 Robert Tari
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -15,6 +16,7 @@
  *
  * Authors:
  *      Renato Araujo Oliveira Filho <renato@canonical.com>
+ *      Robert Tari <robert@tari.in>
  */
 
 #include "qdbusmenumodel.h"
@@ -138,7 +140,7 @@ private Q_SLOTS:
 
     void testActionName()
     {
-        QStateAction *act;
+        QStateAction *act = nullptr;
         getMenuAction(&act, 1);
         QCOMPARE(act->property("name").toString(), QString("Menu1Act"));
     }
@@ -148,7 +150,7 @@ private Q_SLOTS:
      */
     void testStringActionActivation()
     {
-        QStateAction *act;
+        QStateAction *act = nullptr;
         getMenuAction(&act, 1);
         act->activate(QVariant("42"));
 
@@ -162,7 +164,7 @@ private Q_SLOTS:
 
     void testStringActionActivationByVariantString()
     {
-        QStateAction *act;
+        QStateAction *act = nullptr;
         getMenuAction(&act, 1);
         act->activateByVariantString("\"53\"");
 
