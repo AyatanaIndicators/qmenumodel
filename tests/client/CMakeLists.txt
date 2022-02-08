@@ -72,13 +72,14 @@ declare_test(ayatanamenuactiontest)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/qmlfiles.h.in
                ${CMAKE_CURRENT_BINARY_DIR}/qmlfiles.h)
 
-find_package(CoverageReport)
-enable_coverage_report(
-  TARGETS
-    qmenumodel
-  FILTER
-    ${CMAKE_SOURCE_DIR}/tests/*
-    ${CMAKE_BINARY_DIR}/*
-  TESTS
-    ${TESTS}
-)
+if (ENABLE_COVERAGE)
+    enable_coverage_report(
+      TARGETS
+        qmenumodel
+      FILTER
+        ${CMAKE_SOURCE_DIR}/tests/*
+        ${CMAKE_BINARY_DIR}/*
+      TESTS
+        ${TESTS}
+    )
+endif()
