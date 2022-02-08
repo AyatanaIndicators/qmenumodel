@@ -1,3 +1,12 @@
+Overview of changes in ayatana-indicator-session 0.9.1
+
+  * CMakeLists.txt: Rewrite and enable Ayatana-style options.
+  * Fix naming of AyatanaMenuModel qml type.
+  * Fix versioning in examples and tests.
+  * Make the qmltests test imports, at least.
+  * Fix all build warnings.
+  * CMakeLists.txt: Clean up compilation flags.
+
 Overview of changes in ayatana-indicator-session 0.9.0
 
   * Rename Unity* symbols.
