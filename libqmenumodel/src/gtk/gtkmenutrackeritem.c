@@ -267,6 +267,24 @@ gtk_menu_tracker_item_action_added (GtkActionObserver   *observer,
                         (action_target != NULL && parameter_type != NULL &&
                         g_variant_is_of_type (action_target, parameter_type));
 
+  // Special-case org.ayatana.indicator.switch which is a target-less menu
+  // backed by an action with boolean parameter & state.
+  // FIXME: when the final fix is done, re-visit this.
+
+  GVariant *ayatana_type_v =
+    g_menu_item_get_attribute_value (self->item, "x-ayatana-type", G_VARIANT_TYPE_STRING);
+
+  if (ayatana_type_v != NULL) {
+    const gchar* ayatana_type = g_variant_get_string(ayatana_type_v, /* length out */ NULL);
+    if (g_str_equal(ayatana_type, "org.ayatana.indicator.switch")) {
+      self->can_activate |= (action_target == NULL && parameter_type != NULL &&
+                g_variant_type_equal (parameter_type, G_VARIANT_TYPE_BOOLEAN) &&
+                g_variant_is_of_type (state, G_VARIANT_TYPE_BOOLEAN));
+    }
+
+    g_variant_unref(ayatana_type_v);
+  }
+
   if (!self->can_activate)
     {
       if (action_target)
