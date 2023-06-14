@@ -584,7 +584,12 @@ static QVariant attributeToQVariant(GVariant *value, const QString &type)
 {
     QVariant result;
 
-    if (type == "int") {
+    if (type == "int16") {
+        if (g_variant_is_of_type (value, G_VARIANT_TYPE_INT16)) {
+            result =  QVariant(g_variant_get_int16(value));
+        }
+    }
+    else if (type == "int32" || type == "int") {
         if (g_variant_is_of_type (value, G_VARIANT_TYPE_INT32)) {
             result =  QVariant(g_variant_get_int32(value));
         }
@@ -592,6 +597,21 @@ static QVariant attributeToQVariant(GVariant *value, const QString &type)
     else if (type == "int64") {
         if (g_variant_is_of_type (value, G_VARIANT_TYPE_INT64)) {
             result =  QVariant((qlonglong)g_variant_get_int64(value));
+        }
+    }
+    else if (type == "uint16") {
+        if (g_variant_is_of_type (value, G_VARIANT_TYPE_UINT16)) {
+            result =  QVariant(g_variant_get_uint16(value));
+        }
+    }
+    else if (type == "uint32") {
+        if (g_variant_is_of_type (value, G_VARIANT_TYPE_UINT32)) {
+            result =  QVariant(g_variant_get_uint32(value));
+        }
+    }
+    else if (type == "uint64") {
+        if (g_variant_is_of_type (value, G_VARIANT_TYPE_UINT64)) {
+            result =  QVariant((quint64)g_variant_get_uint64(value));
         }
     }
     else if (type == "bool") {
