@@ -1,6 +1,5 @@
-project(qmenumodel)
-cmake_minimum_required(VERSION 3.13)
-set (PROJECT_VERSION "0.9.1")
+cmake_minimum_required (VERSION 3.13)
+project (qmenumodel VERSION 0.9.1)
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     SET(CMAKE_INSTALL_PREFIX "/usr" CACHE PATH "..." FORCE)
@@ -58,9 +57,6 @@ if (ENABLE_TESTS)
         set(TEST_XML_OUTPUT OFF)
     else()
         add_subdirectory(tests)
-        if (ENABLE_COVERAGE)
-            find_package(CoverageReport)
-        endif()
     endif()
 endif()
 

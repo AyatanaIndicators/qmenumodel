@@ -73,7 +73,8 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/qmlfiles.h.in
                ${CMAKE_CURRENT_BINARY_DIR}/qmlfiles.h)
 
 if (ENABLE_COVERAGE)
-    enable_coverage_report(
+    find_package(CoverageReport)
+    ENABLE_COVERAGE_REPORT(
       TARGETS
         qmenumodel
       FILTER
