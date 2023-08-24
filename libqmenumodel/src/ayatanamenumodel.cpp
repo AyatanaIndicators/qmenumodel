@@ -210,9 +210,16 @@ void AyatanaMenuModelPrivate::updateMenuModel()
         GDBusMenuModel *menu;
 
         menu = g_dbus_menu_model_get (this->connection, this->nameOwner, this->menuObjectPath.constData());
-        this->menutracker = gtk_menu_tracker_new (GTK_ACTION_OBSERVABLE (this->muxer),
-                                                  G_MENU_MODEL (menu), TRUE, NULL,
-                                                  menuItemInserted, menuItemRemoved, this);
+        this->menutracker = gtk_menu_tracker_new(GTK_ACTION_OBSERVABLE (this->muxer),
+                                                 G_MENU_MODEL (menu),
+                                                 TRUE,
+                                                 FALSE,
+                                                 FALSE,
+                                                 NULL,
+                                                 NULL,
+                                                 menuItemInserted,
+                                                 menuItemRemoved,
+                                                 this);
 
         g_object_unref (menu);
     }
@@ -499,7 +506,7 @@ QVariant AyatanaMenuModel::data(const QModelIndex &index, int role) const
             return QKeySequence(gtk_menu_tracker_item_get_accel (item), QKeySequence::NativeText);
 
         case HasSubmenuRole:
-            return gtk_menu_tracker_item_get_has_submenu (item) != FALSE;
+            return gtk_menu_tracker_item_get_has_link (item, G_MENU_LINK_SUBMENU) != FALSE;
 
         default:
             return QVariant();
@@ -549,7 +556,7 @@ QObject * AyatanaMenuModel::submenu(int position, QQmlComponent* actionStatePars
     }
 
     item = (GtkMenuTrackerItem *) g_sequence_get (it);
-    if (!item || !gtk_menu_tracker_item_get_has_submenu (item)) {
+    if (!item || !gtk_menu_tracker_item_get_has_link (item, G_MENU_LINK_SUBMENU)) {
         return NULL;
     }
 
@@ -564,10 +571,14 @@ QObject * AyatanaMenuModel::submenu(int position, QQmlComponent* actionStatePars
             }
         }
 
-        model->priv->menutracker = gtk_menu_tracker_new_for_item_submenu (item,
+        model->priv->menutracker = gtk_menu_tracker_new_for_item_link (item,
+                                                                          G_MENU_LINK_SUBMENU,
+                                                                          FALSE,
+                                                                          FALSE,
                                                                           AyatanaMenuModelPrivate::menuItemInserted,
                                                                           AyatanaMenuModelPrivate::menuItemRemoved,
                                                                           model->priv);
+
         g_object_set_qdata (G_OBJECT (item), ayatana_submenu_model_quark (), model);
     }
 

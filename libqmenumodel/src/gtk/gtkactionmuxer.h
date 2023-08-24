@@ -42,10 +42,27 @@ void                    gtk_action_muxer_insert                         (GtkActi
 void                    gtk_action_muxer_remove                         (GtkActionMuxer *muxer,
                                                                          const gchar    *prefix);
 
+const gchar **          gtk_action_muxer_list_prefixes                  (GtkActionMuxer *muxer);
+GActionGroup *          gtk_action_muxer_lookup                         (GtkActionMuxer *muxer,
+                                                                         const gchar    *prefix);
 GtkActionMuxer *        gtk_action_muxer_get_parent                     (GtkActionMuxer *muxer);
 
 void                    gtk_action_muxer_set_parent                     (GtkActionMuxer *muxer,
                                                                          GtkActionMuxer *parent);
+
+void                    gtk_action_muxer_set_primary_accel              (GtkActionMuxer *muxer,
+                                                                         const gchar    *action_and_target,
+                                                                         const gchar    *primary_accel);
+
+const gchar *           gtk_action_muxer_get_primary_accel              (GtkActionMuxer *muxer,
+                                                                         const gchar    *action_and_target);
+
+/* No better place for these... */
+gchar *                 gtk_print_action_and_target                     (const gchar    *action_namespace,
+                                                                         const gchar    *action_name,
+                                                                         GVariant       *target);
+
+gchar *                 gtk_normalise_detailed_action_name              (const gchar *detailed_action_name);
 
 G_END_DECLS
 
