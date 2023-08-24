@@ -1,3 +1,10 @@
+Overview of changes in ayatana-indicator-session 0.9.2
+
+  * tests/client/CMakeLists.txt: Only enable coverage reporting if the
+    flag is set for it.
+  * ayatanamenumodel: add support for {u,}int of all sizes.
+  * Fix build errors.
+
 Overview of changes in ayatana-indicator-session 0.9.1
 
   * CMakeLists.txt: Rewrite and enable Ayatana-style options.
