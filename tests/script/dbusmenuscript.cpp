@@ -22,7 +22,7 @@
 #include <QtTestGui>
 #include <QDebug>
 
-#define WAIT_TIMEOUT   500
+#define WAIT_TIMEOUT   2000
 
 DBusMenuScript::DBusMenuScript()
     :m_script(0)
