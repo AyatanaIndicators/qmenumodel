@@ -72,14 +72,26 @@ private:
         g_variant_unref(gv);
         return result;
     }
-    bool compare(GVariant *gv, const QVariant::Type type)
+    bool compare(GVariant *gv, const QMetaType::Type type)
     {
         g_variant_ref_sink(gv);
         const QVariant& qv = Converter::toQVariant(gv);
-        bool result = (qv.type() == type);
+        bool result = (
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            qv.typeId()
+#else
+            (QMetaType::Type)qv.type()
+#endif
+            == type
+        );
         if (!result) {
             qWarning() << "types are different: GVariant:" << g_variant_type_peek_string(g_variant_get_type(gv))
-                       << "Result:" << qv.type()
+                       << "Result:" <<
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+                           qv.typeId()
+#else
+                           qv.type()
+#endif
                        << "Expected:"<< type;
         }
         g_variant_unref(gv);
@@ -300,7 +312,7 @@ private Q_SLOTS:
         QFETCH(QGVariant, value);
         QFETCH(unsigned, expectedType);
 
-        QVERIFY(compare(value, (QVariant::Type) expectedType));
+        QVERIFY(compare(value, (QMetaType::Type) expectedType));
     }
 
     void testConvertToQVariantAndBack_data()
@@ -318,7 +330,14 @@ private Q_SLOTS:
         GVariant *gv = Converter::toGVariant(qv);
         gboolean equals = g_variant_equal(value, gv);
 
-        if (!equals && qv.type() == QVariant::List) {
+        if (!equals && (
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            qv.typeId()
+#else
+            qv.type()
+#endif
+            == QVariant::List
+        )) {
             QVERIFY(g_variant_type_is_array(g_variant_get_type(value)));
             QVERIFY(g_variant_type_is_tuple(g_variant_get_type(gv)));
 
@@ -373,7 +392,15 @@ private Q_SLOTS:
         QFETCH(QString, value);
         QFETCH(unsigned, expectedType);
 
-        QCOMPARE(Converter::toQVariantFromVariantString(value).type(), (QVariant::Type) expectedType);
+        QCOMPARE(
+            Converter::toQVariantFromVariantString(value)
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+                .typeId()
+#else
+                .type()
+#endif
+            , (QMetaType::Type) expectedType
+        );
     }
 
 };

@@ -166,7 +166,13 @@ GVariant* Converter::toGVariant(const QVariant &value)
     if (value.isNull() || !value.isValid())
         return result;
 
-    switch((QMetaType::Type)value.type()) {
+    switch(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+        value.typeId()
+#else
+        (QMetaType::Type)value.type()
+#endif
+    ) {
     case QMetaType::Bool:
         result = g_variant_new_boolean(value.toBool());
         break;
@@ -255,7 +261,13 @@ GVariant* Converter::toGVariant(const QVariant &value)
         break;
     }
     default:
-        qWarning() << "QVariant type not supported:" << value.type();
+        qWarning() << "QVariant type not supported:" <<
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            value.metaType()
+#else
+            value.type()
+#endif
+            ;
     }
 
     return result;
@@ -313,11 +325,23 @@ GVariant* Converter::toGVariantWithSchema(const QVariant &value, const char* sch
     } else if (g_variant_type_equal(schema_type, G_VARIANT_TYPE_VARIANT)) {
         result = g_variant_new_variant(Converter::toGVariant(value));
     } else if (g_variant_type_equal(schema_type, G_VARIANT_TYPE_VARDICT)) {
-        if (value.canConvert(QVariant::Map)) {
+        if (value.canConvert(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            QMetaType (QVariant::Map)
+#else
+            QVariant::Map
+#endif
+        )) {
             result = Converter::toGVariant(value.toMap());
         }
     } else if (g_variant_type_is_array(schema_type)) {
-        if (value.canConvert(QVariant::List)) {
+        if (value.canConvert(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            QMetaType (QVariant::List)
+#else
+            QVariant::List
+#endif
+        )) {
             const GVariantType* entryType = g_variant_type_element(schema_type);
             const gchar* entryTypeString = g_variant_type_peek_string(entryType);
 
@@ -341,7 +365,13 @@ GVariant* Converter::toGVariantWithSchema(const QVariant &value, const char* sch
             g_variant_builder_unref(b);
         }
     } else if (g_variant_type_is_tuple(schema_type)) {
-        if (value.canConvert(QVariant::List)) {
+        if (value.canConvert(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            QMetaType (QVariant::List)
+#else
+            QVariant::List
+#endif
+        )) {
             const GVariantType* entryType = g_variant_type_first(schema_type);
 
             GVariantBuilder *b = g_variant_builder_new(G_VARIANT_TYPE_TUPLE);

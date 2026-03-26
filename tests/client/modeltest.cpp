@@ -106,13 +106,27 @@ private Q_SLOTS:
         // Label (String)
         QVariant label = m_model.data(m_model.index(0, 0), QMenuModel::Label);
         QVERIFY(label.isValid());
-        QCOMPARE(label.type(), QVariant::String);
+        QCOMPARE(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            label.typeId()
+#else
+            label.type()
+#endif
+            , QVariant::String
+        );
         QCOMPARE(label.toString(), QString("Menu0"));
 
         // Action (String)
         QVariant action = m_model.data(m_model.index(1, 0), QMenuModel::Action);
         QVERIFY(action.isValid());
-        QCOMPARE(action.type(), QVariant::String);
+        QCOMPARE(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            action.typeId()
+#else
+            action.type()
+#endif
+            , QVariant::String
+        );
         QCOMPARE(action.toString(), QString("Menu1Act"));
 
         // Wait for menu load (submenus are loaded async)
@@ -144,7 +158,14 @@ private Q_SLOTS:
 
         // Boolean
         QVariant v = extra["boolean"];
-        QCOMPARE(v.type(), QVariant::Bool);
+        QCOMPARE(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            v.typeId()
+#else
+            v.type()
+#endif
+            , QVariant::Bool
+        );
         QCOMPARE(v.toBool(), true);
 
         // Byte
@@ -164,32 +185,74 @@ private Q_SLOTS:
 
         // Int32
         v = extra["int32"];
-        QCOMPARE(v.type(), QVariant::Int);
+        QCOMPARE(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            v.typeId()
+#else
+            v.type()
+#endif
+            , QVariant::Int
+        );
         QCOMPARE(v.toInt(), -42);
 
         // UInt32
         v = extra["uint32"];
-        QCOMPARE(v.type(), QVariant::UInt);
+        QCOMPARE(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            v.typeId()
+#else
+            v.type()
+#endif
+            , QVariant::UInt
+        );
         QCOMPARE(v.toUInt(), (uint) 42);
 
         // Int64
         v = extra["int64"];
-        QCOMPARE(v.type(), QVariant::LongLong);
+        QCOMPARE(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            v.typeId()
+#else
+            v.type()
+#endif
+            , QVariant::LongLong
+        );
         QCOMPARE(v.value<long>(), (long) -42);
 
         // UInt64
         v = extra["uint64"];
-        QCOMPARE(v.type(), QVariant::ULongLong);
+        QCOMPARE(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            v.typeId()
+#else
+            v.type()
+#endif
+            , QVariant::ULongLong
+        );
         QCOMPARE(v.value<ulong>(), (ulong) 42);
 
         // Double
         v = extra["double"];
-        QCOMPARE(v.type(), QVariant::Double);
+        QCOMPARE(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            v.typeId()
+#else
+            v.type()
+#endif
+            , QVariant::Double
+        );
         QCOMPARE(v.toDouble(), 42.42);
 
         // String
         v = extra["string"];
-        QCOMPARE(v.type(), QVariant::String);
+        QCOMPARE(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            v.typeId()
+#else
+            v.type()
+#endif
+            , QVariant::String
+        );
         QCOMPARE(v.toString(), QString("42"));
 
         // Map
@@ -199,19 +262,40 @@ private Q_SLOTS:
         map.insert("string", "42");
         map.insert("double", 42.42);
 
-        QCOMPARE(v.type(), QVariant::Map);
+        QCOMPARE(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            v.typeId()
+#else
+            v.type()
+#endif
+            , QVariant::Map
+        );
         QCOMPARE(v.toMap(), map);
 
         // Utf8
         v = extra["utf8"];
-        QCOMPARE(v.type(), QVariant::String);
+        QCOMPARE(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            v.typeId()
+#else
+            v.type()
+#endif
+            , QVariant::String
+        );
         QCOMPARE(v.toString(), QString("dança"));
 
         // Tuple
         v = extra["tuple"];
         QVariantList lst;
         lst << "1" << 2 << 3.3;
-        QCOMPARE(v.type(), QVariant::List);
+        QCOMPARE(
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+            v.typeId()
+#else
+            v.type()
+#endif
+            , QVariant::List
+        );
         QCOMPARE(v.toList(), lst);
    }
 
