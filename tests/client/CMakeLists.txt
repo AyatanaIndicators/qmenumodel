@@ -1,16 +1,16 @@
 macro(declare_test testname)
     add_executable(${testname} ${testname}.cpp)
     target_link_libraries(${testname}
-                          qmenumodel
+                          qmenumodel${QMENUMODEL_LIB_SUFFIX}
                           dbusmenuscript
                           ${GLIB_LDFLAGS}
                           ${GIO_LDFLAGS}
-                          Qt5::Core
-                          Qt5::DBus
-                          Qt5::Widgets
-                          Qt5::Test
-                          Qt5::Qml
-                          Qt5::Quick
+                          Qt::Core
+                          Qt::DBus
+                          Qt::Widgets
+                          Qt::Test
+                          Qt::Qml
+                          Qt::Quick
     )
 
     if(TEST_XML_OUTPUT)
@@ -34,11 +34,11 @@ endmacro(declare_test testname)
 macro(declare_simple_test testname)
     add_executable(${testname} ${testname}.cpp)
     target_link_libraries(${testname}
-                          qmenumodel
+                          qmenumodel${QMENUMODEL_LIB_SUFFIX}
                           ${GLIB_LDFLAGS}
                           ${GIO_LDFLAGS}
-                          Qt5::Core
-                          Qt5::Test
+                          Qt::Core
+                          Qt::Test
     )
 
     add_test(${testname}
@@ -76,7 +76,7 @@ if (ENABLE_COVERAGE)
     find_package(CoverageReport)
     ENABLE_COVERAGE_REPORT(
       TARGETS
-        qmenumodel
+        qmenumodel${QMENUMODEL_LIB_SUFFIX}
       FILTER
         ${CMAKE_SOURCE_DIR}/tests/*
         ${CMAKE_BINARY_DIR}/*

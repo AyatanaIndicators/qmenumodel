@@ -29,7 +29,7 @@ set(QMENUMODEL_SRC
     gtk/gtkmenutrackeritem.h
 )
 
-set(SHAREDLIBNAME qmenumodel)
+set(SHAREDLIBNAME qmenumodel${QMENUMODEL_LIB_SUFFIX})
 add_library(${SHAREDLIBNAME} SHARED
     ${QMENUMODEL_SRC}
 )
@@ -45,11 +45,10 @@ include_directories(
     ${GIO_INCLUDE_DIRS}
 )
 
-find_package(Qt5Quick REQUIRED)
 target_link_libraries(${SHAREDLIBNAME}
     ${GLIB_LDFLAGS}
     ${GIO_LDFLAGS}
-    Qt5::Core Qt5::Qml Qt5::Quick
+    Qt::Core Qt::Qml Qt::Quick
 )
 
 install(TARGETS ${SHAREDLIBNAME} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
@@ -71,8 +70,8 @@ install(FILES ${QMENUMODEL_HEADERS}
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${INCLUDEDIR}
 )
 
-set(PCFILE qmenumodel.pc)
-configure_file(${PCFILE}.in ${CMAKE_CURRENT_BINARY_DIR}/${PCFILE} @ONLY)
+set(PCFILE qmenumodel${QMENUMODEL_PKGCONFIG_SUFFIX}.pc)
+configure_file(qmenumodel.pc.in ${CMAKE_CURRENT_BINARY_DIR}/${PCFILE} @ONLY)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PCFILE}
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
 )
