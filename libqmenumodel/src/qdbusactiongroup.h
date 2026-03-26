@@ -25,8 +25,11 @@
 #include <QObject>
 #include <QVariant>
 
+#include "actionstateparser.h"
+
+// cyclical includes, forward-declare
 class QStateAction;
-class ActionStateParser;
+#include "qstateaction.h"
 
 typedef char gchar;
 typedef void* gpointer;

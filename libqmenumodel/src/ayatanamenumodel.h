@@ -20,9 +20,13 @@
 #define AYATANAMENUMODEL_H
 
 #include <QAbstractListModel>
-class ActionStateParser;
-class QQmlComponent;
+#include <QQmlComponent>
+
+#include "actionstateparser.h"
+
+// cyclical includes, forward-declare
 class AyatanaMenuAction;
+#include "ayatanamenuaction.h"
 
 class AyatanaMenuModel: public QAbstractListModel
 {

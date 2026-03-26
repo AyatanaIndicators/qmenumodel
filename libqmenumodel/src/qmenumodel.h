@@ -22,7 +22,8 @@
 
 #include <QAbstractItemModel>
 
-class MenuNode;
+#include "menunode.h"
+
 typedef struct _GMenuModel GMenuModel;
 
 class QMenuModel : public QAbstractItemModel

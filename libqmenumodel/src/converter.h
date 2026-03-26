@@ -20,9 +20,10 @@
 #ifndef CONVERTER_H
 #define CONVERTER_H
 
+#include <QString>
+#include <QVariant>
+
 typedef struct _GVariant GVariant;
-class QString;
-class QVariant;
 
 class Converter
 {
