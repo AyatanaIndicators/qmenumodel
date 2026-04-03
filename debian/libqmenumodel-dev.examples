@@ -1,0 +1,4 @@
+examples/*.cpp
+examples/*.py
+examples/*.qml
+examples/README
