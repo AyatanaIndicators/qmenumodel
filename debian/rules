@@ -15,7 +15,20 @@ DEB_CMAKE_EXTRA_FLAGS = \
 	dh $@
 
 override_dh_auto_configure:
-	dh_auto_configure -- $(DEB_CMAKE_EXTRA_FLAGS)
+	dh_auto_configure --builddirectory=build-qt6 -- $(DEB_CMAKE_EXTRA_FLAGS) -DENABLE_QT6=ON
+	dh_auto_configure --builddirectory=build-qt5 -- $(DEB_CMAKE_EXTRA_FLAGS) -DENABLE_QT6=OFF
+
+override_dh_auto_build:
+	dh_auto_build --builddirectory=build-qt6
+	dh_auto_build --builddirectory=build-qt5
+
+override_dh_auto_install:
+	dh_auto_install --builddirectory=build-qt6
+	dh_auto_install --builddirectory=build-qt5
+
+override_dh_auto_clean:
+	dh_auto_clean --builddirectory=build-qt6
+	dh_auto_clean --builddirectory=build-qt5
 
 override_dh_makeshlibs:
 	dh_makeshlibs -Xlibqmenumodel-qml.so

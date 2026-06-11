@@ -1,0 +1,3 @@
+usr/include/qt6/qmenumodel/*.h
+usr/lib/*/libqmenumodel-qt6.so
+usr/lib/*/pkgconfig/qmenumodel-qt6.pc
