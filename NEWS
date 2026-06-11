@@ -1,44 +1,55 @@
-Overview of changes in ayatana-indicator-session 0.9.2
+Overview of changes in qmenumodel 0.10.0
 
-  * tests/client/CMakeLists.txt: Only enable coverage reporting if the
+  - treewide: Allow Qt6 build to be configured via CMake.
+  - libqmenumodel/src: Fix build errors with Qt6.
+  - {libqmenumodel/src,tests/client}: Fix warnings with Qt6.
+  - libqmenumodel/QMenuModel/CMakeLists.txt: Omit API version from
+    QMenuModel module name when building Qt 6 variant.
+  - libqmenumodel/src/CMakeLists.txt: Ship Qt 5 and Qt 6 includes in
+    different paths; eases packaging.
+  - tests: Increase test timeout.
+
+Overview of changes in qmenumodel 0.9.2
+
+  - tests/client/CMakeLists.txt: Only enable coverage reporting if the
     flag is set for it.
-  * ayatanamenumodel: add support for {u,}int of all sizes.
-  * Fix build errors.
+  - ayatanamenumodel: add support for {u,}int of all sizes.
+  - Fix build errors.
 
-Overview of changes in ayatana-indicator-session 0.9.1
+Overview of changes in qmenumodel 0.9.1
 
-  * CMakeLists.txt: Rewrite and enable Ayatana-style options.
-  * Fix naming of AyatanaMenuModel qml type.
-  * Fix versioning in examples and tests.
-  * Make the qmltests test imports, at least.
-  * Fix all build warnings.
-  * CMakeLists.txt: Clean up compilation flags.
+  - CMakeLists.txt: Rewrite and enable Ayatana-style options.
+  - Fix naming of AyatanaMenuModel qml type.
+  - Fix versioning in examples and tests.
+  - Make the qmltests test imports, at least.
+  - Fix all build warnings.
+  - CMakeLists.txt: Clean up compilation flags.
 
-Overview of changes in ayatana-indicator-session 0.9.0
+Overview of changes in qmenumodel 0.9.0
 
-  * Rename Unity* symbols.
-  * Rename unity* source files.
-  * libqmenumodel/src/CMakeLists.txt: Bump the SOVERSION of
+  - Rename Unity* symbols.
+  - Rename unity* source files.
+  - libqmenumodel/src/CMakeLists.txt: Bump the SOVERSION of
     libqmenumodel.
-  * Bump QMenuModel QML module to 1.0.
-  * Rename com.ubuntu.menu.
-  * examples/exportmenu.py: Rename x-canonical-currentvalue.
-  * examples/unityqmlmenumodel.qml: Rename
+  - Bump QMenuModel QML module to 1.0.
+  - Rename com.ubuntu.menu.
+  - examples/exportmenu.py: Rename x-canonical-currentvalue.
+  - examples/unityqmlmenumodel.qml: Rename
     com.canonical.indicator.sound.
-  * libqmenumodel/QMenuModel/plugin.h: Rename com.canonical.qmenumodel.
-  * Rename com.canonical.test*.
+  - libqmenumodel/QMenuModel/plugin.h: Rename com.canonical.qmenumodel.
+  - Rename com.canonical.test*.
 
-Overview of changes in ayatana-indicator-session 0.8.1
+Overview of changes in qmenumodel 0.8.1
 
-  * Move glib includes outside of extern "C".
-  * Add Travis CI builds configuration.
+  - Move glib includes outside of extern "C".
+  - Add Travis CI builds configuration.
 
-Overview of changes in ayatana-indicator-session 0.8.0
+Overview of changes in qmenumodel 0.8.0
 
-  * Move qmenumodel from UBports' project context over to
+  - Move qmenumodel from UBports' project context over to
     Ayatana Indicators' project context. Same maintainers,
     same people involved, but the project is now maintained
     together with the other Indicators' related projects.
-  * Upstream version bump (to go along with the other
+  - Upstream version bump (to go along with the other
     indicator related projects maintained by the Ayatana
     Indicators project). Next official release will be 0.8.0.

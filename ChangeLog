@@ -1,6 +1,55 @@
+2026-06-11 Mike Gabriel
+
+        * Release 0.10.0 (HEAD -> main, tag: 0.10.0)
+        * d/changelog: prepare release v0.10.0 (057eb26)
+        * d/rules: Enable unit tests for Qt 5 + Qt 6 (727a02d)
+        * debian/: Build Qt 6 variant alongside Qt 5 variant (3ab0271)
+        * libqmenumodel/src/CMakeLists.txt: Ship Qt 5 and Qt 6 includes in
+          different paths; eases packaging (2c34f4e)
+        * libqmenumodel/QMenuModel/CMakeLists.txt: Omit API version from
+          QMenuModel module name when building Qt 6 variant
+          (710e67e)
+        * libqmenumodel/: White-space fixes (d4dc874)
+        * .gitignore: Don't ignore files that stem from DEB packaging.
+          (0a00214)
+        * Merge branch 'OPNA2608-port-qt6' (d20734d)
+
+2026-03-26 OPNA2608
+
+        * {libqmenumodel/src,tests/client}: Fix warnings with Qt6 (5f421cc)
+        * libqmenumodel/src: Fix build errors with Qt6 (07e7bde)
+        * treewide: Allow Qt6 build to be configured via CMake (f619b88)
+
+2026-06-11 Mike Gabriel
+
+        * Revert "src/gtk Update gtk part to version 3.24.8" (f33cda5)
+        * Merge branch 'jbicha-personal/jbicha/increase-test-timeout'
+          (4fd46b9)
+
+2024-11-02 Aurelien Jarno
+
+        * tests: Increase test timeout (c3f100c)
+
+2026-06-11 Mike Gabriel
+
+        * Merge branch 'jbicha-personal/jbicha/debian-sync-20260403'
+          (187d02d)
+
+2026-04-03 Jeremy Bícha
+
+        * debian: Sync with Debian (ed50241)
+
 2023-08-24 Mike Gabriel
 
-        * release 0.9.2 (HEAD -> main, tag: 0.9.2)
+        * Merge branch 'neochapay-update_gtk' (c8b25f7)
+
+2022-06-14 Sergey Chupligin
+
+        * src/gtk Update gtk part to version 3.24.8 (ceaa2df)
+
+2023-08-24 Mike Gabriel
+
+        * release 0.9.2 (017363f) (tag: 0.9.2)
 
 2023-08-07 Mike Gabriel
 
