@@ -10,4 +10,3 @@ Version: @CMAKE_PROJECT_VERSION@
 Requires.private: Qt@QT_VERSION_MAJOR@Core Qt@QT_VERSION_MAJOR@Widgets gio-2.0
 Libs: -L${libdir} -l@SHAREDLIBNAME@
 Cflags: -I${includedir}/@INCLUDEDIR@
-

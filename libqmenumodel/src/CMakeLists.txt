@@ -75,4 +75,3 @@ configure_file(qmenumodel.pc.in ${CMAKE_CURRENT_BINARY_DIR}/${PCFILE} @ONLY)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${PCFILE}
     DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
 )
-
