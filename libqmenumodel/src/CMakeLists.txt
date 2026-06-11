@@ -65,7 +65,7 @@ set(QMENUMODEL_HEADERS
     ayatanamenumodel.h
 )
 
-set(INCLUDEDIR qmenumodel)
+set(INCLUDEDIR qt${QT_VERSION_MAJOR}/qmenumodel)
 install(FILES ${QMENUMODEL_HEADERS}
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${INCLUDEDIR}
 )
