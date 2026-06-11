@@ -12,7 +12,9 @@
  * Lesser General Public License for more details.
  *
  * You should have received a copy of the GNU Lesser General Public
- * License along with this library; if not, see <http://www.gnu.org/licenses/>.
+ * License along with this library; if not, write to the
+ * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+ * Boston, MA 02111-1307, USA.
  *
  * Author: Ryan Lortie <desrt@desrt.ca>
  */
@@ -20,13 +22,8 @@
 #include "config.h"
 
 #include "gtkmenutrackeritem.h"
-#include "gtkactionmuxer.h"
 
-#include "gtkactionmuxer.h"
-
-#include <string.h>
-
-/*< private >
+/**
  * SECTION:gtkmenutrackeritem
  * @Title: GtkMenuTrackerItem
  * @Short_description: Small helper for model menu items
@@ -37,7 +34,7 @@
  *
  * If an item is one of the non-normal classes (submenu, separator), only the
  * label of the item needs to be respected. Otherwise, all the properties
- * of the item contribute to the item’s appearance and state.
+ * of the item contribute to the item's appearance and state.
  *
  * Implementing the appearance of the menu item is up to toolkits, and certain
  * toolkits may choose to ignore certain properties, like icon or accel. The
@@ -66,7 +63,7 @@
  * Applications using submenus may want to lazily build their submenus in
  * response to the user clicking on it, as building a submenu may be expensive.
  *
- * Thus, the submenu has two special controls -- the submenu’s visibility
+ * Thus, the submenu has two special controls -- the submenu's visibility
  * should be controlled by the GtkMenuTrackerItem::submenu-shown property,
  * and if a user clicks on the submenu, do not immediately show the menu,
  * but call gtk_menu_tracker_item_request_submenu_shown() and wait for the
@@ -86,7 +83,6 @@ struct _GtkMenuTrackerItem
 
   GtkActionObservable *observable;
   gchar *action_namespace;
-  gchar *action_and_target;
   GMenuItem *item;
   GtkMenuTrackerItemRole role : 4;
   guint is_separator : 1;
@@ -95,30 +91,23 @@ struct _GtkMenuTrackerItem
   guint toggled : 1;
   guint submenu_shown : 1;
   guint submenu_requested : 1;
-  guint hidden_when : 2;
-  guint is_visible : 1;
   GVariant *action_state;
 };
-
-#define HIDDEN_NEVER         0
-#define HIDDEN_WHEN_MISSING  1
-#define HIDDEN_WHEN_DISABLED 2
-#define HIDDEN_WHEN_ALWAYS   3
 
 enum {
   PROP_0,
   PROP_IS_SEPARATOR,
+  PROP_HAS_SUBMENU,
   PROP_LABEL,
   PROP_ICON,
-  PROP_VERB_ICON,
   PROP_SENSITIVE,
+  PROP_VISIBLE,
   PROP_ROLE,
   PROP_TOGGLED,
   PROP_ACCEL,
   PROP_SUBMENU_SHOWN,
   PROP_ACTION_NAME,
   PROP_ACTION_STATE,
-  PROP_IS_VISIBLE,
   N_PROPS
 };
 
@@ -164,17 +153,20 @@ gtk_menu_tracker_item_get_property (GObject    *object,
     case PROP_IS_SEPARATOR:
       g_value_set_boolean (value, gtk_menu_tracker_item_get_is_separator (self));
       break;
+    case PROP_HAS_SUBMENU:
+      g_value_set_boolean (value, gtk_menu_tracker_item_get_has_submenu (self));
+      break;
     case PROP_LABEL:
       g_value_set_string (value, gtk_menu_tracker_item_get_label (self));
       break;
     case PROP_ICON:
-      g_value_take_object (value, gtk_menu_tracker_item_get_icon (self));
-      break;
-    case PROP_VERB_ICON:
-      g_value_take_object (value, gtk_menu_tracker_item_get_verb_icon (self));
+      g_value_set_object (value, gtk_menu_tracker_item_get_icon (self));
       break;
     case PROP_SENSITIVE:
       g_value_set_boolean (value, gtk_menu_tracker_item_get_sensitive (self));
+      break;
+    case PROP_VISIBLE:
+      g_value_set_boolean (value, gtk_menu_tracker_item_get_visible (self));
       break;
     case PROP_ROLE:
       g_value_set_enum (value, gtk_menu_tracker_item_get_role (self));
@@ -188,12 +180,10 @@ gtk_menu_tracker_item_get_property (GObject    *object,
     case PROP_SUBMENU_SHOWN:
       g_value_set_boolean (value, gtk_menu_tracker_item_get_submenu_shown (self));
       break;
-    case PROP_ACTION_STATE:
-      g_value_set_variant (value, self->action_state);
     case PROP_ACTION_NAME:
       g_value_take_string (value, gtk_menu_tracker_item_get_action_name (self));
-    case PROP_IS_VISIBLE:
-      g_value_set_boolean (value, gtk_menu_tracker_item_get_is_visible (self));
+    case PROP_ACTION_STATE:
+      g_value_set_variant (value, self->action_state);
       break;
     default:
       G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
@@ -207,7 +197,6 @@ gtk_menu_tracker_item_finalize (GObject *object)
   GtkMenuTrackerItem *self = GTK_MENU_TRACKER_ITEM (object);
 
   g_free (self->action_namespace);
-  g_free (self->action_and_target);
 
   if (self->observable)
     g_object_unref (self->observable);
@@ -233,14 +222,16 @@ gtk_menu_tracker_item_class_init (GtkMenuTrackerItemClass *class)
 
   gtk_menu_tracker_item_pspecs[PROP_IS_SEPARATOR] =
     g_param_spec_boolean ("is-separator", "", "", FALSE, G_PARAM_STATIC_STRINGS | G_PARAM_READABLE);
+  gtk_menu_tracker_item_pspecs[PROP_HAS_SUBMENU] =
+    g_param_spec_boolean ("has-submenu", "", "", FALSE, G_PARAM_STATIC_STRINGS | G_PARAM_READABLE);
   gtk_menu_tracker_item_pspecs[PROP_LABEL] =
     g_param_spec_string ("label", "", "", NULL, G_PARAM_STATIC_STRINGS | G_PARAM_READABLE);
   gtk_menu_tracker_item_pspecs[PROP_ICON] =
     g_param_spec_object ("icon", "", "", G_TYPE_ICON, G_PARAM_STATIC_STRINGS | G_PARAM_READABLE);
-  gtk_menu_tracker_item_pspecs[PROP_VERB_ICON] =
-    g_param_spec_object ("verb-icon", "", "", G_TYPE_ICON, G_PARAM_STATIC_STRINGS | G_PARAM_READABLE);
   gtk_menu_tracker_item_pspecs[PROP_SENSITIVE] =
     g_param_spec_boolean ("sensitive", "", "", FALSE, G_PARAM_STATIC_STRINGS | G_PARAM_READABLE);
+  gtk_menu_tracker_item_pspecs[PROP_VISIBLE] =
+    g_param_spec_boolean ("visible", "", "", FALSE, G_PARAM_STATIC_STRINGS | G_PARAM_READABLE);
   gtk_menu_tracker_item_pspecs[PROP_ROLE] =
     g_param_spec_enum ("role", "", "",
                        GTK_TYPE_MENU_TRACKER_ITEM_ROLE, GTK_MENU_TRACKER_ITEM_ROLE_NORMAL,
@@ -255,49 +246,8 @@ gtk_menu_tracker_item_class_init (GtkMenuTrackerItemClass *class)
     g_param_spec_boolean ("action-name", "", "", FALSE, G_PARAM_STATIC_STRINGS | G_PARAM_READABLE);
   gtk_menu_tracker_item_pspecs[PROP_ACTION_STATE] =
     g_param_spec_boolean ("action-state", "", "", FALSE, G_PARAM_STATIC_STRINGS | G_PARAM_READABLE);
-  gtk_menu_tracker_item_pspecs[PROP_IS_VISIBLE] =
-    g_param_spec_boolean ("is-visible", "", "", FALSE, G_PARAM_STATIC_STRINGS | G_PARAM_READABLE);
 
   g_object_class_install_properties (class, N_PROPS, gtk_menu_tracker_item_pspecs);
-}
-
-/* This syncs up the visibility for the hidden-when='' case.  We call it
- * from the action observer functions on changes to the action group and
- * on initialisation (via the action observer functions that are invoked
- * at that time).
- */
-static void
-gtk_menu_tracker_item_update_visibility (GtkMenuTrackerItem *self)
-{
-  gboolean visible;
-
-  switch (self->hidden_when)
-    {
-    case HIDDEN_NEVER:
-      visible = TRUE;
-      break;
-
-    case HIDDEN_WHEN_MISSING:
-      visible = self->can_activate;
-      break;
-
-    case HIDDEN_WHEN_DISABLED:
-      visible = self->sensitive;
-      break;
-
-    case HIDDEN_WHEN_ALWAYS:
-      visible = FALSE;
-      break;
-
-    default:
-      g_assert_not_reached ();
-    }
-
-  if (visible != self->is_visible)
-    {
-      self->is_visible = visible;
-      g_object_notify (G_OBJECT (self), "is-visible");
-    }
 }
 
 static void
@@ -359,12 +309,6 @@ gtk_menu_tracker_item_action_added (GtkActionObserver   *observer,
 
   if (action_target)
     g_variant_unref (action_target);
-
-  /* In case of hidden-when='', we want to Wait until after refreshing
-   * all of the properties to emit the signal that will cause the
-   * tracker to expose us (to prevent too much thrashing).
-   */
-  gtk_menu_tracker_item_update_visibility (self);
 }
 
 static void
@@ -384,8 +328,6 @@ gtk_menu_tracker_item_action_enabled_changed (GtkActionObserver   *observer,
   self->sensitive = enabled;
 
   g_object_notify_by_pspec (G_OBJECT (self), gtk_menu_tracker_item_pspecs[PROP_SENSITIVE]);
-
-  gtk_menu_tracker_item_update_visibility (self);
 }
 
 static void
@@ -431,51 +373,38 @@ gtk_menu_tracker_item_action_removed (GtkActionObserver   *observer,
                                       const gchar         *action_name)
 {
   GtkMenuTrackerItem *self = GTK_MENU_TRACKER_ITEM (observer);
-  gboolean was_sensitive, was_toggled;
-  GtkMenuTrackerItemRole old_role;
 
   if (!self->can_activate)
     return;
 
-  was_sensitive = self->sensitive;
-  was_toggled = self->toggled;
-  old_role = self->role;
-
-  self->can_activate = FALSE;
-  self->sensitive = FALSE;
-  self->toggled = FALSE;
-  self->role = GTK_MENU_TRACKER_ITEM_ROLE_NORMAL;
-  self->action_state = NULL;
-
-  /* Backwards from adding: we want to remove ourselves from the menu
-   * -before- thrashing the properties.
-   */
-  gtk_menu_tracker_item_update_visibility (self);
-
   g_object_freeze_notify (G_OBJECT (self));
 
-  if (was_sensitive)
-    g_object_notify_by_pspec (G_OBJECT (self), gtk_menu_tracker_item_pspecs[PROP_SENSITIVE]);
+  if (self->sensitive)
+    {
+      self->sensitive = FALSE;
+      g_object_notify_by_pspec (G_OBJECT (self), gtk_menu_tracker_item_pspecs[PROP_SENSITIVE]);
+    }
 
-  if (was_toggled)
-    g_object_notify_by_pspec (G_OBJECT (self), gtk_menu_tracker_item_pspecs[PROP_TOGGLED]);
+  if (self->toggled)
+    {
+      self->toggled = FALSE;
+      g_object_notify_by_pspec (G_OBJECT (self), gtk_menu_tracker_item_pspecs[PROP_TOGGLED]);
+    }
 
-  if (old_role != GTK_MENU_TRACKER_ITEM_ROLE_NORMAL)
-    g_object_notify_by_pspec (G_OBJECT (self), gtk_menu_tracker_item_pspecs[PROP_ROLE]);
+  if (self->role != GTK_MENU_TRACKER_ITEM_ROLE_NORMAL)
+    {
+      self->role = GTK_MENU_TRACKER_ITEM_ROLE_NORMAL;
+      g_object_notify_by_pspec (G_OBJECT (self), gtk_menu_tracker_item_pspecs[PROP_ROLE]);
+    }
+
+  if (self->action_state != NULL)
+    {
+      g_variant_unref (self->action_state);
+      self->action_state = NULL;
+      g_object_notify_by_pspec (G_OBJECT (self), gtk_menu_tracker_item_pspecs[PROP_ACTION_STATE]);
+    }
 
   g_object_thaw_notify (G_OBJECT (self));
-}
-
-static void
-gtk_menu_tracker_item_primary_accel_changed (GtkActionObserver   *observer,
-                                             GtkActionObservable *observable,
-                                             const gchar         *action_name,
-                                             const gchar         *action_and_target)
-{
-  GtkMenuTrackerItem *self = GTK_MENU_TRACKER_ITEM (observer);
-
-  if (g_str_equal (action_and_target, self->action_and_target))
-    g_object_notify_by_pspec (G_OBJECT (self), gtk_menu_tracker_item_pspecs[PROP_ACCEL]);
 }
 
 static void
@@ -485,20 +414,17 @@ gtk_menu_tracker_item_init_observer_iface (GtkActionObserverInterface *iface)
   iface->action_enabled_changed = gtk_menu_tracker_item_action_enabled_changed;
   iface->action_state_changed = gtk_menu_tracker_item_action_state_changed;
   iface->action_removed = gtk_menu_tracker_item_action_removed;
-  iface->primary_accel_changed = gtk_menu_tracker_item_primary_accel_changed;
 }
 
 GtkMenuTrackerItem *
 _gtk_menu_tracker_item_new (GtkActionObservable *observable,
                             GMenuModel          *model,
                             gint                 item_index,
-                            gboolean             mac_os_mode,
                             const gchar         *action_namespace,
                             gboolean             is_separator)
 {
   GtkMenuTrackerItem *self;
   const gchar *action_name;
-  const gchar *hidden_when;
 
   g_return_val_if_fail (GTK_IS_ACTION_OBSERVABLE (observable), NULL);
   g_return_val_if_fail (G_IS_MENU_MODEL (model), NULL);
@@ -509,72 +435,50 @@ _gtk_menu_tracker_item_new (GtkActionObservable *observable,
   self->observable = g_object_ref (observable);
   self->is_separator = is_separator;
 
-  if (!is_separator && g_menu_item_get_attribute (self->item, "hidden-when", "&s", &hidden_when))
-    {
-      if (g_str_equal (hidden_when, "action-disabled"))
-        self->hidden_when = HIDDEN_WHEN_DISABLED;
-      else if (g_str_equal (hidden_when, "action-missing"))
-        self->hidden_when = HIDDEN_WHEN_MISSING;
-      else if (mac_os_mode && g_str_equal (hidden_when, "macos-menubar"))
-        self->hidden_when = HIDDEN_WHEN_ALWAYS;
-
-      /* Ignore other values -- this code may be running in context of a
-       * desktop shell or the like and should not spew criticals due to
-       * application bugs...
-       *
-       * Note: if we just set a hidden-when state, but don't get the
-       * action_name below then our visibility will be FALSE forever.
-       * That's to be expected since the action is missing...
-       */
-    }
-
   if (!is_separator && g_menu_item_get_attribute (self->item, "action", "&s", &action_name))
     {
       GActionGroup *group = G_ACTION_GROUP (observable);
       const GVariantType *parameter_type;
-      GVariant *target;
       gboolean enabled;
       GVariant *state;
       gboolean found;
 
-      target = g_menu_item_get_attribute_value (self->item, "target", NULL);
-
-      self->action_and_target = gtk_print_action_and_target (action_namespace, action_name, target);
-
-      if (target)
-        g_variant_unref (target);
-
-      action_name = strrchr (self->action_and_target, '|') + 1;
-
       state = NULL;
 
-      gtk_action_observable_register_observer (self->observable, action_name, GTK_ACTION_OBSERVER (self));
-      found = g_action_group_query_action (group, action_name, &enabled, &parameter_type, NULL, NULL, &state);
-
-      if (found)
+      if (action_namespace)
         {
-          gtk_menu_tracker_item_action_added (GTK_ACTION_OBSERVER (self), observable, NULL, parameter_type, enabled, state);
+          gchar *full_action;
+
+          full_action = g_strjoin (".", action_namespace, action_name, NULL);
+          gtk_action_observable_register_observer (self->observable, full_action, GTK_ACTION_OBSERVER (self));
+          found = g_action_group_query_action (group, full_action, &enabled, &parameter_type, NULL, NULL, &state);
+          g_free (full_action);
         }
       else
         {
-          gtk_menu_tracker_item_update_visibility (self);
+          gtk_action_observable_register_observer (self->observable, action_name, GTK_ACTION_OBSERVER (self));
+          found = g_action_group_query_action (group, action_name, &enabled, &parameter_type, NULL, NULL, &state);
         }
+
+      if (found)
+        gtk_menu_tracker_item_action_added (GTK_ACTION_OBSERVER (self), observable, NULL, parameter_type, enabled, state);
+      else
+        gtk_menu_tracker_item_action_removed (GTK_ACTION_OBSERVER (self), observable, NULL);
 
       if (state)
         g_variant_unref (state);
     }
   else
     {
-      gtk_menu_tracker_item_update_visibility (self);
       gboolean submenu_enabled;
-        if (g_menu_item_get_attribute (self->item, "submenu-enabled", "b", &submenu_enabled))
-          {
-            self->sensitive = submenu_enabled;
-          }
-        else
-          {
-            self->sensitive = TRUE;
-          }
+      if (g_menu_item_get_attribute (self->item, "submenu-enabled", "b", &submenu_enabled))
+        {
+          self->sensitive = submenu_enabled;
+        }
+      else
+        {
+          self->sensitive = TRUE;
+        }
     }
 
   return self;
@@ -586,11 +490,11 @@ _gtk_menu_tracker_item_get_observable (GtkMenuTrackerItem *self)
   return self->observable;
 }
 
-/*< private >
+/**
  * gtk_menu_tracker_item_get_is_separator:
  * @self: A #GtkMenuTrackerItem instance
  *
- * Returns: whether the menu item is a separator. If so, only
+ * Returns whether the menu item is a separator. If so, only
  * certain properties may need to be obeyed. See the documentation
  * for #GtkMenuTrackerItem.
  */
@@ -600,21 +504,20 @@ gtk_menu_tracker_item_get_is_separator (GtkMenuTrackerItem *self)
   return self->is_separator;
 }
 
-/*< private >
+/**
  * gtk_menu_tracker_item_get_has_submenu:
  * @self: A #GtkMenuTrackerItem instance
  *
- * Returns: whether the menu item has a submenu. If so, only
+ * Returns whether the menu item has a submenu. If so, only
  * certain properties may need to be obeyed. See the documentation
  * for #GtkMenuTrackerItem.
  */
 gboolean
-gtk_menu_tracker_item_get_has_link (GtkMenuTrackerItem *self,
-                                    const gchar        *link_name)
+gtk_menu_tracker_item_get_has_submenu (GtkMenuTrackerItem *self)
 {
   GMenuModel *link;
 
-  link = g_menu_item_get_link (self->item, link_name);
+  link = g_menu_item_get_link (self->item, G_MENU_LINK_SUBMENU);
 
   if (link)
     {
@@ -635,7 +538,7 @@ gtk_menu_tracker_item_get_label (GtkMenuTrackerItem *self)
   return label;
 }
 
-/*< private >
+/**
  * gtk_menu_tracker_item_get_icon:
  *
  * Returns: (transfer full):
@@ -657,32 +560,16 @@ gtk_menu_tracker_item_get_icon (GtkMenuTrackerItem *self)
   return icon;
 }
 
-/*< private >
- * gtk_menu_tracker_item_get_verb_icon:
- *
- * Returns: (transfer full):
- */
-GIcon *
-gtk_menu_tracker_item_get_verb_icon (GtkMenuTrackerItem *self)
-{
-  GVariant *icon_data;
-  GIcon *icon;
-
-  icon_data = g_menu_item_get_attribute_value (self->item, "verb-icon", NULL);
-
-  if (icon_data == NULL)
-    return NULL;
-
-  icon = g_icon_deserialize (icon_data);
-  g_variant_unref (icon_data);
-
-  return icon;
-}
-
 gboolean
 gtk_menu_tracker_item_get_sensitive (GtkMenuTrackerItem *self)
 {
   return self->sensitive;
+}
+
+gboolean
+gtk_menu_tracker_item_get_visible (GtkMenuTrackerItem *self)
+{
+  return TRUE;
 }
 
 GtkMenuTrackerItemRole
@@ -700,59 +587,21 @@ gtk_menu_tracker_item_get_toggled (GtkMenuTrackerItem *self)
 const gchar *
 gtk_menu_tracker_item_get_accel (GtkMenuTrackerItem *self)
 {
-  const gchar *accel;
+  const gchar *accel = NULL;
 
-  if (!self->action_and_target)
-    return NULL;
+  g_menu_item_get_attribute (self->item, "accel", "&s", &accel);
 
-  if (g_menu_item_get_attribute (self->item, "accel", "&s", &accel))
-    return accel;
-
-  if (!GTK_IS_ACTION_MUXER (self->observable))
-    return NULL;
-
-  return gtk_action_muxer_get_primary_accel (GTK_ACTION_MUXER (self->observable), self->action_and_target);
-}
-
-const gchar *
-gtk_menu_tracker_item_get_special (GtkMenuTrackerItem *self)
-{
-  const gchar *special = NULL;
-
-  g_menu_item_get_attribute (self->item, "x-gtk-private-special", "&s", &special);
-
-  return special;
-}
-
-const gchar *
-gtk_menu_tracker_item_get_display_hint (GtkMenuTrackerItem *self)
-{
-  const gchar *display_hint = NULL;
-
-  g_menu_item_get_attribute (self->item, "display-hint", "&s", &display_hint);
-
-  return display_hint;
-}
-
-const gchar *
-gtk_menu_tracker_item_get_text_direction (GtkMenuTrackerItem *self)
-{
-  const gchar *text_direction = NULL;
-
-  g_menu_item_get_attribute (self->item, "text-direction", "&s", &text_direction);
-
-  return text_direction;
+  return accel;
 }
 
 GMenuModel *
-_gtk_menu_tracker_item_get_link (GtkMenuTrackerItem *self,
-                                 const gchar        *link_name)
+_gtk_menu_tracker_item_get_submenu (GtkMenuTrackerItem *self)
 {
-  return g_menu_item_get_link (self->item, link_name);
+  return g_menu_item_get_link (self->item, "submenu");
 }
 
 gchar *
-_gtk_menu_tracker_item_get_link_namespace (GtkMenuTrackerItem *self)
+_gtk_menu_tracker_item_get_submenu_namespace (GtkMenuTrackerItem *self)
 {
   const gchar *namespace;
 
@@ -783,7 +632,10 @@ gtk_menu_tracker_item_get_submenu_shown (GtkMenuTrackerItem *self)
  * gtk_menu_tracker_item_get_action_name:
  * @self: A #GtkMenuTrackerItem instance
  *
- * Returns the action name
+ * Returns a newly-allocated string containing the name of the action
+ * associated with this menu item.
+ *
+ * Returns: (transfer full): the action name, free it with g_free()
  */
 gchar *
 gtk_menu_tracker_item_get_action_name (GtkMenuTrackerItem *self)
@@ -791,12 +643,12 @@ gtk_menu_tracker_item_get_action_name (GtkMenuTrackerItem *self)
   const gchar *action_name;
 
   if (!g_menu_item_get_attribute (self->item, G_MENU_ATTRIBUTE_ACTION, "&s", &action_name))
-      return NULL;
+    return NULL;
 
   if (self->action_namespace)
-      return g_strjoin (".", self->action_namespace, action_name, NULL);
-    else
-      return g_strdup (action_name);
+    return g_strjoin (".", self->action_namespace, action_name, NULL);
+  else
+    return g_strdup (action_name);
 }
 
 GVariant *
@@ -836,10 +688,19 @@ gtk_menu_tracker_item_activated (GtkMenuTrackerItem *self)
   if (!self->can_activate)
     return;
 
-  action_name = strrchr (self->action_and_target, '|') + 1;
+  g_menu_item_get_attribute (self->item, G_MENU_ATTRIBUTE_ACTION, "&s", &action_name);
   action_target = g_menu_item_get_attribute_value (self->item, G_MENU_ATTRIBUTE_TARGET, NULL);
 
-  g_action_group_activate_action (G_ACTION_GROUP (self->observable), action_name, action_target);
+  if (self->action_namespace)
+    {
+      gchar *full_action;
+
+      full_action = g_strjoin (".", self->action_namespace, action_name, NULL);
+      g_action_group_activate_action (G_ACTION_GROUP (self->observable), full_action, action_target);
+      g_free (full_action);
+    }
+  else
+    g_action_group_activate_action (G_ACTION_GROUP (self->observable), action_name, action_target);
 
   if (action_target)
     g_variant_unref (action_target);
@@ -1068,31 +929,4 @@ gtk_menu_tracker_item_get_attribute_value (GtkMenuTrackerItem *self,
                                            const GVariantType *expected_type)
 {
   return g_menu_item_get_attribute_value (self->item, attribute, expected_type);
-}
-
-/**
- * gtk_menu_tracker_item_get_is_visible:
- * @self: A #GtkMenuTrackerItem instance
- *
- * Don't use this unless you're tracking items for yourself -- normally
- * the tracker will emit add/remove automatically when this changes.
- *
- * Returns: if the item should currently be shown
- */
-gboolean
-gtk_menu_tracker_item_get_is_visible (GtkMenuTrackerItem *self)
-{
-  return self->is_visible;
-}
-
-/**
- * gtk_menu_tracker_item_may_disappear:
- * @self: A #GtkMenuTrackerItem instance
- *
- * Returns: if the item may disappear (ie: is-visible property may change)
- */
-gboolean
-gtk_menu_tracker_item_may_disappear (GtkMenuTrackerItem *self)
-{
-  return self->hidden_when != HIDDEN_NEVER;
 }

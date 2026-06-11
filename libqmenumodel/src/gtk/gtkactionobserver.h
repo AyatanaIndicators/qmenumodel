@@ -57,10 +57,6 @@ struct _GtkActionObserverInterface
   void (* action_removed)         (GtkActionObserver    *observer,
                                    GtkActionObservable  *observable,
                                    const gchar          *action_name);
-  void (* primary_accel_changed)  (GtkActionObserver    *observer,
-                                   GtkActionObservable  *observable,
-                                   const gchar          *action_name,
-                                   const gchar          *action_and_target);
 };
 
 GType                   gtk_action_observer_get_type                    (void);
@@ -81,10 +77,6 @@ void                    gtk_action_observer_action_state_changed        (GtkActi
 void                    gtk_action_observer_action_removed              (GtkActionObserver   *observer,
                                                                          GtkActionObservable *observable,
                                                                          const gchar         *action_name);
-void                    gtk_action_observer_primary_accel_changed       (GtkActionObserver   *observer,
-                                                                         GtkActionObservable *observable,
-                                                                         const gchar         *action_name,
-                                                                         const gchar         *action_and_target);
 
 G_END_DECLS
 
