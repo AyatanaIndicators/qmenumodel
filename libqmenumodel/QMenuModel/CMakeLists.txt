@@ -24,7 +24,10 @@ execute_process(COMMAND ${CMAKE_COMMAND} -E copy_if_different "${CMAKE_CURRENT_S
                                                               "${CMAKE_CURRENT_BINARY_DIR}/qmldir")
 
 set(QT_IMPORTS_DIR "${CMAKE_INSTALL_LIBDIR}/qt${QT_VERSION_MAJOR}/qml")
-set(QMLPLUGIN_INSTALL_PREFIX "${QT_IMPORTS_DIR}/QMenuModel.1")
+if (ENABLE_QT6)
+    set(QMLPLUGIN_INSTALL_PREFIX "${QT_IMPORTS_DIR}/QMenuModel")
+else()
+    set(QMLPLUGIN_INSTALL_PREFIX "${QT_IMPORTS_DIR}/QMenuModel.1")
+endif()
 install(TARGETS qmenumodel-qml DESTINATION ${QMLPLUGIN_INSTALL_PREFIX})
 install(FILES qmldir DESTINATION ${QMLPLUGIN_INSTALL_PREFIX})
-
