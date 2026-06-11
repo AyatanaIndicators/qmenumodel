@@ -22,6 +22,10 @@ override_dh_auto_build:
 	dh_auto_build --builddirectory=build-qt6
 	dh_auto_build --builddirectory=build-qt5
 
+override_dh_auto_test:
+	dh_auto_test --builddirectory=build-qt6
+	dh_auto_test --builddirectory=build-qt5
+
 override_dh_auto_install:
 	dh_auto_install --builddirectory=build-qt6
 	dh_auto_install --builddirectory=build-qt5
