@@ -29,16 +29,5 @@ tests/script/__pycache__/
 doc/html/
 doc/qmenumodel.qdocconf
 
-obj-*
-debian/files
-debian/tmp
-debian/libqmenumodel0/
-debian/libqmenumodel-dev/
-debian/qmenumodel-qml/
-debian/*.debhelper
-debian/*.debhelper.log
-debian/*.substvars
-debian/stamp-*
-
 *.user
 build
