@@ -1,34 +1,32 @@
 Source: qmenumodel
+Standards-Version: 4.7.4
+Maintainer: UBports Developers <developers@ubports.com>
+Uploaders: Debian UBports Team <team+ubports@tracker.debian.org>,
+           Mike Gabriel <sunweaver@debian.org>,
 Section: libs
-Priority: optional
-Maintainer: Marius Gripsgard <marius@ubports.com>
-Uploaders:
- Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
-Build-Depends: debhelper (>= 10),
-               cmake (>= 2.8.9),
+Build-Depends: debhelper-compat (= 13),
+               cmake,
                cmake-extras,
+               dbus-test-runner,
+               gir1.2-glib-2.0,
+               libgles2-mesa-dev | libgl-dev,
                libglib2.0-dev,
-               qt5-default | hello,
-               qt5-qmake,
-               qtbase5-dev (>= 5.0),
-               qtdeclarative5-dev (>= 5.0),
-               python3:any,
                python3-dbus:native,
                python3-gi:native,
-               gir1.2-glib-2.0,
-               dbus-test-runner,
-               libgles2-mesa-dev | libgl-dev,
-Standards-Version: 3.9.4
-Homepage: https://github.com/AyatanaIndicators/qmenumodel
+               python3:any,
+               qml-module-qtquick2 <!nocheck>,
+               qt5-qmake,
+               qtbase5-dev,
+               qtdeclarative5-dev,
+Vcs-Browser: https://github.com/AyatanaIndicators/qmenumodel.git
 Vcs-Git: https://github.com/AyatanaIndicators/qmenumodel.git
-Vcs-Browser: https://github.com/AyatanaIndicators/qmenumodel
+Homepage: https://github.com/AyatanaIndicators/qmenumodel
 
 Package: libqmenumodel1
-Section: libs
 Architecture: any
-Depends: ${shlibs:Depends},
-         ${misc:Depends},
-Pre-Depends: ${misc:Pre-Depends}
+Multi-Arch: same
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
 Description: Qt binding for GMenuModel - shared library
  Qt binding for GMenuModel that allows connecting to a menu model exposed on
  D-Bus and presents it as a list model. It can be used to expose indicator or
@@ -38,11 +36,11 @@ Description: Qt binding for GMenuModel - shared library
  QMenuModel.
 
 Package: libqmenumodel-dev
-Section: libdevel
 Architecture: any
-Depends: ${shlibs:Depends},
+Section: libdevel
+Depends: libqmenumodel1 (= ${binary:Version}),
          ${misc:Depends},
-         libqmenumodel1 (= ${binary:Version}),
+         ${shlibs:Depends},
 Description: Qt binding for GMenuModel - development files
  Qt binding for GMenuModel that allows connecting to a menu model exposed on
  D-Bus and presents it as a list model. It can be used to expose indicator or
@@ -51,11 +49,10 @@ Description: Qt binding for GMenuModel - development files
  This package contains the development headers for libqmenumodel.
 
 Package: qml-module-qmenumodel1
-Section: libs
 Architecture: any
-Depends: ${shlibs:Depends},
+Depends: libqmenumodel1 (= ${binary:Version}),
          ${misc:Depends},
-         libqmenumodel1 (= ${binary:Version}),
+         ${shlibs:Depends},
 Description: Qt binding for GMenuModel - QML module
  Qt binding for GMenuModel that allows connecting to a menu model exposed on
  D-Bus and presents it as a list model. It can be used to expose indicator or

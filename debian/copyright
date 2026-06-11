@@ -1,8 +1,151 @@
-Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://github.com/AyatanaIndicators/qmenumodel/
+Upstream-Name: qmenumodel
 
-Files: *
-Copyright: 2013 Canonical Ltd.
+Files: examples/ayatanaqmlmenumodel.qml
+ examples/exportactiongroup.py
+ examples/exportmenu.py
+ examples/info-menumodel.cpp
+ examples/render-menumodel.qml
+ libqmenumodel/QMenuModel/plugin.h
+ libqmenumodel/src/actionstateparser.cpp
+ libqmenumodel/src/actionstateparser.h
+ libqmenumodel/src/ayatanamenuaction.h
+ libqmenumodel/src/ayatanamenuactionevents.cpp
+ libqmenumodel/src/ayatanamenuactionevents.h
+ libqmenumodel/src/ayatanamenumodel.h
+ libqmenumodel/src/ayatanamenumodelevents.h
+ libqmenumodel/src/converter.h
+ libqmenumodel/src/dbus-enums.h
+ libqmenumodel/src/menunode.cpp
+ libqmenumodel/src/menunode.h
+ libqmenumodel/src/qdbusactiongroup.cpp
+ libqmenumodel/src/qdbusactiongroup.h
+ libqmenumodel/src/qdbusmenumodel.cpp
+ libqmenumodel/src/qdbusmenumodel.h
+ libqmenumodel/src/qdbusobject.cpp
+ libqmenumodel/src/qdbusobject.h
+ libqmenumodel/src/qmenumodel.cpp
+ libqmenumodel/src/qmenumodel.h
+ libqmenumodel/src/qmenumodelevents.cpp
+ libqmenumodel/src/qmenumodelevents.h
+ libqmenumodel/src/qstateaction.cpp
+ libqmenumodel/src/qstateaction.h
+ tests/client/ayatanamenuactiontest.cpp
+ tests/client/cachetest.cpp
+ tests/client/convertertest.cpp
+ tests/client/menuchangestest.cpp
+ tests/client/modelsignalstest.cpp
+ tests/client/modeltest.cpp
+ tests/client/script_actiongrouptest.py
+ tests/client/script_menuchangestest.py
+ tests/client/script_modeltest.py
+ tests/client/script_qmltest.py
+ tests/client/script_servicetest.py
+ tests/client/servicetest.cpp
+ tests/client/treetest.cpp
+ tests/script/dbusmenuscript.cpp
+ tests/script/menuscript.py
+Copyright: 2012, Canonical Ltd.
+  2012-2016, Canonical Ltd.
+  2013, Canonical Ltd.
+  2014, Canonical Ltd.
 License: LGPL-3
+
+Files: .build.yml
+ .travis.yml
+ AUTHORS
+ CMakeLists.txt
+ ChangeLog
+ Jenkinsfile
+ NEWS
+ README
+ TODO
+ doc/CMakeLists.txt
+ doc/qmenumodel.qdocconf.in
+ examples/CMakeLists.txt
+ examples/README
+ libqmenumodel/CMakeLists.txt
+ libqmenumodel/QMenuModel/CMakeLists.txt
+ libqmenumodel/QMenuModel/qmldir
+ libqmenumodel/src/CMakeLists.txt
+ libqmenumodel/src/gtk/config.h
+ libqmenumodel/src/qmenumodel.pc.in
+ tests/CMakeLists.txt
+ tests/client/CMakeLists.txt
+ tests/client/qmlfiles.h.in
+ tests/script/CMakeLists.txt
+Copyright: 2012-2016, Canonical Ltd.
+  2021, UBports Foundation
+  2021-2022, Robert Tari
+License: LGPL-3
+Comment:
+ Assuming same copyright holders and license as found
+ in the code files above.
+
+Files: libqmenumodel/src/gtk/gtkactionmuxer.c
+ libqmenumodel/src/gtk/gtkactionmuxer.h
+ libqmenumodel/src/gtk/gtkactionobservable.c
+ libqmenumodel/src/gtk/gtkactionobservable.h
+ libqmenumodel/src/gtk/gtkactionobserver.c
+ libqmenumodel/src/gtk/gtkactionobserver.h
+ libqmenumodel/src/gtk/gtkmenutracker.c
+ libqmenumodel/src/gtk/gtkmenutracker.h
+ libqmenumodel/src/gtk/gtkmenutrackeritem.c
+ libqmenumodel/src/gtk/gtkmenutrackeritem.h
+ libqmenumodel/src/gtk/gtksimpleactionobserver.c
+ libqmenumodel/src/gtk/gtksimpleactionobserver.h
+Copyright: 2011, 2013, Canonical Limited
+  2011, Canonical Limited
+  2013, Canonical Limited
+License: LGPL-2+
+
+Files: libqmenumodel/QMenuModel/plugin.cpp
+ libqmenumodel/src/ayatanamenuaction.cpp
+ libqmenumodel/src/ayatanamenumodel.cpp
+ libqmenumodel/src/ayatanamenumodelevents.cpp
+ libqmenumodel/src/converter.cpp
+ tests/client/actiongrouptest.cpp
+ tests/script/dbusmenuscript.h
+Copyright: 2012, Canonical Ltd.
+  2012-2016, Canonical Ltd.
+  2013, Canonical Ltd.
+  2021, Robert Tari
+  2022, Robert Tari
+License: LGPL-3
+
+Files: tests/client/importtest.qml
+ tests/client/qmltest.cpp
+Copyright: 2012, Canonical Ltd.
+  2021, UBports Foundation
+License: LGPL-3
+
+Files: libqmenumodel/src/logging.h
+Copyright: 2016, Canonical, Ltd.
+License: LGPL-3
+
+Files: debian/*
+Copyright: 2012-2016, Canonical Ltd.
+  2023, Mike Gabriel <mike.gabriel@das-netzwerkteam.de>
+License: LGPL-2+
+
+License: LGPL-2+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2 of the licence, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library. If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems the full text of the GNU Lesser General Public
+ License, version 2 can be found in the file
+ '/usr/share/common-licenses/LGPL-2'.
 
 License: LGPL-3
  This package is free software; you can redistribute it and/or modify
@@ -20,4 +163,3 @@ License: LGPL-3
  On Debian systems the full text of the GNU Lesser General Public
  License, version 3 can be found in the file
  '/usr/share/common-licenses/LGPL-3'.
-
