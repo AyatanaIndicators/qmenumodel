@@ -21,7 +21,10 @@
 
 #include <QObject>
 #include <QVariant>
+
+// cyclical includes, forward-declare
 class AyatanaMenuModel;
+#include "ayatanamenumodel.h"
 
 class AyatanaMenuAction: public QObject
 {

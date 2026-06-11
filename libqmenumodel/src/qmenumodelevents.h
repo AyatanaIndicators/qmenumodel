@@ -23,7 +23,8 @@
 #include <QEvent>
 #include <QVariant>
 
-class MenuNode;
+#include "menunode.h"
+
 typedef struct _GDBusConnection GDBusConnection;
 typedef struct _GMenuModel GMenuModel;
 

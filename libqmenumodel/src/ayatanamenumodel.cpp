@@ -463,7 +463,7 @@ QVariant AyatanaMenuModel::data(const QModelIndex &index, int role) const
                 ret = gtk_menu_tracker_item_get_attribute (item, "x-canonical-type", "s", &type);
 
             if (ret) {
-                QVariant v(type);
+                QString v(type);
                 g_free (type);
                 return v;
             }
@@ -658,7 +658,7 @@ static QString qtify_name(const char *name)
         if (*name == '-') {
             next_cap = true;
         } else if (next_cap) {
-            result.append(toupper(*name));
+            result.append(QChar (toupper(*name)));
             next_cap = false;
         } else {
             result.append(*name);

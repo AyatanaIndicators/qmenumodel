@@ -6,11 +6,21 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 endif(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 
 # Options
+option(ENABLE_QT6 "Enable building with Qt6" OFF)
 option(ENABLE_TESTS "Enable all tests and checks" OFF)
 option(ENABLE_COVERAGE "Enable coverage reports (includes enabling all tests and checks)" OFF)
 option(ENABLE_WERROR "Treat all build warnings as errors" OFF)
 option(TEST_XML_OUTPUT "Print test results to xml files" OFF)
 option(GENERATE_DOC "Enable qdoc generation" OFF)
+
+set(QT_VERSION_MAJOR 5)
+set(QMENUMODEL_LIB_SUFFIX)
+set(QMENUMODEL_PKGCONFIG_SUFFIX)
+if(ENABLE_QT6)
+    set(QT_VERSION_MAJOR 6)
+    string(APPEND QMENUMODEL_LIB_SUFFIX "-qt6")
+    string(APPEND QMENUMODEL_PKGCONFIG_SUFFIX "-qt6")
+endif()
 
 if(ENABLE_COVERAGE)
     set(ENABLE_TESTS ON)
@@ -35,9 +45,8 @@ endif()
 
 # Standard install paths
 include(GNUInstallDirs)
-find_package(Qt5Core REQUIRED)
-find_package(Qt5Qml REQUIRED)
-find_package(Qt5Gui REQUIRED)
+find_package(QT NAMES Qt${QT_VERSION_MAJOR})
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Gui Qml Quick)
 include(FindPkgConfig)
 pkg_check_modules(GLIB REQUIRED glib-2.0>=2.32)
 pkg_check_modules(GIO REQUIRED gio-2.0>=2.32)
@@ -48,6 +57,7 @@ add_subdirectory(libqmenumodel)
 
 # Tests
 if (ENABLE_TESTS)
+    find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS DBus Test Widgets)
     find_program(DBUS_RUNNER dbus-test-runner REQUIRED)
     enable_testing()
     if(CMAKE_SYSTEM_PROCESSOR STREQUAL "armv7l")

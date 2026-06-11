@@ -23,7 +23,9 @@
 #include <QObject>
 #include <QVariant>
 
+// cyclical includes, forward-declare
 class QDBusActionGroup;
+#include "qdbusactiongroup.h"
 
 class QStateAction : public QObject
 {
