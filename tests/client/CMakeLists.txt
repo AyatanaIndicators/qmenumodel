@@ -21,9 +21,10 @@ macro(declare_test testname)
 
     add_test(${testname}
              ${DBUS_RUNNER}
-             --task ${CMAKE_CURRENT_BINARY_DIR}/${testname} ${TEST_ARGS} --task-name Client
              --task ${CMAKE_CURRENT_SOURCE_DIR}/script_${testname}.py --task-name Server
-             --ignore-return)
+             --ignore-return
+             --task ${CMAKE_CURRENT_BINARY_DIR}/${testname} ${TEST_ARGS} --task-name Client
+             --wait-for org.ayatana.test)
     set_tests_properties(${testname} PROPERTIES
                          TIMEOUT ${CTEST_TESTING_TIMEOUT}
                          ENVIRONMENT "PYTHONPATH=${TEST_PYTHONPATH};QT_QPA_PLATFORM=minimal")
@@ -45,7 +46,8 @@ macro(declare_simple_test testname)
              ${CMAKE_CURRENT_BINARY_DIR}/${testname})
 
     set_tests_properties(${testname} PROPERTIES
-                         TIMEOUT ${CTEST_TESTING_TIMEOUT})
+                         TIMEOUT ${CTEST_TESTING_TIMEOUT}
+                         ENVIRONMENT "QT_QPA_PLATFORM=minimal")
 endmacro(declare_simple_test testname)
 
 include_directories(${src_SOURCE_DIR}
@@ -64,10 +66,10 @@ declare_test(menuchangestest)
 declare_test(modeltest)
 declare_test(actiongrouptest)
 declare_test(qmltest)
-declare_test(convertertest)
-declare_test(modelsignalstest)
-declare_test(treetest)
-declare_test(ayatanamenuactiontest)
+declare_simple_test(convertertest)
+declare_simple_test(modelsignalstest)
+declare_simple_test(treetest)
+declare_simple_test(ayatanamenuactiontest)
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/qmlfiles.h.in
                ${CMAKE_CURRENT_BINARY_DIR}/qmlfiles.h)
