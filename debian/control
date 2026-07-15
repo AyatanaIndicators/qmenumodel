@@ -7,8 +7,7 @@ Section: libs
 Build-Depends: debhelper-compat (= 13),
                cmake,
                cmake-extras,
-               dbus-test-runner,
-               gir1.2-glib-2.0,
+               dbus-test-runner <!nocheck>,
                libgles2-mesa-dev | libgl-dev,
                libglib2.0-dev,
                python3-dbus:native,
@@ -17,10 +16,10 @@ Build-Depends: debhelper-compat (= 13),
                qml-module-qtquick2 <!nocheck>,
                qml6-module-qtquick <!nocheck>,
                qt5-qmake,
-               qtbase5-dev,
-               qtdeclarative5-dev,
                qt6-base-dev,
                qt6-declarative-dev,
+               qtbase5-dev,
+               qtdeclarative5-dev,
 Vcs-Browser: https://github.com/AyatanaIndicators/qmenumodel.git
 Vcs-Git: https://github.com/AyatanaIndicators/qmenumodel.git
 Homepage: https://github.com/AyatanaIndicators/qmenumodel
@@ -40,10 +39,10 @@ Description: Qt 5 binding for GMenuModel - shared library
 
 Package: libqmenumodel-dev
 Architecture: any
+Multi-Arch: same
 Section: libdevel
 Depends: libqmenumodel1 (= ${binary:Version}),
          ${misc:Depends},
-         ${shlibs:Depends},
 Description: Qt 5 binding for GMenuModel - development files
  Qt binding for GMenuModel that allows connecting to a menu model exposed on
  D-Bus and presents it as a list model. It can be used to expose indicator or
@@ -53,6 +52,7 @@ Description: Qt 5 binding for GMenuModel - development files
 
 Package: qml-module-qmenumodel1
 Architecture: any
+Multi-Arch: same
 Depends: libqmenumodel1 (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends},
@@ -79,10 +79,10 @@ Description: Qt 6 binding for GMenuModel - shared library
 
 Package: libqmenumodel-qt6-dev
 Architecture: any
+Multi-Arch: same
 Section: libdevel
 Depends: libqmenumodel1 (= ${binary:Version}),
          ${misc:Depends},
-         ${shlibs:Depends},
 Description: Qt 6 binding for GMenuModel - development files
  Qt binding for GMenuModel that allows connecting to a menu model exposed on
  D-Bus and presents it as a list model. It can be used to expose indicator or

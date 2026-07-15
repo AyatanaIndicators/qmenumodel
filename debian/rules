@@ -2,21 +2,21 @@
 # -*- makefile -*-
 
 export DEB_BUILD_MAINT_OPTIONS = hardening=+all
-DPKG_EXPORT_BUILDFLAGS = 1
-include /usr/share/dpkg/buildflags.mk
-
-DEB_CMAKE_EXTRA_FLAGS = \
-    -DCMAKE_INSTALL_LOCALSTATEDIR="/var" \
-    -DENABLE_TESTS=ON \
-    -DENABLE_COVERAGE=OFF \
-    $(NULL)
 
 %:
 	dh $@
 
 override_dh_auto_configure:
-	dh_auto_configure --builddirectory=build-qt6 -- $(DEB_CMAKE_EXTRA_FLAGS) -DENABLE_QT6=ON
-	dh_auto_configure --builddirectory=build-qt5 -- $(DEB_CMAKE_EXTRA_FLAGS) -DENABLE_QT6=OFF
+	dh_auto_configure --builddirectory=build-qt6 -- \
+		-DENABLE_QT6=ON \
+		-DENABLE_TESTS=$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),OFF,ON) \
+		-DENABLE_COVERAGE=OFF \
+		$(NULL)
+	dh_auto_configure --builddirectory=build-qt5 -- \
+		-DENABLE_QT6=OFF \
+		-DENABLE_TESTS=$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),OFF,ON) \
+		-DENABLE_COVERAGE=OFF \
+		$(NULL)
 
 override_dh_auto_build:
 	dh_auto_build --builddirectory=build-qt6
