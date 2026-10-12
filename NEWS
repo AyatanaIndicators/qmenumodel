@@ -1,3 +1,7 @@
+Overview of changes in qmenumodel 0.10.1
+
+  - tests/client/CMakeLists.txt: Fix inter-task dependencies.
+
 Overview of changes in qmenumodel 0.10.0
 
   - treewide: Allow Qt6 build to be configured via CMake.

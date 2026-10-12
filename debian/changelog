@@ -1,3 +1,10 @@
+qmenumodel (0.10.1) unstable; urgency=medium
+
+  * Upstream-provided Debian package for qmenumodel. See upstream
+    ChangeLog for recent changes.
+
+ -- UBports developers <developers@ubports.com>  Mon, 12 Oct 2026 23:16:52 +0200
+
 qmenumodel (0.10.0) unstable; urgency=medium
 
   * Upstream-provided Debian package for qmenumodel. See upstream ChangeLog

@@ -1,6 +1,24 @@
+2026-10-12 Mike Gabriel
+
+        * Release 0.10.1 (HEAD -> main, tag: 0.10.1)
+        * Merge branch 'jbicha-personal/jbicha/debian-sync-20260714'
+          (d6f021a)
+
+2026-07-14 Jeremy Bícha
+
+        * debian: Sync with Debian (76bcdc3)
+
+2026-10-12 Mike Gabriel
+
+        * Merge branch 'OPNA2608-fix/test-dbus-dependencies' (eb1cfb9)
+
+2026-07-07 OPNA2608
+
+        * tests/client/CMakeLists.txt: Fix inter-task dependencies (1c83e5e)
+
 2026-06-11 Mike Gabriel
 
-        * Release 0.10.0 (HEAD -> main, tag: 0.10.0)
+        * Release 0.10.0 (bb8cd06) (tag: 0.10.0)
         * d/changelog: prepare release v0.10.0 (057eb26)
         * d/rules: Enable unit tests for Qt 5 + Qt 6 (727a02d)
         * debian/: Build Qt 6 variant alongside Qt 5 variant (3ab0271)
